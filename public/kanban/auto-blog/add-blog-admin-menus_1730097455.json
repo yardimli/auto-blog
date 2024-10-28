@@ -1,0 +1,26 @@
+{
+    "column": "in-progress",
+    "order": "0",
+    "title": "add blog admin menus",
+    "text": "add blog admin menus",
+    "owner": "Ekim",
+    "backgroundColor": "#F28B82",
+    "textColor": "#000000",
+    "created": "2024-10-28 06:37:35",
+    "lastUpdated": "2024-10-28 06:37:37",
+    "comments": [],
+    "files": [],
+    "history": [
+        {
+            "action": "Created story",
+            "user": "Ekim",
+            "timestamp": "2024-10-28 06:37:35"
+        },
+        {
+            "action": "Moved card to in-progress",
+            "user": "Ekim",
+            "timestamp": "2024-10-28 06:37:37"
+        }
+    ],
+    "archived": false
+}

@@ -3,11 +3,9 @@
 	namespace App\Http\Controllers;
 
 	use Illuminate\Http\Request;
-	use App\Models\ChatHeader;
-	use App\Models\ChatBody;
 	use App\Models\User;
-	use App\Models\TokenUsage;
-	use App\Models\PaypalOrder;
+	use App\Models\Language;
+	use App\Models\Category;
 	use Illuminate\Support\Facades\Auth;
 	use Illuminate\Support\Facades\DB;
 	use Illuminate\Support\Facades\Log;
@@ -25,9 +23,8 @@
 	{
 		//-------------------------------------------------------------------------
 		// Index
-		public function index(Request $request)
+		public function index()
 		{
-
 		}
 
 
@@ -90,10 +87,11 @@
 
 		public function editSettings(Request $request)
 		{
-			// Get the authenticated user
-			$user = $request->user();
+			$user = auth()->user();
+			$languages = Language::all();
+			$categories = Category::with(['language', 'parent'])->get();
 
-			return view('user.settings', compact('user'));
+			return view('user.settings', compact('user', 'languages', 'categories'));
 		}
 
 // Update user settings

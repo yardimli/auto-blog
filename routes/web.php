@@ -1,8 +1,10 @@
 <?php
 
+	use App\Http\Controllers\ArticleController;
+	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
 	use App\Http\Controllers\ImageGenController;
-	use App\Http\Controllers\LangController;
+	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
 	use App\Http\Controllers\StaticPagesController;
 	use App\Http\Controllers\UserController;
@@ -29,8 +31,8 @@
 	//-------------------------------------------------------------------------
 	Route::get('/', [StaticPagesController::class, 'landing'])->name('landing-page');
 
-	Route::get('/lang/home', [LangController::class, 'index']);
-	Route::get('/lang/change', [LangController::class, 'change'])->name('changeLang');
+	Route::get('/lang/home', [LanguageController::class, 'index']);
+	Route::get('/lang/change', [LanguageController::class, 'change'])->name('changeLang');
 
 	Route::get('login/google', [LoginWithGoogleController::class, 'redirectToGoogle']);
 	Route::get('login/google/callback', [LoginWithGoogleController::class, 'handleGoogleCallback']);
@@ -94,6 +96,25 @@
 		Route::post('/login-as', [UserController::class, 'loginAs'])->name('users-login-as');
 
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
+
+
+		Route::resource('articles', ArticleController::class);
+
+		// Language Management Routes
+		Route::get('/languages', [LanguageController::class, 'index'])->name('languages.index');
+		Route::get('/languages/create', [LanguageController::class, 'create'])->name('languages.create');
+		Route::post('/languages', [LanguageController::class, 'store'])->name('languages.store');
+		Route::get('/languages/{language}/edit', [LanguageController::class, 'edit'])->name('languages.edit');
+		Route::put('/languages/{language}', [LanguageController::class, 'update'])->name('languages.update');
+		Route::delete('/languages/{language}', [LanguageController::class, 'destroy'])->name('languages.destroy');
+
+		// Category Management Routes
+		Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+		Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
+		Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+		Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+		Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+		Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 	});
 

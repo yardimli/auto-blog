@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	$cardsDirName = 'saas-laravel';
+	$cardsDirName = 'auto-blog';
 
 	//json string for users, Admin password is 123456
 	$users =
