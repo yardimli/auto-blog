@@ -398,4 +398,12 @@
 		'Alt Text' => 'Alt Text',
 		'Upload' => 'Upload',
 
+		'Generate with AI' => 'Generate with AI',
+		'Prompt Enhancer' => 'Prompt Enhancer',
+		'Generated Image Preview' => 'Generated Image Preview',
+		'Generate Image' => 'Generate Image',
+
+		'Model' => 'Model',
+		'Size' => 'Size',
+
 	];

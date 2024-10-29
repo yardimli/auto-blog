@@ -129,10 +129,7 @@ Header START -->
 						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="{{route('image-gen')}}">{{__('default.Image Gen')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="{{route('image-gen')}}">{{__('default.Blog')}}</a>
+						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Blog')}}</a>
 					</li>
 				</ul>
 			</div>

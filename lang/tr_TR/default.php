@@ -419,4 +419,20 @@
 		'Cannot delete category with associated articles' => 'Makaleleri olan kategoriyi silemezsiniz',
 
 
+		'Images' => 'Resimler',
+		'Manage Images' => 'Resimleri Yönet',
+		'Upload and manage your images' => 'Resimlerinizi yükleyin ve yönetin',
+		'Upload Image' => 'Resim Yükle',
+		'Image' => 'Resim',
+		'Alt Text' => 'Alternatif Metin',
+		'Upload' => 'Yükle',
+
+		'Generate with AI' => 'Yapay Zeka ile Oluştur',
+		'Prompt Enhancer' => 'İpucu Geliştirici',
+		'Generated Image Preview' => 'Oluşturulan Resim Önizlemesi',
+		'Generate Image' => 'Resim Oluştur',
+
+		'Model' => 'Model',
+		'Size' => 'Boyut',
+
 	];

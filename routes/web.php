@@ -4,7 +4,6 @@
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
 	use App\Http\Controllers\ImageController;
-	use App\Http\Controllers\ImageGenController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
 	use App\Http\Controllers\StaticPagesController;
@@ -81,10 +80,6 @@
 		Route::delete('/chat/{sessionId}', [ChatController::class, 'destroy'])->name('chat.destroy');
 
 
-		Route::get('/image-gen/sessions', [ImageGenController::class, 'getImageGenSessions'])->name('image-gen-sessions');
-		Route::get('/image-gen/{session_id?}', [ImageGenController::class, 'index'])->name('image-gen');
-		Route::post('/image-gen', [ImageGenController::class, 'makeImage'])->name('send-image-gen-prompt');
-		Route::delete('/image-gen/{session_id}', [ImageGenController::class, 'destroy'])->name('image-gen.destroy');
 
 
 		Route::get('/settings', [UserSettingsController::class, 'editSettings'])->name('my-settings');
@@ -120,6 +115,9 @@
 		Route::put('/upload-images/{id}', [ImageController::class, 'update'])->name('upload-images.update');
 		Route::delete('/upload-images/{id}', [ImageController::class, 'destroy'])->name('upload-images.destroy');
 
+		Route::get('/image-gen/sessions', [ImageController::class, 'getImageGenSessions'])->name('image-gen-sessions');
+		Route::post('/image-gen', [ImageController::class, 'makeImage'])->name('send-image-gen-prompt');
+		Route::delete('/image-gen/{session_id}', [ImageController::class, 'destroyGenImage'])->name('image-gen.destroy');
 
 	});
 

@@ -152,10 +152,7 @@ Header START -->
 						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="{{route('image-gen')}}">{{__('default.Image Gen')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="{{route('image-gen')}}">{{__('default.Blog')}}</a>
+						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Blog')}}</a>
 					</li>
 
 					
@@ -203,7 +200,7 @@ Header START -->
 									</div>
 								</div>
 								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
-								   href="{{route('my-settings')}}">{{__('My Books')}}</a>
+								   href="{{ route('my-settings', ['tab' => 'nav-setting-tab-4']) }}">{{ __('Images') }}</a>
 								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
 								   href="/blog_admin">{{__('Blog Admin')}}</a>
 							</li>

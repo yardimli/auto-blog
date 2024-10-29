@@ -1,32 +1,36 @@
 <?php
 	namespace App\Http\Controllers;
 
+	use App\Helpers\MyHelper;
 	use App\Models\Image;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
+	use Illuminate\Support\Facades\DB;
+	use Illuminate\Support\Facades\Log;
 	use Illuminate\Support\Facades\Storage;
 	use Illuminate\Support\Str;
 
 	class ImageController extends Controller
 	{
-		public function index() {
-			$images = Image::where('user_id', Auth::id())
-				->orderBy('created_at', 'desc')
-				->get()
-				->map(function($image) {
-					return [
-						'id' => $image->id,
-						'image_alt' => $image->image_alt,
-						'image_original_filename' => $image->image_original_filename,
-						'created_at' => $image->created_at,
-						'medium_url' => $image->getMediumUrl(),
-						'small_url' => $image->getSmallUrl(),
-						'large_url' => $image->getLargeUrl(),
-						'original_url' => $image->getOriginalUrl(),
-					];
-				});
+		public function index(Request $request)
+		{
+			$perPage = 9;
 
-			return response()->json($images);
+			// Get uploaded images with union
+			$userImages = Image::where('user_id', Auth::id())
+				->orderBy('created_at', 'desc')
+				->paginate($perPage);
+
+
+			return response()->json([
+				'images' => $userImages,
+				'pagination' => [
+					'current_page' => $userImages->currentPage(),
+					'last_page' => $userImages->lastPage(),
+					'per_page' => $userImages->perPage(),
+					'total' => $userImages->total()
+				]
+			]);
 		}
 
 		private function resizeImage($sourcePath, $destinationPath, $maxWidth)
@@ -144,6 +148,7 @@
 			// Save to database
 			$imageModel = Image::create([
 				'user_id' => Auth::id(),
+				'image_type' => 'upload',
 				'image_guid' => $guid,
 				'image_alt' => $request->alt ?? $image->getClientOriginalName(),
 				'image_original_filename' => $originalFilename,
@@ -192,5 +197,187 @@
 
 			$image->delete();
 			return response()->json(['success' => true]);
+		}
+
+
+		public function getImageGenSessions(Request $request)
+		{
+			if (!Auth::check()) {
+				return [];
+			}
+
+			$sessions = Image::where('user_id', Auth::id())
+				->orderBy('updated_at', 'desc')
+				->get();
+
+			return response()->json($sessions);
+		}
+
+		public function makeImage(Request $request)
+		{
+			if (!Auth::check()) {
+				return [];
+			}
+
+			$model = $request->input('model', 'https://queue.fal.run/fal-ai/flux/schnell');
+			$size = $request->input('size', 'square_hd');
+
+			$prompt_enhancer = $request->input('prompt_enhancer', '##UserPrompt##');
+			if ($prompt_enhancer === null || $prompt_enhancer === '') {
+				$prompt_enhancer = '##UserPrompt##';
+			}
+			$user_prompt = $request->input('user_prompt', 'A fantasy picture of a cat');
+			if ($user_prompt === null || $user_prompt === '') {
+				$user_prompt = 'A fantasy picture of a cat';
+			}
+			$gpt_prompt = str_replace('##UserPrompt##', $user_prompt, $prompt_enhancer);
+			$llm = $request->input('llm');
+
+			$chat_history[] = [
+				'role' => 'user',
+				'content' => $gpt_prompt,
+			];
+
+
+			$image_prompt = MyHelper::llm_no_tool_call($llm, '', $chat_history, false);
+			Log::info('Enhanced Cover Image Prompt');
+			Log::info($image_prompt);
+
+			$falApiKey = $_ENV['FAL_API_KEY'];
+			if (empty($falApiKey)) {
+				echo json_encode(['error' => 'FAL_API_KEY environment variable is not set']);
+			}
+
+			$client = new \GuzzleHttp\Client();
+
+			$response = $client->post($model, [
+				'headers' => [
+					'Authorization' => 'Key ' . $falApiKey,
+					'Content-Type' => 'application/json',
+				],
+				'json' => [
+					'prompt' => $image_prompt['content'],
+					'image_size' => $size,
+					'safety_tolerance' => '5',
+				]
+			]);
+			Log::info('FLUX image response');
+			Log::info($response->getBody());
+
+			$body = $response->getBody();
+			$data = json_decode($body, true);
+
+			if ($response->getStatusCode() == 200) {
+
+				if (isset($data['images'][0]['url'])) {
+					$image_url = $data['images'][0]['url'];
+					$image = file_get_contents($image_url);
+
+
+					if (!Storage::disk('public')->exists('ai-images')) {
+						Storage::disk('public')->makeDirectory('ai-images');
+					}
+
+					// Create directories if they don't exist
+					$directories = ['original', 'large', 'medium', 'small'];
+					foreach ($directories as $dir) {
+						if (!Storage::disk('public')->exists("ai-images/$dir")) {
+							Storage::disk('public')->makeDirectory("ai-images/$dir");
+						}
+					}
+
+					$guid = Str::uuid();
+
+					$extension = 'jpg';
+
+					// Generate filenames
+					$originalFilename = $guid . '.' . $extension;
+					$largeFilename = $guid . '_large.' . $extension;
+					$mediumFilename = $guid . '_medium.' . $extension;
+					$smallFilename = $guid . '_small.' . $extension;
+
+					$outputFile = Storage::disk('public')->path('ai-images/' . $originalFilename);
+					file_put_contents($outputFile, $image);
+
+					// Create resized versions
+					$this->resizeImage(
+						$outputFile,
+						storage_path('app/public/ai-images/large/' . $largeFilename),
+						1024,
+					);
+					$this->resizeImage(
+						$outputFile,
+						storage_path('app/public/ai-images/medium/' . $mediumFilename),
+						600
+					);
+					$this->resizeImage(
+						$outputFile,
+						storage_path('app/public/ai-images/small/' . $smallFilename),
+						300
+					);
+
+					// Save to database
+					$imageModel = Image::create([
+						'user_id' => Auth::id(),
+						'image_type' => 'generated',
+						'image_guid' => $guid,
+						'image_alt' => '',
+						'user_prompt' => $user_prompt,
+						'llm_prompt' => $prompt_enhancer,
+						'llm' => $llm,
+						'prompt_tokens' => $image_prompt['prompt_tokens'] ?? 0,
+						'completion_tokens' => $image_prompt['completion_tokens'] ?? 0,
+						'image_original_filename' => $originalFilename,
+						'image_large_filename' => $largeFilename,
+						'image_medium_filename' => $mediumFilename,
+						'image_small_filename' => $smallFilename
+					]);
+
+					return json_encode([
+						'success' => true,
+						'message' => __('Image generated successfully'),
+						'image_large_filename' => $largeFilename,
+						'image_medium_filename' => $mediumFilename,
+						'image_small_filename' => $smallFilename,
+						'data' => json_encode($data),
+						'seed' => $data['seed'],
+						'status_code' => $response->getStatusCode(),
+						'user_prompt' => $user_prompt,
+						'llm_prompt' => $prompt_enhancer,
+						'image_prompt' => $image_prompt['content'],
+						'prompt_tokens' => $image_prompt['prompt_tokens'] ?? 0,
+						'completion_tokens' => $image_prompt['completion_tokens'] ?? 0
+					]);
+				} else {
+					return json_encode(['success' => false, 'message' => __('Error (2) generating image'), 'status_code' => $response->getStatusCode()]);
+				}
+			} else {
+				return json_encode(['success' => false, 'message' => __('Error (1) generating image'), 'status_code' => $response->getStatusCode()]);
+			}
+		}
+
+		public function destroyGenImage($id)
+		{
+			if (!Auth::check()) {
+				return response()->json(['success' => false, 'message' => 'Unauthorized'], 401);
+			}
+
+			$image = Image::where('id', $id)
+				->where('user_id', Auth::id())
+				->first();
+
+			if (!$image) {
+				return response()->json(['success' => false, 'message' => 'Record not found'], 404);
+			}
+
+			// Delete the image file
+			if ($image->image_path && Storage::disk('public')->exists($image->image_path)) {
+				Storage::disk('public')->delete($image->image_path);
+			}
+
+			// Delete the database record
+			$image->delete();
+
+			return response()->json(['success' => true, 'message' => 'Image deleted successfully']);
 		}
 	}

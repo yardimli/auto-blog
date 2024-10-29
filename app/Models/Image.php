@@ -10,8 +10,15 @@
 	{
 		protected $fillable = [
 			'user_id',
+			'image_type',
 			'image_guid',
 			'image_alt',
+			'user_prompt',
+			'llm_prompt',
+			'image_prompt',
+			'llm',
+			'prompt_tokens',
+			'completion_tokens',
 			'image_original_filename',
 			'image_large_filename',
 			'image_medium_filename',
