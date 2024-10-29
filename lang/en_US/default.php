@@ -390,4 +390,12 @@
 		'Cannot delete category with child categories' => 'Cannot delete category with child categories',
 		'Cannot delete category with associated articles' => 'Cannot delete category with associated articles',
 
+		'Images' => 'Images',
+		'Manage Images' => 'Manage Images',
+		'Upload and manage your images' => 'Upload and manage your images',
+		'Upload Image' => 'Upload Image',
+		'Image' => 'Image',
+		'Alt Text' => 'Alt Text',
+		'Upload' => 'Upload',
+
 	];

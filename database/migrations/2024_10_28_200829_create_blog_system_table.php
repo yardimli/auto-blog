@@ -22,6 +22,8 @@ return new class extends Migration
 	    Schema::create('images', function (Blueprint $table) {
 		    $table->id();
 		    $table->uuid('image_guid')->unique();
+				$table->integer('user_id')->index()->default(0);
+		    $table->string('imag_alt');
 		    $table->string('image_original_filename');
 		    $table->string('image_large_filename');
 		    $table->string('image_medium_filename');
@@ -31,6 +33,7 @@ return new class extends Migration
 
 	    Schema::create('categories', function (Blueprint $table) {
 		    $table->id();
+		    $table->integer('user_id')->index()->default(0);
 		    $table->foreignId('language_id')->constrained()->onDelete('cascade');
 		    $table->string('category_name');
 		    $table->string('category_slug')->unique();
@@ -41,6 +44,7 @@ return new class extends Migration
 
 	    Schema::create('articles', function (Blueprint $table) {
 		    $table->id();
+		    $table->integer('user_id')->index()->default(0);
 		    $table->foreignId('language_id')->constrained()->onDelete('cascade');
 		    $table->string('title');
 		    $table->string('subtitle')->nullable();

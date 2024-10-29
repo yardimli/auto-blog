@@ -3,6 +3,7 @@
 	use App\Http\Controllers\ArticleController;
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
+	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\ImageGenController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
@@ -102,7 +103,6 @@
 
 		// Language Management Routes
 		Route::get('/languages', [LanguageController::class, 'index'])->name('languages.index');
-		Route::get('/languages/create', [LanguageController::class, 'create'])->name('languages.create');
 		Route::post('/languages', [LanguageController::class, 'store'])->name('languages.store');
 		Route::get('/languages/{language}/edit', [LanguageController::class, 'edit'])->name('languages.edit');
 		Route::put('/languages/{language}', [LanguageController::class, 'update'])->name('languages.update');
@@ -110,11 +110,16 @@
 
 		// Category Management Routes
 		Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-		Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 		Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
 		Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 		Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 		Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+		Route::get('/upload-images', [ImageController::class, 'index'])->name('upload-images.index');
+		Route::post('/upload-images', [ImageController::class, 'store'])->name('upload-images.store');
+		Route::put('/upload-images/{id}', [ImageController::class, 'update'])->name('upload-images.update');
+		Route::delete('/upload-images/{id}', [ImageController::class, 'destroy'])->name('upload-images.destroy');
+
 
 	});
 

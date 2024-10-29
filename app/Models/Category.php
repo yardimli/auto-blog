@@ -11,6 +11,7 @@
 	class Category extends Model
 	{
 		protected $fillable = [
+			'user_id',
 			'language_id',
 			'category_name',
 			'category_slug',
@@ -32,6 +33,11 @@
 		public function language(): BelongsTo
 		{
 			return $this->belongsTo(Language::class);
+		}
+
+		public function user(): BelongsTo
+		{
+			return $this->belongsTo(User::class);
 		}
 
 		public function parent(): BelongsTo

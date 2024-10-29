@@ -61,6 +61,12 @@
 													<span>{{__('default.Categories')}}</span>
 												</a>
 											</li>
+											<li class="nav-item" data-bs-dismiss="offcanvas">
+												<a class="nav-link d-flex mb-0" href="#nav-setting-tab-4" data-bs-toggle="tab">
+													<img class="me-2 h-20px" src="/assets/images/icon/image-outline-filled.svg" alt="">
+													<span>{{__('default.Images')}}</span>
+												</a>
+											</li>
 											
 											<li class="nav-item" data-bs-dismiss="offcanvas">
 												<a class="nav-link d-flex mb-0" href="#nav-setting-tab-6"
@@ -76,8 +82,9 @@
 									<!-- Card body END -->
 									<!-- Card footer -->
 									<div class="card-footer text-center py-2 pb-3">
-										<a class="btn btn-secondary-soft btn-sm w-100 mb-2" href="{{route('my-settings')}}">{{__('default.My Books')}} </a>
-{{--										<a class="btn btn-info-soft btn-sm w-100" href="{{route('buy-packages')}}">Purchase Tokens</a>--}}
+										<a class="btn btn-secondary-soft btn-sm w-100 mb-2"
+										   href="{{route('my-settings')}}">{{__('default.My Books')}} </a>
+										{{--										<a class="btn btn-info-soft btn-sm w-100" href="{{route('buy-packages')}}">Purchase Tokens</a>--}}
 									</div>
 								
 								</div>
@@ -190,15 +197,18 @@
 											@csrf
 											<div class="col-12">
 												<label class="form-label">{{__('default.OpenAI API Key')}}</label>
-												<input type="text" name="openai_api_key" class="form-control" value="{{ old('openai_api_key', $user->openai_api_key) }}">
+												<input type="text" name="openai_api_key" class="form-control"
+												       value="{{ old('openai_api_key', $user->openai_api_key) }}">
 											</div>
 											<div class="col-12">
 												<label class="form-label">{{__('default.Anthropic API Key')}}</label>
-												<input type="text" name="anthropic_key" class="form-control" value="{{ old('anthropic_key', $user->anthropic_key) }}">
+												<input type="text" name="anthropic_key" class="form-control"
+												       value="{{ old('anthropic_key', $user->anthropic_key) }}">
 											</div>
 											<div class="col-12">
 												<label class="form-label">{{__('default.OpenRouter API Key')}}</label>
-												<input type="text" name="openrouter_key" class="form-control" value="{{ old('openrouter_key', $user->openrouter_key) }}">
+												<input type="text" name="openrouter_key" class="form-control"
+												       value="{{ old('openrouter_key', $user->openrouter_key) }}">
 											</div>
 											<div class="col-12 text-end">
 												<button type="submit" class="btn btn-primary mb-0">{{__('default.Update API Keys')}}</button>
@@ -216,7 +226,8 @@
 									<!-- Title START -->
 									<div class="card-header border-0 pb-0">
 										<h5 class="card-title">{{__('default.Change your password')}}</h5>
-										<p class="mb-0">{{__('default.If you signed up with Google, leave the current password blank the first time you update your password.')}}</p>
+										<p
+											class="mb-0">{{__('default.If you signed up with Google, leave the current password blank the first time you update your password.')}}</p>
 									</div>
 									<!-- Title START -->
 									<div class="card-body">
@@ -292,7 +303,8 @@
 									<h5 class="card-title">{{__('default.Manage Languages')}}</h5>
 									<div class="d-flex justify-content-between align-items-center">
 										<p class="mb-0">{{__('default.Configure available languages for your content')}}</p>
-										<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addLanguageModal">
+										<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+										   data-bs-target="#addLanguageModal">
 											{{__('default.Add New Language')}}
 										</a>
 									</div>
@@ -343,7 +355,8 @@
 									<h5 class="card-title">{{__('default.Manage Categories')}}</h5>
 									<div class="d-flex justify-content-between align-items-center">
 										<p class="mb-0">{{__('default.Organize your content with categories')}}</p>
-										<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">
+										<a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+										   data-bs-target="#addCategoryModal">
 											{{__('default.Add New Category')}}
 										</a>
 									</div>
@@ -383,6 +396,28 @@
 						</div>
 						<!-- Categories tab END -->
 						
+						<!-- Images tab START -->
+						<div class="tab-pane fade" id="nav-setting-tab-4">
+							<div class="card">
+								<div class="card-header border-0 pb-0">
+									<h5 class="card-title">{{__('default.Manage Images')}}</h5>
+									<div class="d-flex justify-content-between align-items-center">
+										<p class="mb-0">{{__('default.Upload and manage your images')}}</p>
+										<button class="btn btn-sm btn-primary" id="uploadImageBtn">
+											{{__('default.Upload Image')}}
+										</button>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="row g-3" id="imageGrid">
+										<!-- Images will be loaded here -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Images tab END -->
+						
+						
 						<!-- Close account tab START -->
 						<div class="tab-pane fade" id="nav-setting-tab-6">
 							<!-- Card START -->
@@ -391,8 +426,10 @@
 								<div class="card-header border-0 pb-0">
 									<h5 class="card-title">{{__('default.Delete account')}}</h5>
 									<p class="mb-2">{{__('default.We are sorry to hear that you wish to delete your account.')}}</p>
-									<p class="mb-2">{{__('default.Please note that deleting your account may result in the permanent loss of your data.')}}</p>
-									<p class="mb-2">{{__('default.We are sad to see you go, but we hope that Auto Blog has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!')}}</p>
+									<p
+										class="mb-2">{{__('default.Please note that deleting your account may result in the permanent loss of your data.')}}</p>
+									<p
+										class="mb-2">{{__('default.We are sad to see you go, but we hope that Auto Blog has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!')}}</p>
 								</div>
 								<!-- Card header START -->
 								<!-- Card body START -->
@@ -405,7 +442,8 @@
 									<div class="form-check form-check-md my-4">
 										<input class="form-check-input" type="checkbox" value=""
 										       id="deleteaccountCheck">
-										<label class="form-check-label" for="deleteaccountCheck">{{__('default.Yes, I\'d like to delete my account')}}</label>
+										<label class="form-check-label"
+										       for="deleteaccountCheck">{{__('default.Yes, I\'d like to delete my account')}}</label>
 									</div>
 									<a href="#" class="btn btn-success-soft btn-sm mb-2 mb-sm-0">{{__('default.Keep my account')}}</a>
 									<a href="#" class="btn btn-danger btn-sm mb-0">{{__('default.Delete my account')}}</a>
@@ -430,7 +468,8 @@
 	
 	
 	<!-- Add Language Modal -->
-	<div class="modal fade" id="addLanguageModal" tabindex="-1" aria-labelledby="addLanguageModalLabel" aria-hidden="true">
+	<div class="modal fade" id="addLanguageModal" tabindex="-1" aria-labelledby="addLanguageModalLabel"
+	     aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -467,7 +506,8 @@
 	</div>
 	
 	<!-- Edit Language Modal -->
-	<div class="modal fade" id="editLanguageModal" tabindex="-1" aria-labelledby="editLanguageModalLabel" aria-hidden="true">
+	<div class="modal fade" id="editLanguageModal" tabindex="-1" aria-labelledby="editLanguageModalLabel"
+	     aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -505,7 +545,8 @@
 	</div>
 	
 	<!-- Add Category Modal -->
-	<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+	<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel"
+	     aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -555,7 +596,8 @@
 	</div>
 	
 	<!-- Edit Category Modal -->
-	<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+	<div class="modal fade" id="editCategoryModal" tabindex="-1" aria-labelledby="editCategoryModalLabel"
+	     aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -606,6 +648,60 @@
 		</div>
 	</div>
 	
+	<!-- Image Upload Modal -->
+	<div class="modal fade" id="uploadImageModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">{{__('default.Upload Image')}}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<form id="uploadImageForm">
+					@csrf
+					<div class="modal-body">
+						<div class="mb-3">
+							<label class="form-label">{{__('default.Image')}}</label>
+							<input type="file" class="form-control" name="image" accept="image/*" required>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">{{__('default.Alt Text')}}</label>
+							<input type="text" class="form-control" name="alt">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('default.Close')}}</button>
+						<button type="submit" class="btn btn-primary">{{__('default.Upload')}}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Edit Image Modal -->
+	<div class="modal fade" id="editImageModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">{{__('default.Edit Image')}}</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+				<form id="editImageForm">
+					@csrf
+					<div class="modal-body">
+						<div class="mb-3">
+							<label class="form-label">{{__('default.Alt Text')}}</label>
+							<input type="text" class="form-control" name="alt" required>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('default.Close')}}</button>
+						<button type="submit" class="btn btn-primary">{{__('default.Save')}}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
 	
 	<!-- Vendors -->
 	<script src="/assets/vendor/pswmeter/pswmeter.js"></script>
@@ -645,151 +741,262 @@
 			}, 5000);
 		}
 		
-		// Auto-generate slug for new category
-		$('#category_name').on('input', function() {
-			if (!$('#category_slug').data('manual')) {
-				$('#category_slug').val(generateSlug($(this).val()));
-			}
-		});
-		
-		// Auto-generate slug for edit category
-		$('#edit_category_name').on('input', function() {
-			if (!$('#edit_category_slug').data('manual')) {
-				$('#edit_category_slug').val(generateSlug($(this).val()));
-			}
-		});
-		
-		// Mark slug as manually edited when user types in slug field
-		$('#category_slug').on('input', function() {
-			$(this).data('manual', true);
-		});
-		
-		$('#edit_category_slug').on('input', function() {
-			$(this).data('manual', true);
-		});
-		
-		$('#addLanguageForm').on('submit', function(e) {
-			e.preventDefault();
+		function loadImages() {
+			$.get('/upload-images', function (images) {
+				const grid = $('#imageGrid');
+				grid.empty();
+				images.forEach(image => {
+					grid.append(`
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="${image.small_url}" class="card-img-top" alt="${image.image_alt}">
+                        <div class="card-body">
+                            <h6 class="card-title">${image.image_alt}</h6>
+                            <p class="card-text small text-muted">${new Date(image.created_at).toLocaleDateString()}</p>
+                            <div>
+                                <button class="btn btn-sm btn-primary edit-image mr-2" data-id="${image.id}" data-alt="${image.image_alt}">
+                                    Edit
+                                </button>
+                                <button class="btn btn-sm btn-danger delete-image" data-id="${image.id}">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `);
+				});
+				
+				$( '.edit-image').on('click', function() {
+					const id = $(this).data('id');
+					const alt = $(this).data('alt');
+					
+					$('#editImageForm').data('id', id);
+					$('#editImageForm').find('[name="alt"]').val(alt);
+					$('#editImageModal').modal('show');
+				});
+				
+				// Delete Image
+				$('.delete-image').on('click', function() {
+					if (confirm('Are you sure you want to delete this image?')) {
+						const id = $(this).data('id');
+						
+						$.ajax({
+							url: `/upload-images/${id}`,
+							type: 'DELETE',
+							data: { "_token": "{{ csrf_token() }}" },
+							success: function() {
+								loadImages();
+								showNotification('Image deleted successfully', 'success');
+							},
+							error: function() {
+								showNotification('Error deleting image');
+							}
+						});
+					}
+				});
+			});
 			
-			$.ajax({
-				url: $(this).attr('action'),
-				method: 'POST',
-				data: $(this).serialize(),
-				success: function(response) {
-					$('#addLanguageForm').modal('hide');
-					// Reload the page or update the categories table
-					window.location.reload();
-				},
-				error: function(xhr) {
-					// Handle errors
-					alert('Error adding language. Please try again.');
+		
+		}
+		
+		$(document).ready(function () {
+			
+			loadImages();
+			
+			// Upload Image
+			$('#uploadImageBtn').on('click', function() {
+				$('#uploadImageModal').modal('show');
+			});
+			
+			$('#uploadImageForm').submit(function(e) {
+				e.preventDefault();
+				const formData = new FormData(this);
+				
+				$.ajax({
+					url: '/upload-images',
+					type: 'POST',
+					data: formData,
+					processData: false,
+					contentType: false,
+					success: function() {
+						$('#uploadImageModal').modal('hide');
+						loadImages();
+						showNotification('Image uploaded successfully', 'success');
+					},
+					error: function() {
+						showNotification('Error uploading image');
+					}
+				});
+			});
+			
+			
+			$('#editImageForm').submit(function(e) {
+				e.preventDefault();
+				const id = $(this).data('id');
+				
+				$.ajax({
+					url: `/upload-images/${id}`,
+					type: 'PUT',
+					data: $(this).serialize(),
+					success: function() {
+						$('#editImageModal').modal('hide');
+						loadImages();
+						showNotification('Image updated successfully', 'success');
+					},
+					error: function() {
+						showNotification('Error updating image');
+					}
+				});
+			});
+			
+			
+			// Auto-generate slug for new category
+			$('#category_name').on('input', function () {
+				if (!$('#category_slug').data('manual')) {
+					$('#category_slug').val(generateSlug($(this).val()));
 				}
 			});
-		});
-		
-		// Handle Language Edit Button Click
-		$('.edit-language').click(function() {
-			const languageId = $(this).data('id');
 			
-			$.ajax({
-				url: `/languages/${languageId}/edit`,
-				method: 'GET',
-				success: function(data) {
-					$('#edit_language_name').val(data.language_name);
-					$('#edit_locale').val(data.locale);
-					$('#edit_active').prop('checked', Boolean(data.active));
-					$('#editLanguageForm').attr('action', `/languages/${languageId}`);
-					$('#editLanguageModal').modal('show');
-				},
-				error: function(xhr) {
-					console.error('Error fetching language data:', xhr);
-					alert('Error fetching language data. Please try again.');
+			// Auto-generate slug for edit category
+			$('#edit_category_name').on('input', function () {
+				if (!$('#edit_category_slug').data('manual')) {
+					$('#edit_category_slug').val(generateSlug($(this).val()));
 				}
 			});
-		});
-		
-		
-		$('#addCategoryForm').on('submit', function(e) {
-			e.preventDefault();
 			
-			$.ajax({
-				url: $(this).attr('action'),
-				method: 'POST',
-				data: $(this).serialize(),
-				success: function(response) {
-					$('#addCategoryModal').modal('hide');
-					// Reload the page or update the categories table
-					window.location.reload();
-				},
-				error: function(xhr) {
-					// Handle errors
-					alert('Error adding category. Please try again.');
-				}
+			// Mark slug as manually edited when user types in slug field
+			$('#category_slug').on('input', function () {
+				$(this).data('manual', true);
 			});
-		});
-		
-		// Handle Category Edit Button Click
-		$('.edit-category').click(function() {
-			const categoryId = $(this).data('id');
 			
-			$.ajax({
-				url: `/categories/${categoryId}/edit`,
-				method: 'GET',
-				success: function(data) {
-					$('#edit_category_name').val(data.category_name);
-					$('#edit_category_slug').val(data.category_slug);
-					$('#edit_language_id').val(data.language_id);
-					$('#edit_parent_id').val(data.parent_id);
-					$('#edit_category_description').val(data.category_description);
-					$('#editCategoryForm').attr('action', `/categories/${categoryId}`);
-					$('#editCategoryModal').modal('show');
-					$('#edit_category_slug').data('manual', false);
-				},
-				error: function(xhr) {
-					console.error('Error fetching category data:', xhr);
-					alert('Error fetching category data. Please try again.');
-				}
+			$('#edit_category_slug').on('input', function () {
+				$(this).data('manual', true);
 			});
-		});
-		
-		// Handle Delete Language
-		$('.delete-language').click(function() {
-			if (confirm('Are you sure you want to delete this language?')) {
+			
+			$('#addLanguageForm').on('submit', function (e) {
+				e.preventDefault();
+				
+				$.ajax({
+					url: $(this).attr('action'),
+					method: 'POST',
+					data: $(this).serialize(),
+					success: function (response) {
+						$('#addLanguageForm').modal('hide');
+						// Reload the page or update the categories table
+						window.location.reload();
+					},
+					error: function (xhr) {
+						// Handle errors
+						alert('Error adding language. Please try again.');
+					}
+				});
+			});
+			
+			// Handle Language Edit Button Click
+			$('.edit-language').click(function () {
 				const languageId = $(this).data('id');
+				
 				$.ajax({
-					url: `/languages/${languageId}`,
-					type: 'DELETE',
-					data: { "_token": "{{ csrf_token() }}" },
-					success: function() {
-						location.reload();
+					url: `/languages/${languageId}/edit`,
+					method: 'GET',
+					success: function (data) {
+						$('#edit_language_name').val(data.language_name);
+						$('#edit_locale').val(data.locale);
+						$('#edit_active').prop('checked', Boolean(data.active));
+						$('#editLanguageForm').attr('action', `/languages/${languageId}`);
+						$('#editLanguageModal').modal('show');
 					},
-					error: function(xhr) {
-						const response = xhr.responseJSON;
-						showNotification(response.message || 'Error deleting language');
+					error: function (xhr) {
+						console.error('Error fetching language data:', xhr);
+						alert('Error fetching language data. Please try again.');
 					}
 				});
-			}
-		});
-		
-		// Handle Delete Category
-		$('.delete-category').click(function() {
-			if (confirm('Are you sure you want to delete this category?')) {
+			});
+			
+			
+			$('#addCategoryForm').on('submit', function (e) {
+				e.preventDefault();
+				
+				$.ajax({
+					url: $(this).attr('action'),
+					method: 'POST',
+					data: $(this).serialize(),
+					success: function (response) {
+						$('#addCategoryModal').modal('hide');
+						// Reload the page or update the categories table
+						window.location.reload();
+					},
+					error: function (xhr) {
+						// Handle errors
+						alert('Error adding category. Please try again.');
+					}
+				});
+			});
+			
+			// Handle Category Edit Button Click
+			$('.edit-category').click(function () {
 				const categoryId = $(this).data('id');
+				
 				$.ajax({
-					url: `/categories/${categoryId}`,
-					type: 'DELETE',
-					data: {
-						"_token": "{{ csrf_token() }}"
+					url: `/categories/${categoryId}/edit`,
+					method: 'GET',
+					success: function (data) {
+						$('#edit_category_name').val(data.category_name);
+						$('#edit_category_slug').val(data.category_slug);
+						$('#edit_language_id').val(data.language_id);
+						$('#edit_parent_id').val(data.parent_id);
+						$('#edit_category_description').val(data.category_description);
+						$('#editCategoryForm').attr('action', `/categories/${categoryId}`);
+						$('#editCategoryModal').modal('show');
+						$('#edit_category_slug').data('manual', false);
 					},
-					success: function() {
-						location.reload();
-					},
-					error: function(xhr) {
-						const response = xhr.responseJSON;
-						showNotification(response.message || 'Error deleting language');
+					error: function (xhr) {
+						console.error('Error fetching category data:', xhr);
+						alert('Error fetching category data. Please try again.');
 					}
 				});
-			}
+			});
+			
+			// Handle Delete Language
+			$('.delete-language').click(function () {
+				if (confirm('Are you sure you want to delete this language?')) {
+					const languageId = $(this).data('id');
+					$.ajax({
+						url: `/languages/${languageId}`,
+						type: 'DELETE',
+						data: {"_token": "{{ csrf_token() }}"},
+						success: function () {
+							location.reload();
+						},
+						error: function (xhr) {
+							const response = xhr.responseJSON;
+							showNotification(response.message || 'Error deleting language');
+						}
+					});
+				}
+			});
+			
+			// Handle Delete Category
+			$('.delete-category').click(function () {
+				if (confirm('Are you sure you want to delete this category?')) {
+					const categoryId = $(this).data('id');
+					$.ajax({
+						url: `/categories/${categoryId}`,
+						type: 'DELETE',
+						data: {
+							"_token": "{{ csrf_token() }}"
+						},
+						success: function () {
+							location.reload();
+						},
+						error: function (xhr) {
+							const response = xhr.responseJSON;
+							showNotification(response.message || 'Error deleting language');
+						}
+					});
+				}
+			});
 		});
 	</script>
 @endpush

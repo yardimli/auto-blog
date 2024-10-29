@@ -9,6 +9,7 @@
 	class Article extends Model
 	{
 		protected $fillable = [
+			'user_id',
 			'language_id',
 			'title',
 			'subtitle',
@@ -40,6 +41,11 @@
 		public function language(): BelongsTo
 		{
 			return $this->belongsTo(Language::class);
+		}
+
+		public function user(): BelongsTo
+		{
+			return $this->belongsTo(User::class);
 		}
 
 		public function featuredImage(): BelongsTo

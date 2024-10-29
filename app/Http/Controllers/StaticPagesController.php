@@ -21,12 +21,6 @@
 	use Illuminate\Validation\ValidationException;
 	use Illuminate\Pagination\LengthAwarePaginator;
 
-	use BinshopsBlog\Models\BinshopsCategory;
-	use BinshopsBlog\Models\BinshopsCategoryTranslation;
-	use BinshopsBlog\Models\BinshopsLanguage;
-	use BinshopsBlog\Models\BinshopsPostTranslation;
-
-
 	class StaticPagesController extends Controller
 	{
 
@@ -34,12 +28,8 @@
 		// Index
 		public function index(Request $request)
 		{
-			$posts = MyHelper::getBlogData();
 
-			$genres_array = MyHelper::$genres_array;
-			$adult_genres_array = MyHelper::$adult_genres_array;
-
-			return view("user.index", compact('posts',  'genres_array', 'adult_genres_array'));
+			return view("user.index");
 
 		}
 
@@ -55,13 +45,7 @@
 
 		public function faq(Request $request)
 		{
-			$posts = MyHelper::getBlogData();
-			// Return to the existing blog list view with the posts
-
-			$genres_array = MyHelper::$genres_array;
-			$adult_genres_array = MyHelper::$adult_genres_array;
-
-			return view("user.faq", compact('posts', 'genres_array', 'adult_genres_array'));
+			return view("user.faq");
 		}
 
 		public function onboarding(Request $request)
@@ -81,13 +65,7 @@
 
 		public function contact_us(Request $request)
 		{
-			$posts = MyHelper::getBlogData();
-			// Return to the existing blog list view with the posts
-
-			$genres_array = MyHelper::$genres_array;
-			$adult_genres_array = MyHelper::$adult_genres_array;
-
-			return view("user.contact-us", compact('posts', 'genres_array', 'adult_genres_array'));
+			return view("user.contact-us");
 
 		}
 
