@@ -30,7 +30,7 @@
 				return response()->json($category, 201);
 			}
 
-			return redirect()->route('my-settings')
+			return redirect()->route('settings.categories')
 				->with('success', __('default.Category added successfully'));
 		}
 
@@ -59,7 +59,7 @@
 
 			$category->update($validated);
 
-			return redirect()->route('my-settings')
+			return redirect()->route('settings.categories')
 				->with('success', __('default.Category updated successfully'));
 		}
 

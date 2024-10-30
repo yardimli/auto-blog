@@ -435,4 +435,25 @@
 		'Model' => 'Model',
 		'Size' => 'Boyut',
 
+
+		'Articles' => 'Makaleler',
+		'Create New Article' => 'Yeni Makale Oluştur',
+		'No articles found' => 'Makale bulunamadı',
+		'Title' => 'Başlık',
+		'Created At' => 'Oluşturulma Tarihi',
+		'Published' => 'Yayınlandı',
+		'Draft' => 'Taslak',
+		'Are you sure you want to delete this article?' => 'Bu makaleyi silmek istediğinizden emin misiniz?',
+		'Edit Article' => 'Makaleyi Düzenle',
+		'Create Article' => 'Makale Oluştur',
+		'Subtitle' => 'Alt Başlık',
+		'Featured Image' => 'Öne Çıkan Resim',
+		'Select Featured Image' => 'Öne Çıkan Resmi Seç',
+		'Content' => 'İçerik',
+		'Meta Description' => 'Meta Açıklama',
+		'Publish Article' => 'Makaleyi Yayınla',
+		'Publication Date' => 'Yayın Tarihi',
+		'Update Article' => 'Makaleyi Güncelle',
+		'Create Article' => 'Makale Oluştur',
+
 	];

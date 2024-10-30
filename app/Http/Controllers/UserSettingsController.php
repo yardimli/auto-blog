@@ -27,6 +27,35 @@
 		{
 		}
 
+		public function account()
+		{
+			$user = auth()->user();
+			return view('user.account', compact('user'));
+		}
+
+		public function languages()
+		{
+			$languages = Language::all();
+			return view('user.languages', compact('languages'));
+		}
+
+		public function categories()
+		{
+			$languages = Language::all();
+			$categories = Category::with(['language', 'parent'])->get();
+			return view('user.categories', compact('languages', 'categories'));
+		}
+
+		public function images()
+		{
+			return view('user.images');
+		}
+
+		public function closeAccount()
+		{
+			return view('user.close_account');
+		}
+
 
 //-------------------------------------------------------------------------
 		// Update user password

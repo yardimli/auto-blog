@@ -82,8 +82,16 @@
 
 
 
-		Route::get('/settings', [UserSettingsController::class, 'editSettings'])->name('my-settings');
+
 		Route::post('/settings', [UserSettingsController::class, 'updateSettings'])->name('settings-update');
+
+		Route::get('/settings/account', [UserSettingsController::class, 'account'])->name('settings.account');
+		Route::get('/settings/languages', [UserSettingsController::class, 'languages'])->name('settings.languages');
+		Route::get('/settings/categories', [UserSettingsController::class, 'categories'])->name('settings.categories');
+		Route::get('/settings/images', [UserSettingsController::class, 'images'])->name('settings.images');
+		Route::get('/settings/close-account', [UserSettingsController::class, 'closeAccount'])->name('settings.close-account');
+
+
 
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
 		Route::post('/settings/api-keys', [UserSettingsController::class, 'updateApiKeys'])->name('settings-update-api-keys');
@@ -119,6 +127,16 @@
 		Route::post('/image-gen', [ImageController::class, 'makeImage'])->name('send-image-gen-prompt');
 		Route::delete('/image-gen/{session_id}', [ImageController::class, 'destroyGenImage'])->name('image-gen.destroy');
 
+
+		Route::prefix('articles')->group(function () {
+			Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+			Route::get('/create', [ArticleController::class, 'create'])->name('articles.create');
+			Route::post('/', [ArticleController::class, 'store'])->name('articles.store');
+			Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+			Route::put('/{article}', [ArticleController::class, 'update'])->name('articles.update');
+			Route::delete('/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+			Route::get('/get-images', [ArticleController::class, 'getImages'])->name('articles.get-images');
+		});
 	});
 
 	//-------------------------------------------------------------------------

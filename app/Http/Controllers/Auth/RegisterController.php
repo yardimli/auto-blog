@@ -118,6 +118,6 @@
 		protected function registered(Request $request, $user)
 		{
 			Mail::to($request->input('email'))->send(new WelcomeMail($user->name, $user->email));
-			return redirect()->route('my-settings');
+			return redirect()->route('settings.account');
 		}
 	}

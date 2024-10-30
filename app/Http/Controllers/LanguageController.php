@@ -35,7 +35,7 @@
 
 			Language::create($validated);
 
-			return redirect()->route('my-settings')
+			return redirect()->route('settings.languages')
 				->with('success', __('default.Language added successfully'));
 		}
 
@@ -57,7 +57,7 @@
 
 			$language->update($validated);
 
-			return redirect()->route('my-settings')
+			return redirect()->route('settings.languages')
 				->with('success', __('default.Language updated successfully'));
 		}
 

@@ -152,7 +152,7 @@ Header START -->
 						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Blog')}}</a>
+						<a class="nav-link active" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
 					</li>
 
 					
@@ -195,16 +195,16 @@ Header START -->
 									</div>
 									<div>
 										<a class="h6 stretched-link"
-										   href="{{route('my-settings')}}">{{ Auth::user()->name }}</a>
+										   href="{{route('settings.account')}}">{{ Auth::user()->name }}</a>
 										<p class="small m-0">{{ Auth::user()->username }}</p>
 									</div>
 								</div>
 								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
-								   href="{{ route('my-settings', ['tab' => 'nav-setting-tab-4']) }}">{{ __('Images') }}</a>
+								   href="{{ route('settings.account') }}">{{ __('Images') }}</a>
 								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
 								   href="/blog_admin">{{__('Blog Admin')}}</a>
 							</li>
-							<a class="dropdown-item" href="{{route('my-settings')}}"><i
+							<a class="dropdown-item" href="{{route('settings.account')}}"><i
 									class="bi bi-person  me-2"></i>{{__('default.Settings')}}</a>
 						@endif
 						<!-- Links -->
