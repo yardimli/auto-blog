@@ -54,7 +54,7 @@ A23: Unused tokens will expire after the specified duration (3 months, 6 months,
 Q24: What is the Control Initial Prompt feature?
 A24: The Control Initial Prompt feature, coming soon, allows you to set the starting point of a story and guide the AI's suggestions and rewrites. This helps you steer the AI's direction when crafting a narrative, ensuring the story aligns with your desired theme or plot.
 
-Q25: How do I use my own OpenAI key?
+Q25: How do I use my own key?
 A25: The option to use your own OpenAI key is coming soon. When available, you can enter your OpenAI key in your account settings. This will allow you to use your own tokens and make payments directly to OpenAI for their usage, bypassing the tokens supplied by Auto Blog. Please note that this feature requires annual renewal.
 
 Q26: Can I get a refund if I'm not satisfied with the service?

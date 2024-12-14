@@ -66,16 +66,6 @@
 					<form action="{{ route('settings-update-api-keys') }}" method="post" class="row g-3">
 						@csrf
 						<div class="col-12">
-							<label class="form-label">{{__('default.OpenAI API Key')}}</label>
-							<input type="text" name="openai_api_key" class="form-control"
-							       value="{{ old('openai_api_key', $user->openai_api_key) }}">
-						</div>
-						<div class="col-12">
-							<label class="form-label">{{__('default.Anthropic API Key')}}</label>
-							<input type="text" name="anthropic_key" class="form-control"
-							       value="{{ old('anthropic_key', $user->anthropic_key) }}">
-						</div>
-						<div class="col-12">
 							<label class="form-label">{{__('default.OpenRouter API Key')}}</label>
 							<input type="text" name="openrouter_key" class="form-control"
 							       value="{{ old('openrouter_key', $user->openrouter_key) }}">

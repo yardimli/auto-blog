@@ -26,8 +26,6 @@
 				$table->integer('member_type')->default(1);
 				$table->dateTime('last_login')->default(now())->nullable();
 				$table->string('last_ip')->nullable();
-				$table->string('openai_api_key')->nullable();
-				$table->string('anthropic_key')->nullable();
 				$table->string('openrouter_key')->nullable();
 
 

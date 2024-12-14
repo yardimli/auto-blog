@@ -100,7 +100,7 @@
 									</li>
 									<li class="mb-3 h6 fw-light"><i class="bi bi-x-octagon-fill text-danger me-2"></i>Private Stories
 									</li>
-									<li class="mb-3 h6 fw-light"><i class="bi bi-x-octagon-fill text-danger me-2"></i>Use Your Own OpenAI Key***
+									<li class="mb-3 h6 fw-light"><i class="bi bi-x-octagon-fill text-danger me-2"></i>Use Your Key***
 									</li>
 								</ul>
 							</div>
@@ -174,7 +174,7 @@
 									</li>
 									<li class="mb-3 h6 fw-light"><i class="bi bi-patch-check-fill text-success me-2"></i>Private Stories
 									</li>
-									<li class="mb-3 h6 fw-light"><i class="bi bi-x-octagon-fill text-danger me-2"></i>Use Your Own OpenAI Key***
+									<li class="mb-3 h6 fw-light"><i class="bi bi-x-octagon-fill text-danger me-2"></i>Use Your Own Key***
 									</li>
 								</ul>
 							</div>
@@ -242,7 +242,7 @@
 									</li>
 									<li class="mb-3 h6 fw-light"><i class="bi bi-patch-check-fill text-success me-2"></i>Private Stories
 									</li>
-									<li class="mb-3 h6 fw-light"><i class="bi bi-patch-check-fill text-success me-2"></i>Use Your Own OpenAI Key***
+									<li class="mb-3 h6 fw-light"><i class="bi bi-patch-check-fill text-success me-2"></i>Use Your Own Key***
 									</li>
 								</ul>
 							</div>

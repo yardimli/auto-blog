@@ -252,8 +252,6 @@
 		'Save changes' => 'Değişiklikleri kaydet',
 		'API Keys' => 'API Anahtarları',
 		'Set your personal API keys for unmetered usage.' => 'Sınırsız kullanım için kişisel API anahtarlarınızı ayarlayın.',
-		'OpenAI API Key' => 'OpenAI API Anahtarı',
-		'Anthropic API Key' => 'Anthropic API Anahtarı',
 		'OpenRouter API Key' => 'OpenRouter API Anahtarı',
 		'Update API Keys' => 'API Anahtarlarını Güncelle',
 		'Change your password' => 'Şifrenizi değiştirin',

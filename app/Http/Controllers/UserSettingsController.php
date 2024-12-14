@@ -172,8 +172,6 @@
 			$user = Auth::user();
 
 			$validator = Validator::make($request->all(), [
-				'openai_api_key' => 'nullable|string',
-				'anthropic_key' => 'nullable|string',
 				'openrouter_key' => 'nullable|string',
 			]);
 
@@ -182,8 +180,6 @@
 			}
 
 			$user->update([
-				'openai_api_key' => $request->input('openai_api_key'),
-				'anthropic_key' => $request->input('anthropic_key'),
 				'openrouter_key' => $request->input('openrouter_key'),
 			]);
 

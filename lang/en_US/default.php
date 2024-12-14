@@ -252,8 +252,6 @@
 		'Save changes' => 'Save changes',
 		'API Keys' => 'API Keys',
 		'Set your personal API keys for unmetered usage.' => 'Set your personal API keys for unmetered usage.',
-		'OpenAI API Key' => 'OpenAI API Key',
-		'Anthropic API Key' => 'Anthropic API Key',
 		'OpenRouter API Key' => 'OpenRouter API Key',
 		'Update API Keys' => 'Update API Keys',
 		'Change your password' => 'Change your password',

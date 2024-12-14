@@ -3,10 +3,6 @@
 	namespace App\Helpers;
 
 	use App\Models\SentencesTable;
-	use App\Models\BinshopsCategory;
-	use App\Models\BinshopsCategoryTranslation;
-	use App\Models\BinshopsLanguage;
-	use App\Models\BinshopsPostTranslation;
 	use Carbon\Carbon;
 	use GuzzleHttp\Client;
 	use Illuminate\Http\Request;
@@ -121,31 +117,6 @@
 
 			//for each llm with score 0 sort them alphabetically
 			return array_values($filtered_llms);
-		}
-
-
-		public static function moderation($message)
-		{
-			function isValidUtf8($string)
-			{
-				return mb_check_encoding($string, 'UTF-8');
-			}
-
-			$openai_api_key = self::getOpenAIKey();
-			//make sure $message can be json encoded
-			if (!isValidUtf8($message)) {
-				$message = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $message);
-			}
-
-
-			$response = Http::withHeaders([
-				'Content-Type' => 'application/json',
-				'Authorization' => 'Bearer ' . $openai_api_key,
-			])->post(env('OPEN_AI_API_BASE_MODERATION'), [
-				'input' => $message,
-			]);
-
-			return $response->json();
 		}
 
 		public static function validateJson($str)
@@ -307,18 +278,6 @@
 			return $string1 . $string2;
 		}
 
-		public static function getAnthropicKey()
-		{
-			$user = Auth::user();
-			return !empty($user->anthropic_key) ? $user->anthropic_key : $_ENV['ANTHROPIC_KEY'];
-		}
-
-		public static function getOpenAIKey()
-		{
-			$user = Auth::user();
-			return !empty($user->openai_api_key) ? $user->openai_api_key : $_ENV['OPEN_AI_API_KEY'];
-		}
-
 		public static function getOpenRouterKey()
 		{
 			$user = Auth::user();
@@ -331,30 +290,9 @@
 			set_time_limit(300);
 			session_write_close();
 
-			if ($llm === 'anthropic-haiku') {
-				$llm_base_url = $_ENV['ANTHROPIC_HAIKU_BASE'];
-				$llm_api_key = getAnthropicKey();
-				$llm_model = $_ENV['ANTHROPIC_HAIKU_MODEL'];
-
-			} else if ($llm === 'anthropic-sonet') {
-				$llm_base_url = $_ENV['ANTHROPIC_SONET_BASE'];
-				$llm_api_key = getAnthropicKey();
-				$llm_model = $_ENV['ANTHROPIC_SONET_MODEL'];
-
-			} else if ($llm === 'open-ai-gpt-4o') {
-				$llm_base_url = $_ENV['OPEN_AI_GPT4_BASE'];
-				$llm_api_key = self::getOpenAIKey();
-				$llm_model = $_ENV['OPEN_AI_GPT4_MODEL'];
-
-			} else if ($llm === 'open-ai-gpt-4o-mini') {
-				$llm_base_url = $_ENV['OPEN_AI_GPT4_MINI_BASE'];
-				$llm_api_key = self::getOpenAIKey();
-				$llm_model = $_ENV['OPEN_AI_GPT4_MINI_MODEL'];
-			} else {
-				$llm_base_url = $_ENV['OPEN_ROUTER_BASE'];
-				$llm_api_key = self::getOpenRouterKey();
-				$llm_model = $llm;
-			}
+			$llm_base_url = $_ENV['OPEN_ROUTER_BASE'];
+			$llm_api_key = self::getOpenRouterKey();
+			$llm_model = $llm;
 
 
 			$chat_messages = [];
@@ -479,35 +417,14 @@
 			set_time_limit(300);
 			session_write_close();
 
-			if ($llm === 'anthropic-haiku') {
-				$llm_base_url = $_ENV['ANTHROPIC_HAIKU_BASE'];
-				$llm_api_key = elf::getAnthropicKey();;
-				$llm_model = $_ENV['ANTHROPIC_HAIKU_MODEL'];
-
-			} else if ($llm === 'anthropic-sonet') {
-				$llm_base_url = $_ENV['ANTHROPIC_SONET_BASE'];
-				$llm_api_key = elf::getAnthropicKey();;
-				$llm_model = $_ENV['ANTHROPIC_SONET_MODEL'];
-
-			} else if ($llm === 'open-ai-gpt-4o') {
-				$llm_base_url = $_ENV['OPEN_AI_GPT4_BASE'];
-				$llm_api_key = self::getOpenAIKey();
-				$llm_model = $_ENV['OPEN_AI_GPT4_MODEL'];
-
-			} else if ($llm === 'open-ai-gpt-4o-mini') {
-				$llm_base_url = $_ENV['OPEN_AI_GPT4_MINI_BASE'];
-				$llm_api_key = self::getOpenAIKey();
-				$llm_model = $_ENV['OPEN_AI_GPT4_MINI_MODEL'];
-			} else {
-				$llm_base_url = $_ENV['OPEN_ROUTER_BASE'];
-				$llm_api_key = self::getOpenRouterKey();
-				$llm_model = $llm;
-			}
+			$llm_base_url = $_ENV['OPEN_ROUTER_BASE'];
+			$llm_api_key = self::getOpenRouterKey();
+			$llm_model = $llm;
 
 
 			if ($llm === 'anthropic-haiku' || $llm === 'anthropic-sonet') {
 			} else {
-				$chat_messages = [ [
+				$chat_messages = [[
 					'role' => 'system',
 					'content' => $system_prompt],
 					...$chat_messages
@@ -529,30 +446,19 @@
 				'stream' => false
 			);
 
-			if ($llm === 'open-ai-gpt-4o' || $llm === 'open-ai-gpt-4o-mini') {
-				$data['max_tokens'] = 4096;
-				$data['temperature'] = 1;
-			} else if ($llm === 'anthropic-haiku' || $llm === 'anthropic-sonet') {
-				$data['max_tokens'] = 8096;
+			$data['max_tokens'] = 8096;
+			if (stripos($llm_model, 'anthropic') !== false) {
 				unset($data['frequency_penalty']);
 				unset($data['presence_penalty']);
 				unset($data['n']);
-				$data['system'] = $system_prompt;
+			} else if (stripos($llm_model, 'openai') !== false) {
+				$data['temperature'] = 1;
+			} else if (stripos($llm_model, 'google') !== false) {
+				$data['stop'] = [];
 			} else {
-				$data['max_tokens'] = 8096;
-				if (stripos($llm_model, 'anthropic') !== false) {
-					unset($data['frequency_penalty']);
-					unset($data['presence_penalty']);
-					unset($data['n']);
-				} else if (stripos($llm_model, 'openai') !== false) {
-					$data['temperature'] = 1;
-				} else if (stripos($llm_model, 'google') !== false) {
-					$data['stop'] = [];
-				} else {
-					unset($data['frequency_penalty']);
-					unset($data['presence_penalty']);
-					unset($data['n']);
-				}
+				unset($data['frequency_penalty']);
+				unset($data['presence_penalty']);
+				unset($data['n']);
 			}
 
 			Log::info('GPT NO TOOL USE: ' . $llm_base_url . ' (' . $llm . ')');

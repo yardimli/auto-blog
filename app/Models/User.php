@@ -51,8 +51,6 @@
 			'last_ip',
 			'background_image',
 			'email_verified_at',
-			'openai_api_key',
-			'anthropic_key',
 			'openrouter_key',
 
 
