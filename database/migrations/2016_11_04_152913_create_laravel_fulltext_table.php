@@ -13,6 +13,7 @@ class CreateLaravelFulltextTable extends Migration
     public function up()
     {
         Schema::connection(config('laravel-fulltext.db_connection'))->create('laravel_fulltext', function (Blueprint $table) {
+          $table->engine('InnoDB');
             $table->increments('id');
             $table->integer('indexable_id');
             $table->string('indexable_type');

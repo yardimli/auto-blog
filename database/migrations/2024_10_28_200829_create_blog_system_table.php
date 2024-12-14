@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
 	    Schema::create('languages', function (Blueprint $table) {
+        $table->engine('InnoDB');
 		    $table->id();
 		    $table->string('language_name');
 		    $table->string('locale', 5);
@@ -20,11 +21,12 @@ return new class extends Migration
 	    });
 
 	    Schema::create('images', function (Blueprint $table) {
+        $table->engine('InnoDB');
 		    $table->id();
 		    $table->integer('user_id')->index()->default(0);
 		    $table->string('image_type')->default('upload');
 		    $table->uuid('image_guid')->unique();
-		    $table->string('imag_alt')->nullable();
+		    $table->string('image_alt')->nullable();
 		    $table->text('user_prompt')->nullable();
 		    $table->text('llm_prompt')->nullable();
 		    $table->text('image_prompt')->nullable();
@@ -39,6 +41,7 @@ return new class extends Migration
 	    });
 
 	    Schema::create('categories', function (Blueprint $table) {
+        $table->engine('InnoDB');
 		    $table->id();
 		    $table->integer('user_id')->index()->default(0);
 		    $table->foreignId('language_id')->constrained()->onDelete('cascade');
@@ -50,6 +53,7 @@ return new class extends Migration
 	    });
 
 	    Schema::create('articles', function (Blueprint $table) {
+        $table->engine('InnoDB');
 		    $table->id();
 		    $table->integer('user_id')->index()->default(0);
 		    $table->foreignId('language_id')->constrained()->onDelete('cascade');
@@ -67,6 +71,7 @@ return new class extends Migration
 	    });
 
 	    Schema::create('article_category', function (Blueprint $table) {
+        $table->engine('InnoDB');
 		    $table->id();
 		    $table->foreignId('article_id')->constrained()->onDelete('cascade');
 		    $table->foreignId('category_id')->constrained()->onDelete('cascade');
