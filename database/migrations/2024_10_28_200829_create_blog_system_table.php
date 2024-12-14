@@ -29,7 +29,7 @@ return new class extends Migration
 		    $table->text('llm_prompt')->nullable();
 		    $table->text('image_prompt')->nullable();
 		    $table->string('llm')->nullable();
-		    $table->integer('prompt_tokens')-default(0);
+		    $table->integer('prompt_tokens')->default(0);
 		    $table->integer('completion_tokens')->default(0);
 		    $table->string('image_original_filename');
 		    $table->string('image_large_filename');
