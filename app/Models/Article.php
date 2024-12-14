@@ -12,6 +12,7 @@
 		protected $fillable = [
 			'user_id',
 			'language_id',
+			'chat_session_id',
 			'title',
 			'subtitle',
 			'slug',
@@ -37,6 +38,11 @@
 					$article->slug = Str::slug($article->title);
 				}
 			});
+		}
+
+		public function chatSession()
+		{
+			return $this->belongsTo(ChatSession::class, 'chat_session_id', 'session_id');
 		}
 
 		public function language(): BelongsTo

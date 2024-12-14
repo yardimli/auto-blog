@@ -53,6 +53,7 @@ return new class extends Migration
 		    $table->id();
 		    $table->integer('user_id')->index()->default(0);
 		    $table->foreignId('language_id')->constrained()->onDelete('cascade');
+		    $table->string('chat_session_id')->nullable();
 		    $table->string('title');
 		    $table->string('subtitle')->nullable();
 		    $table->string('slug')->unique();

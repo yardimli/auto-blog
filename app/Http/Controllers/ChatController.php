@@ -75,6 +75,94 @@
 			$userPrompt = $request->input('user_prompt');
 			$sessionId = $request->input('session_id');
 			$llm = $request->input('llm');
+			$context = json_decode($request->input('context'), true);
+
+			$chatSession = ChatSession::where('session_id', $sessionId)
+				->where('user_id', Auth::id())
+				->first();
+
+			if (!$chatSession) {
+				return response()->json(['success' => false, 'message' => 'Invalid session']);
+			}
+
+			$session_id = $chatSession->id;
+
+			try {
+				// Fetch previous messages from the session
+				$chatHistory = ChatMessage::where('session_id', $session_id)
+					->orderBy('created_at')
+					->get();
+
+				$chat_history = [];
+				foreach ($chatHistory as $msg) {
+					$chat_history[] = [
+						'role' => $msg->role,
+						'content' => $msg->message,
+					];
+				}
+
+				// Create a system message with article context
+				if ($context) {
+					$systemMessage = "You are an AI assistant helping with an article. Here's the current article content:\n\n";
+					$systemMessage .= "Title: " . ($context['title'] ?? 'Not set') . "\n";
+					$systemMessage .= "Subtitle: " . ($context['subtitle'] ?? 'Not set') . "\n";
+					$systemMessage .= "Body: " . ($context['body'] ?? 'Not set') . "\n";
+
+					if (!empty($context['categories'])) {
+						$systemMessage .= "Categories: " . implode(', ', $context['categories']) . "\n";
+					}
+
+					$systemMessage .= "\nPlease provide assistance based on this article content. You can help with improvements, suggestions, or answer questions about the article.";
+
+					// Add system message at the beginning of chat history
+					array_unshift($chat_history, [
+						'role' => 'system',
+						'content' => $systemMessage
+					]);
+				}
+
+				// Add user prompt to the chat history
+				$chat_history[] = [
+					'role' => 'user',
+					'content' => $userPrompt,
+				];
+
+				$resultData = MyHelper::llm_no_tool_call($llm, '', $chat_history, false);
+
+				if (isset($resultData->error)) {
+					return response()->json(['success' => false, 'message' => $resultData->error]);
+				}
+
+				// Save the user's prompt and assistant's response to the database
+				ChatMessage::create([
+					'session_id' => $session_id,
+					'role' => 'user',
+					'message' => $userPrompt,
+					'llm' => $llm,
+					'prompt_tokens' => 0,
+					'completion_tokens' => 0
+				]);
+
+				ChatMessage::create([
+					'session_id' => $session_id,
+					'role' => 'assistant',
+					'message' => $resultData['content'],
+					'llm' => $llm,
+					'prompt_tokens' => $resultData['prompt_tokens'] ?? 0,
+					'completion_tokens' => $resultData['completion_tokens'] ?? 0
+				]);
+
+				return response()->json(['success' => true, 'result' => $resultData]);
+			} catch (\Exception $e) {
+				return response()->json(['success' => false, 'message' => $e->getMessage()]);
+			}
+		}
+
+		public function old_sendLlmPrompt(Request $request)
+		{
+			$userPrompt = $request->input('user_prompt');
+			$sessionId = $request->input('session_id');
+			$llm = $request->input('llm');
 
 			$chatSession = ChatSession::where('session_id', $sessionId)
 				->where('user_id', Auth::id())

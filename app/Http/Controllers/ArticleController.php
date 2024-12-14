@@ -4,9 +4,11 @@
 
 	use App\Models\Article;
 	use App\Models\Category;
+	use App\Models\ChatSession;
 	use App\Models\Language;
 	use App\Models\Image;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Auth;
 	use Illuminate\Support\Str;
 
 	class ArticleController extends Controller
@@ -27,6 +29,27 @@
 			$languages = Language::where('active', true)->get();
 			$categories = Category::all();
 			return view('user.article', compact('languages', 'categories'));
+		}
+
+		public function edit(Article $article)
+		{
+			$languages = Language::where('active', true)->get();
+			$categories = Category::all();
+
+			// Get or create chat session for the article
+			$chatSession = ChatSession::firstOrCreate(
+				['session_id' => $article->chat_session_id],
+				[
+					'session_id' => (string) Str::uuid(),
+					'user_id' => Auth::id(),
+				]
+			);
+
+			if (!$article->chat_session_id) {
+				$article->update(['chat_session_id' => $chatSession->session_id]);
+			}
+
+			return view('user.article', compact('article', 'languages', 'categories', 'chatSession'));
 		}
 
 		public function store(Request $request)
@@ -60,13 +83,6 @@
 
 			return redirect()->route('articles.index')
 				->with('success', __('default.Article created successfully.'));
-		}
-
-		public function edit(Article $article)
-		{
-			$languages = Language::where('active', true)->get();
-			$categories = Category::all();
-			return view('user.article', compact('article', 'languages', 'categories'));
 		}
 
 		public function update(Request $request, Article $article)
