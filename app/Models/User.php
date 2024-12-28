@@ -52,6 +52,8 @@
 			'background_image',
 			'email_verified_at',
 			'openrouter_key',
+			'company_name',
+			'company_description',
 
 
 		];

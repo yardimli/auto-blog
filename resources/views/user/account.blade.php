@@ -40,6 +40,25 @@
 						       value="{{ old('email', $user->email) }}">
 					</div>
 					
+					<!-- Company name -->
+					<div class="col-sm-6">
+						<label class="form-label">{{__('default.Company Name')}}</label>
+						<input type="text"
+						       name="company_name"
+						       class="form-control"
+						       placeholder="Enter your company name"
+						       value="{{ old('company_name', $user->company_name) }}">
+					</div>
+					
+					<!-- Company description -->
+					<div class="col-12">
+						<label class="form-label">{{__('default.Company Description')}}</label>
+						<textarea name="company_description"
+						          class="form-control"
+						          rows="3"
+						          placeholder="Enter your company description">{{ old('company_description', $user->company_description) }}</textarea>
+					</div>
+					
 					<!-- Avatar upload -->
 					<div class="col-sm-6">
 						<label class="form-label">{{__('default.Avatar')}}</label>

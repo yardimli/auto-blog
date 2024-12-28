@@ -163,6 +163,12 @@ Header START -->
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					@if (Auth::user())
+						<li class="nav-item">
+							<a class="nav-link" href="/{{Auth::user()->username}}">{{Auth::user()->username}}'s {{__('default.Page')}}</a>
+						</li>
+					@endif
+
 					{{--					<li class="nav-item">--}}
 					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
 					{{--					</li>--}}

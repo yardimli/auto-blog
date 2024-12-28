@@ -422,6 +422,9 @@
 		'Publish Article' => 'Publish Article',
 		'Publication Date' => 'Publication Date',
 		'Update Article' => 'Update Article',
-		'Create Article' => 'Create Article',
 
+		'Company Description' => 'Company Description',
+		'Company Name' => 'Company Name',
+		'My Company' => 'My Company',
+		'Page' => 'Page',
 	];

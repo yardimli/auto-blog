@@ -133,13 +133,21 @@
 			$validator = Validator::make($request->all(), [
 				'name' => ['required', 'string', 'max:255'],
 				'username' => [
-					'required', 'string', 'max:255', 'alpha_dash',
+					'required',
+					'string',
+					'max:255',
+					'alpha_dash',
 					Rule::unique('users')->ignore($user->id),
 				],
 				'email' => [
-					'required', 'string', 'email', 'max:255',
+					'required',
+					'string',
+					'email',
+					'max:255',
 					Rule::unique('users')->ignore($user->id),
 				],
+				'company_name' => ['required', 'string', 'max:255'],
+				'company_description' => ['required', 'string', 'max:1000'],
 				'avatar' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'max:1024'],
 			]);
 
@@ -160,6 +168,8 @@
 			$user->name = $request->input('name');
 			$user->username = $request->input('username');
 			$user->email = $request->input('email');
+			$user->company_name = $request->input('company_name');
+			$user->company_description = $request->input('company_description');
 			$user->save();
 
 			// Redirect back with success message
