@@ -1,242 +1,207 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>{{__('default.Auto Blog')}} - {{__('default.Boilerplate Site Tagline')}}</title>
-	
-	<!-- Meta Tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Webestica.com">
-	<meta name="description"
-	      content="{{__('default.Auto Blog')}} - {{__('default.Boilerplate Site Tagline')}}">
-	
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
-		
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+@extends('layouts.app')
+
+@section('title', 'About')
+
+@section('content')
+	<style>
+    .bg-light {
+				background-color: #e8e9ea !important;
 		}
-		
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-		
-		setTheme(getPreferredTheme())
-		
-		window.addEventListener('DOMContentLoaded', () => {
-			var el = document.querySelector('.theme-icon-active');
-			if (el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-					const activeThemeIcon = document.querySelector('.theme-icon-active use')
-					const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-					const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-					
-					document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-						element.classList.remove('active')
-					})
-					
-					btnToActive.classList.add('active')
-					activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-				}
-				
-				window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-					if (storedTheme !== 'light' || storedTheme !== 'dark') {
-						setTheme(getPreferredTheme())
-					}
-				})
-				
-				showActiveTheme(getPreferredTheme())
-				
-				document.querySelectorAll('[data-bs-theme-value]')
-					.forEach(toggle => {
-						toggle.addEventListener('click', () => {
-							const theme = toggle.getAttribute('data-bs-theme-value')
-							localStorage.setItem('theme', theme)
-							setTheme(theme)
-							showActiveTheme(theme)
-						})
-					})
-				
-			}
-		})
-	
-	</script>
-	
-	<!-- Favicon -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	
-	<!-- Google Font -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-	
-	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="/assets/vendor/plyr/plyr.css">
-	
-	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    .img-fluid {
+		    max-height: 250px;
+    }
+</style>
 
-</head>
-<body>
-
-<!-- =======================
-Header START -->
-
-<header class="navbar-light header-static bg-transparent">
-	<!-- Navbar START -->
-	<nav class="navbar navbar-expand-lg">
+	<main>
+	<!-- Hero Section -->
+	<section class="pt-5 mt-5 pb-4 position-relative bg-light">
 		<div class="container">
-			<!-- Logo START -->
-			<a class="navbar-brand" href="{{ route('login') }}">
-				<img class="light-mode-item navbar-brand-item" src="/images/logo.png" alt="logo">
-				<img class="dark-mode-item navbar-brand-item" src="/images/logo.png" alt="logo">
-			</a>
-			<!-- Logo END -->
-			
-			<!-- Responsive navbar toggler -->
-			<button class="navbar-toggler ms-auto icon-md btn btn-light p-0" type="button" data-bs-toggle="collapse"
-			        data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-			        aria-label="Toggle navigation">
-        <span class="navbar-toggler-animation">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-			</button>
-			
-			<!-- Main navbar START -->
-			<div class="collapse navbar-collapse" id="navbarCollapse">
-				<ul class="navbar-nav navbar-nav-scroll me-auto">
-					<!-- Nav item -->
-					<li class="nav-item">
-						<a class="nav-link" href="{{route('login')}}">{{__('default.Login')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{{route('register')}}">{{__('default.Register')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
-					</li>
-				</ul>
-			</div>
-			<!-- Main navbar END -->
-			
-			<!-- Nav right START -->
-			<div class="ms-3 ms-lg-auto">
-				{{--          <a class="btn btn-dark" href="app-download.html"> Download app </a>--}}
-			</div>
-			<!-- Nav right END -->
-		</div>
-	</nav>
-	<!-- Navbar END -->
-</header>
-
-<!-- =======================
-Header END -->
-
-<main>
-	
-	<!-- **************** MAIN CONTENT START **************** -->
-	
-	<!-- Main banner START -->
-	<section class="pt-3 pb-0 position-relative">
-		
-		<!-- Container START -->
-		<div class="container">
-			<!-- Row START -->
 			<div class="row text-center position-relative z-index-1">
-				<div class="col-lg-7 col-12 mx-auto">
-					<!-- Heading -->
-					<h1 class="display-4">{{__('default.SAAS LARAVEL BOILERPLATE')}}</h1>
-					<p class="lead">"{{__('default.Boilerplate Site Tagline')}}"</p>
+				<div class="col-lg-8 col-12 mx-auto">
+					<h1 class="display-5">Elevate Your Company's Online Presence with Contentero</h1>
+					<p class="lead">All-in-One Hosted Solutions for Blogs, Support, Roadmaps, User Feedback, and More</p>
 					<div class="d-sm-flex justify-content-center">
-						<!-- button -->
-						<a href="{{route('register')}}" class="btn btn-primary">{{__('default.Sign up')}}</a>
+						<a href="{{ route('register') }}" class="btn btn-primary me-2">Get Started</a>
+						<a href="#features" class="btn btn-outline-primary">Learn More</a>
 					</div>
-					<br>
 				</div>
 			</div>
-			<!-- Row END -->
 		</div>
-		<!-- Container END -->
-		
-		<!-- Svg decoration START -->
-		<div class="position-absolute top-0 end-0 mt-5 pt-5">
-			<img class="h-300px blur-9 mt-5 pt-5" src="/assets/images/elements/07.svg" alt="">
-		</div>
-		<div class="position-absolute top-0 start-0 mt-n5 pt-n5">
-			<img class="h-300px blur-9" src="/assets/images/elements/01.svg" alt="">
-		</div>
-		<div class="position-absolute top-50 start-50 translate-middle">
-			<img class="h-300px blur-9" src="/assets/images/elements/04.svg" alt="">
-		</div>
-		<!-- Svg decoration END -->
-	
 	</section>
-	<!-- Main banner END -->
 	
-	<!-- Messaging feature START -->
-	<section>
+	<!-- Blog Platform Section -->
+	<section class="py-5">
 		<div class="container">
-			<div class="row justify-content-center">
-				<!-- Title -->
-				<div class="col-lg-7 col-12 mx-auto  text-center mb-4">
-					<h2 class="h1">{{__('default.Welcome to SaaS Laravel Boilerplate')}}</h2>
-					<p>{{__('default.Within a few steps create your SaaS project skipping over all the boring parts.')}}</p>
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<img src="/images/blog.png" class="img-fluid" alt="Blog Platform">
+				</div>
+				<div class="col-lg-6">
+					<h2>Hosted Blog Platform with AI-Powered Content</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Access extensive article archives across topics</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Customize content with AI for your products</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Generate AI images for engaging posts</li>
+					</ul>
 				</div>
 			</div>
-			<!-- Row START -->
-			<div class="row justify-content-center" style="min-height: 500px;">
-				<!-- Feature START -->
-				<div class="col-lg-9 col-12 mx-auto  text-center mb-4">
-					<div class="card card-body bg-mode shadow-none border-1">
-						<!-- Info -->
-						<h4 class="mt-0 mb-3">{{__('default.Start Your Site Here')}}</h4>
-						<p class="mb-3">{{__('default.Now it\'s up to you to code your site using your imagination, creativity and hard work.')}}
-						<br>
-							<img src="/images/logo-big.png" style="max-width: 350px; width: 350px; height: 350px;" alt="Thank You" class="img-fluid mt-5 mb-5">
-						
-						</p>
-					</div>
-				</div>
-				<!-- Feature END -->
-			</div>
-			<!-- Row START -->
-			
-			
+		</div>
 	</section>
-	<!-- Messaging feature END -->
 	
+	<!-- Help System Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<img src="/images/help.png" class="img-fluid" alt="Help System">
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<h2>Integrated Help and FAQ System</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Seamless support content management</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Easy-to-navigate assistance</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Improve customer satisfaction</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 	
+	<!-- Roadmap Section -->
+	<section class="py-5">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<img src="/images/roadmap.png" class="img-fluid" alt="Product Roadmap">
+				</div>
+				<div class="col-lg-6">
+					<h2>Interactive Product Roadmap</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>User-friendly Kanban board</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Track development progress</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Keep users informed of updates</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
 	
-	<!-- Main content END -->
+	<!-- User Feedback Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<img src="/images/uservoice.png" class="img-fluid" alt="User Feedback">
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<h2>User Feedback and Feature Requests</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Collect and vote on feature requests</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Manage visibility and priorities</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Engage with user community</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Changelog Section -->
+	<section class="py-5">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<img src="/images/changelog.png" class="img-fluid" alt="Changelog">
+				</div>
+				<div class="col-lg-6">
+					<h2>Dynamic Changelog Page</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Track version history</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Document release dates</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Maintain transparency</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Legal Pages Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<img src="/images/legal.png" class="img-fluid" alt="Legal Pages">
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<h2>Ready-Made Legal Pages</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Customizable Terms of Service</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Privacy Policy templates</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>GDPR compliance support</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Cookie Consent Section -->
+	<section class="py-5">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<img src="/images/cookie.png" class="img-fluid" alt="Cookie Consent">
+				</div>
+				<div class="col-lg-6">
+					<h2>Cookie Acceptance System</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Compliant consent banners</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Easy implementation</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Customizable appearance</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- Domain Integration Section -->
+	<section class="py-5 bg-light">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6 order-lg-2">
+					<img src="/images/domain.png" class="img-fluid" alt="Domain Integration">
+				</div>
+				<div class="col-lg-6 order-lg-1">
+					<h2>Seamless Domain Integration</h2>
+					<ul class="list-unstyled">
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Flexible hosting options</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Custom subdomain support</li>
+						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Simple DNS configuration</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!-- CTA Section -->
+	<section class="py-5 bg-primary text-white">
+		<div class="container text-center">
+			<h2>Ready to Transform Your Online Presence?</h2>
+			<p class="lead mb-4">Join thousands of companies already using Contentero</p>
+			<a href="{{ route('register') }}" class="btn btn-light btn-lg">Get Started Today</a>
+		</div>
+	</section>
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
+	
+	@include('layouts.footer')
 
-@include('layouts.footer')
+@endsection
 
-<!-- =======================
-JS libraries, plugins and custom scripts -->
+@push('scripts')
+	<!-- Inline JavaScript code -->
+	<script>
+		var current_page = 'my.landing';
+		$(document).ready(function () {
+		});
+	</script>
 
-<!-- Bootstrap JS -->
-<script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Theme Functions -->
-<script src="/assets/js/functions.js"></script>
-
-</body>
-</html>
+@endpush

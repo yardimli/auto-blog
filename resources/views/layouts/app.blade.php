@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-	<title>{{__('default.Auto Blog')}} - @yield('title', 'Home')</title>
+	<title>{{__('default.Books By AI')}} - @yield('title', 'Home')</title>
 	
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="fictionfusion.io">
 	<meta name="description"
-	      content="{{__('default.SAAS LARAVEL BOILERPLATE')}} - {{__('default.Boilerplate Site Tagline')}}">
+	      content="{{__('default.Books By AI')}} - {{__('default.Boilerplate Site Tagline')}}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
 	<script src="/assets/js/core/jquery.min.js"></script>
@@ -21,7 +21,9 @@
 	
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+	@stack('google-fonts')
 	
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="/assets/vendor/bootstrap-icons/bootstrap-icons.css">
@@ -30,8 +32,6 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-	
-	{{--	@lemonJS--}}
 
 </head>
 @php
@@ -95,8 +95,36 @@
 				})
 			
 		}
+		
+		
+		const modeSwitcher = document.getElementById('modeSwitcher');
+		const lightModeIcon = document.getElementById('lightModeIcon');
+		const darkModeIcon = document.getElementById('darkModeIcon');
+		
+		// Set initial icon state
+		if (getPreferredTheme() === 'dark') {
+			lightModeIcon.classList.remove('d-none');
+			darkModeIcon.classList.add('d-none');
+		} else {
+			lightModeIcon.classList.add('d-none');
+			darkModeIcon.classList.remove('d-none');
+		}
+		
+		modeSwitcher.addEventListener('click', () => {
+			const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+			const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+			
+			// Update theme
+			localStorage.setItem('theme', newTheme);
+			setTheme(newTheme);
+			
+			// Toggle icons
+			lightModeIcon.classList.toggle('d-none');
+			darkModeIcon.classList.toggle('d-none');
+		});
 	});
 </script>
+
 
 @if (Auth::check())
 	@php
@@ -134,29 +162,20 @@ Header START -->
 			<!-- Main navbar START -->
 			<div class="collapse navbar-collapse" id="navbarCollapse">
 				
-				<!-- Nav Search START -->
-				<div class="nav mt-3 mt-lg-0 flex-nowrap align-items-center px-4 px-lg-0">
-					<div class="nav-item w-100">
-						<form class="rounded position-relative">
-							<input class="form-control ps-5 bg-light" type="search" placeholder="{{__('default.Search...')}}"
-							       aria-label="Search">
-							<button class="btn bg-transparent px-2 py-0 position-absolute top-50 start-0 translate-middle-y"
-							        type="submit"><i class="bi bi-search fs-5"> </i></button>
-						</form>
-					</div>
-				</div>
-				<!-- Nav Search END -->
-				
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
+					{{--					<li class="nav-item">--}}
+					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
+					{{--					</li>--}}
 					<li class="nav-item">
-						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>
+						<a class="nav-link" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
 					</li>
+					
 					<li class="nav-item">
-						<a class="nav-link active" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
+						<a class="nav-link" href="{{route('help-page')}}">{{__('default.Help')}}</a>
 					</li>
-
-					
-					
+				
+				
+				
 				
 				</ul>
 			</div>
@@ -164,11 +183,18 @@ Header START -->
 			
 			<!-- Nav right START -->
 			<ul class="nav flex-nowrap align-items-center ms-sm-3 list-unstyled">
+				
+				<!-- Mode Switch Button START -->
 				<li class="nav-item ms-2">
-					<a class="nav-link icon-md btn btn-light p-0" href="{{route('help-page')}}" title="{{__('default.Help')}}">
-						<i class="bi bi-life-preserver fs-6"> </i>
-					</a>
+					<button type="button" class="nav-link icon-md btn btn-light p-0" id="modeSwitcher">
+						<!-- Sun icon for dark mode -->
+						<i class="bi bi-sun fs-6 d-none" id="lightModeIcon"></i>
+						<!-- Moon icon for light mode -->
+						<i class="bi bi-moon-stars fs-6" id="darkModeIcon"></i>
+					</button>
 				</li>
+				<!-- Mode Switch Button END -->
+				
 				<li class="nav-item ms-2 dropdown">
 					<a class="nav-link btn icon-md p-0" href="#" id="profileDropdown" role="button"
 					   data-bs-auto-close="outside"

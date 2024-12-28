@@ -14881,22 +14881,22 @@ header {
   }
 }
 .navbar-brand {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
 }
 .navbar-brand .navbar-brand-item {
-  height: 36px;
+  height: 52px;
   display: block;
   width: auto;
 }
 
 @media (max-width: 991.98px) {
   .navbar-brand {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
   }
   .navbar-brand .navbar-brand-item {
-    height: 36px;
+    height: 52px;
   }
 }
 .navbar .dropdown-menu .dropdown-submenu.dropend .dropdown-toggle:after {
