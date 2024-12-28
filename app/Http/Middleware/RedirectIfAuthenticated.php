@@ -25,7 +25,7 @@ class RedirectIfAuthenticated
 	            if ($request->filled('login2')) {
 		            return redirect()->intended('/');
 	            }
-	            return redirect()->intended('/settings');
+	            return redirect()->intended('/settings/account');
 //                return redirect(RouteServiceProvider::HOME);
             }
         }

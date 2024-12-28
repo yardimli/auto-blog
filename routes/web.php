@@ -142,15 +142,15 @@
 	});
 
 	// User-specific routes
-	Route::get('/{username}', [UserPagesController::class, 'userHome'])->name('user.home');
-	Route::get('/{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
-	Route::get('/{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
-	Route::get('/{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
-	Route::get('/{username}/feedback', [UserPagesController::class, 'userFeedback'])->name('user.feedback');
-	Route::get('/{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
-	Route::get('/{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
-	Route::get('/{username}/privacy', [UserPagesController::class, 'userPrivacy'])->name('user.privacy');
-	Route::get('/{username}/cookie-consent', [UserPagesController::class, 'userCookieConsent'])->name('user.cookie-consent');
+	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
+	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
+	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
+	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+	Route::get('/@{username}/feedback', [UserPagesController::class, 'userFeedback'])->name('user.feedback');
+	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
+	Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
+	Route::get('/@{username}/privacy', [UserPagesController::class, 'userPrivacy'])->name('user.privacy');
+	Route::get('/@{username}/cookie-consent', [UserPagesController::class, 'userCookieConsent'])->name('user.cookie-consent');
 
 
 	//-------------------------------------------------------------------------

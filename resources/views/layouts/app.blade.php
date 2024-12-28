@@ -165,7 +165,7 @@ Header START -->
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 					@if (Auth::user())
 						<li class="nav-item">
-							<a class="nav-link" href="/{{Auth::user()->username}}">{{Auth::user()->username}}'s {{__('default.Page')}}</a>
+							<a class="nav-link" href="/{{'@'.Auth::user()->username}}">{{Auth::user()->username}}'s {{__('default.Page')}}</a>
 						</li>
 					@endif
 

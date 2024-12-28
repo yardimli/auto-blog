@@ -8,7 +8,8 @@
 				background-color: #e8e9ea !important;
 		}
     .img-fluid {
-		    max-height: 250px;
+		    height: 200px;
+		    max-height: 200px;
     }
 </style>
 
@@ -36,7 +37,7 @@
 				<div class="col-lg-6">
 					<img src="/images/blog.png" class="img-fluid" alt="Blog Platform">
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 mt-4 mt-lg-0">
 					<h2>Hosted Blog Platform with AI-Powered Content</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Access extensive article archives across topics</li>
@@ -55,7 +56,7 @@
 				<div class="col-lg-6 order-lg-2">
 					<img src="/images/help.png" class="img-fluid" alt="Help System">
 				</div>
-				<div class="col-lg-6 order-lg-1">
+				<div class="col-lg-6 order-lg-1  mt-4 mt-lg-0">
 					<h2>Integrated Help and FAQ System</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Seamless support content management</li>
@@ -74,7 +75,7 @@
 				<div class="col-lg-6">
 					<img src="/images/roadmap.png" class="img-fluid" alt="Product Roadmap">
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 mt-4 mt-lg-0">
 					<h2>Interactive Product Roadmap</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>User-friendly Kanban board</li>
@@ -93,7 +94,7 @@
 				<div class="col-lg-6 order-lg-2">
 					<img src="/images/uservoice.png" class="img-fluid" alt="User Feedback">
 				</div>
-				<div class="col-lg-6 order-lg-1">
+				<div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
 					<h2>User Feedback and Feature Requests</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Collect and vote on feature requests</li>
@@ -112,7 +113,7 @@
 				<div class="col-lg-6">
 					<img src="/images/changelog.png" class="img-fluid" alt="Changelog">
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 mt-4 mt-lg-0">
 					<h2>Dynamic Changelog Page</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Track version history</li>
@@ -131,7 +132,7 @@
 				<div class="col-lg-6 order-lg-2">
 					<img src="/images/legal.png" class="img-fluid" alt="Legal Pages">
 				</div>
-				<div class="col-lg-6 order-lg-1">
+				<div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
 					<h2>Ready-Made Legal Pages</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Customizable Terms of Service</li>
@@ -150,7 +151,7 @@
 				<div class="col-lg-6">
 					<img src="/images/cookie.png" class="img-fluid" alt="Cookie Consent">
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-6 mt-4 mt-lg-0">
 					<h2>Cookie Acceptance System</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Compliant consent banners</li>
@@ -169,7 +170,7 @@
 				<div class="col-lg-6 order-lg-2">
 					<img src="/images/domain.png" class="img-fluid" alt="Domain Integration">
 				</div>
-				<div class="col-lg-6 order-lg-1">
+				<div class="col-lg-6 order-lg-1 mt-4 mt-lg-0">
 					<h2>Seamless Domain Integration</h2>
 					<ul class="list-unstyled">
 						<li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i>Flexible hosting options</li>
