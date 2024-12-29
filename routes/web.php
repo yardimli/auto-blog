@@ -1,5 +1,6 @@
 <?php
 
+  use App\Http\Controllers\ReleaseController;
 	use App\Http\Controllers\ArticleController;
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
@@ -134,6 +135,17 @@
 			Route::delete('/{article}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 			Route::get('/get-images', [ArticleController::class, 'getImages'])->name('articles.get-images');
 		});
+
+    Route::prefix('releases')->group(function () {
+      Route::get('/', [ReleaseController::class, 'index'])->name('releases.index');
+      Route::get('/create', [ReleaseController::class, 'create'])->name('releases.create');
+      Route::post('/', [ReleaseController::class, 'store'])->name('releases.store');
+      Route::get('/{article}/edit', [ReleaseController::class, 'edit'])->name('releases.edit');
+      Route::put('/{article}', [ReleaseController::class, 'update'])->name('releases.update');
+      Route::delete('/{article}', [ReleaseController::class, 'destroy'])->name('releases.destroy');
+      Route::get('/get-images', [ReleaseController::class, 'getImages'])->name('releases.get-images');
+    });
+
 	});
 
 	// User-specific routes
