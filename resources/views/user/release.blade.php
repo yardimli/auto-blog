@@ -17,12 +17,15 @@
                     </div>
 
                     <div class="mb-3">
-                        <textarea id="myReleaseNote" style="width: 100%; height: 800px;"></textarea>
+                        <div style="height: 500px; margin-bottom: 15px;">
+                            <textarea id="myReleaseNote" style="height: 450px;width: 100%;"></textarea>
+                        </div>
+                        <button id="submitReleaseNote" type="button" class="btn btn-primary">
+                            {{ isset($release) ? __('default.Save Release Note') : __('default.Save Release Note') }}
+                        </button>
                     </div>
 
-                    <button id="submitReleaseNote" type="button" class="btn btn-primary">
-                        {{ isset($article) ? __('default.Update Release Note') : __('default.Create Release Note') }}
-                    </button>
+
 
                 </div>
             </div>
@@ -41,11 +44,45 @@
         html[data-bs-theme="dark"] .editor-toolbar a {
             color: white !important;
         }
+        .CodeMirror {
+            height: 450px !important;
+        }
     </style>
+
     <script>
+
         $(document).ready(function () {
-                var simplemde = new SimpleMDE({ element: document.getElementById("myReleaseNote") });
+            var simplemde = new SimpleMDE({ element: document.getElementById("myReleaseNote") });
+
+            $('#submitReleaseNote').click(function (){
+                $.ajax({
+                    url: '/releases/store',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        title: $('#title').val(),
+                        body: simplemde.value()
+                    },
+                    success: function (response) {
+                        if (response.success) {
+
+                        } else {
+
+                        }
+                    },
+                    error: function (xhr) {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+            })
+
         });
+
     </script>
 
 

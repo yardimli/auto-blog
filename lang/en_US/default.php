@@ -424,7 +424,7 @@
 		'Update Article' => 'Update Article',
 
     'Create Release Note' => 'Create Release Note',
-    'Edit Release Note' => 'Edit Release Note',
+    'Save Release Note' => 'Save',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

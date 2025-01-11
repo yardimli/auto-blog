@@ -144,7 +144,7 @@
     Route::prefix('releases')->group(function () {
       Route::get('/', [ReleaseController::class, 'index'])->name('releases.index');
       Route::get('/create', [ReleaseController::class, 'create'])->name('releases.create');
-      Route::post('/', [ReleaseController::class, 'store'])->name('releases.store');
+      Route::post('/store', [ReleaseController::class, 'store'])->name('releases.store');
       Route::get('/{article}/edit', [ReleaseController::class, 'edit'])->name('releases.edit');
       Route::put('/{article}', [ReleaseController::class, 'update'])->name('releases.update');
       Route::delete('/{article}', [ReleaseController::class, 'destroy'])->name('releases.destroy');
