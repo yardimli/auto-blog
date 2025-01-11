@@ -8,7 +8,6 @@
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
 	use App\Http\Controllers\StaticPagesController;
-	use App\Http\Controllers\UserController;
 	use App\Http\Controllers\UserPagesController;
 	use App\Http\Controllers\UserSettingsController;
 	use App\Http\Controllers\VerifyThankYouController;
@@ -83,9 +82,6 @@
 		Route::delete('/chat/{sessionId}', [ChatController::class, 'destroy'])->name('chat.destroy');
 
 
-
-
-
 		Route::post('/settings', [UserSettingsController::class, 'updateSettings'])->name('settings-update');
 
 		Route::get('/settings/account', [UserSettingsController::class, 'account'])->name('settings.account');
@@ -95,12 +91,11 @@
 		Route::get('/settings/close-account', [UserSettingsController::class, 'closeAccount'])->name('settings.close-account');
 
 
-
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
 		Route::post('/settings/api-keys', [UserSettingsController::class, 'updateApiKeys'])->name('settings-update-api-keys');
 
-		Route::get('/users', [UserController::class, 'index'])->name('users-index');
-		Route::post('/login-as', [UserController::class, 'loginAs'])->name('users-login-as');
+		Route::get('/users', [UserSettingsController::class, 'admin_index'])->name('admin-index');
+		Route::post('/login-as', [UserSettingsController::class, 'loginAs'])->name('users-login-as');
 
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
 
