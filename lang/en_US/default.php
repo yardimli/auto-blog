@@ -425,6 +425,8 @@
 
     'Create Change Log' => 'Create Change Log',
     'Save Change Log' => 'Save',
+    'Released' => 'Released',
+    'Released At' => 'Released At',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

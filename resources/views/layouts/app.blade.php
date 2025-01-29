@@ -175,6 +175,10 @@ Header START -->
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
 					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{route('changelogs.index')}}">{{__('Change Logs')}}</a>
+					</li>
 					
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('help-page')}}">{{__('default.Help')}}</a>

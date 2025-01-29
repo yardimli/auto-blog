@@ -140,6 +140,8 @@
       Route::get('/', [ChangeLogController::class, 'index'])->name('changelogs.index');
       Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
       Route::post('/store', [ChangeLogController::class, 'store'])->name('changelogs.store');
+      Route::post('/{changelog}/edit', [ChangeLogController::class, 'store'])->name('changelogs.edit');
+      Route::delete('/{changelog}', [ArticleController::class, 'destroy'])->name('changelogs.destroy');
     });
 
 	});

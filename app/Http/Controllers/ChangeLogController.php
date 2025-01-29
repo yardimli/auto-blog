@@ -12,6 +12,16 @@ class ChangeLogController extends Controller
 
   public $changelog;
 
+  public function index()
+  {
+
+    $changelogs = ChangeLog::with([])
+      ->orderBy('created_at', 'desc')
+      ->paginate(10);
+
+    return view('changelog.index', compact('changelogs'));
+  }
+
   public function create()
   {
     return view('changelog.create');

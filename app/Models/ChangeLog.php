@@ -18,6 +18,8 @@ class ChangeLog extends Model
     'released_at'
   ];
 
+  protected $dates = ['released_at'];
+
   protected $casts = [
     'is_released' => 'boolean',
     'released_at' => 'datetime'
@@ -29,7 +31,7 @@ class ChangeLog extends Model
   }
 
   // Scope for published articles
-  public function scopePublished($query)
+  public function scopeReleased($query)
   {
     return $query->where('is_released', true)
       ->whereNotNull('released_at')
