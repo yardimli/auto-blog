@@ -15,7 +15,7 @@ class ChangeLogController extends Controller
   public function index()
   {
 
-    $changelogs = ChangeLog::with([])
+    $changelogs = ChangeLog::with(['user'])
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 

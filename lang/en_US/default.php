@@ -427,6 +427,7 @@
     'Save Change Log' => 'Save',
     'Released' => 'Released',
     'Released At' => 'Released At',
+    'Author' => 'Author',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

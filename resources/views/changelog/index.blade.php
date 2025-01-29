@@ -31,6 +31,7 @@
                                         <thead>
                                         <tr>
                                             <th>{{ __('default.Title') }}</th>
+                                            <th>{{ __('default.Author') }}</th>
                                             <th>{{ __('default.Status') }}</th>
                                             <th>{{ __('default.Released At') }}</th>
                                             <th>{{ __('default.Created At') }}</th>
@@ -41,6 +42,7 @@
                                         @foreach($changelogs as $changelog)
                                             <tr>
                                                 <td>{{ Str::limit($changelog->title, 50) }}</td>
+                                                <td>{{ $changelog->user->name }}</td>
                                                 <td>
                                                     <span class="badge bg-{{ $changelog->is_released ? 'success' : 'warning' }}">
                                                         {{ $changelog->is_released ? __('default.Released') : __('default.Draft') }}
