@@ -423,13 +423,16 @@
 		'Publication Date' => 'Publication Date',
 		'Update Article' => 'Update Article',
 
+    'Change Logs' => 'Change Logs',
     'Create Change Log' => 'Create Change Log',
-    'Save Change Log' => 'Save',
+    'Save Change Log' => 'Save Change Log',
     'Released' => 'Released',
     'Released At' => 'Released At',
     'Author' => 'Author',
     'Are you sure you want to delete this log?' => 'Are you sure you want to delete this log?',
-    'Log deleted successfully' => 'Log deleted successfully',
+    'Log deleted successfully.' => 'Log deleted successfully.',
+    'Log updated successfully.' => 'Log updated successfully.',
+    'Edit Change Log' => 'Edit Change Log',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

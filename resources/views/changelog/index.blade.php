@@ -4,9 +4,9 @@
     <main>
         <div class="container" style="min-height: calc(88vh);">
 
-            @if(session('success'))
+            @if(isset($msg) && $msg !== '')
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
+                    {{ $msg }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -14,7 +14,7 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5>{{ __('default.Articles') }}</h5>
+                        <h5>{{ __('default.Change Logs') }}</h5>
                         <a href="{{ route('changelogs.create') }}" class="btn btn-primary">
                             {{ __('default.Create Change Log') }}
                         </a>

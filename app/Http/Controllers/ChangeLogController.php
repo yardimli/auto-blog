@@ -12,19 +12,31 @@ class ChangeLogController extends Controller
 
   public $changelog;
 
-  public function index()
+  public function index(Request $request)
   {
 
     $changelogs = ChangeLog::with(['user'])
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
-    return view('changelog.index', compact('changelogs'));
+    $success = $request->input('success');
+    $msg = '';
+    if($success == '1'){
+      $msg = 'Change log created successfully.';
+    }
+
+    return view('changelog.index', compact('changelogs', 'msg'));
+//      ->with('success', __('Change log created successfully.'));
   }
 
   public function create()
   {
-    return view('changelog.create');
+    return view('changelog.changelog');
+  }
+
+  public function edit(ChangeLog $changelog)
+  {
+    return view('changelog.changelog', compact('changelog'));
   }
 
   public function store(Request $request)
@@ -41,18 +53,31 @@ class ChangeLogController extends Controller
 
     ChangeLog::create($validated);
 
-    return redirect()->route('changelogs.create')
+    return redirect()->route('changelogs.index')
       ->with('success', __('Change log created successfully.'));
+
+  }
+
+  public function update(Request $request, ChangeLog $changelog)
+  {
+    $validated = $request->validate([
+      'title' => 'required|max:255',
+      'body' => 'required',
+      'is_released' => 'boolean'
+    ]);
+
+    $changelog->update($validated);
+
+    return redirect()->route('changelogs.index')
+      ->with('success', __('default.Log updated successfully.'));
 
   }
 
   public function destroy(ChangeLog $changelog)
   {
-
     $changelog->delete();
-
     return redirect()->route('changelogs.index')
-      ->with('success', __('default.Log deleted successfully'));
+      ->with('success', __('default.Log deleted successfully.'));
   }
 
 }

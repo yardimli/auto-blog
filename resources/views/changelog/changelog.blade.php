@@ -20,8 +20,8 @@
                         <div style="height: 700px; margin-bottom: 15px;">
                             <textarea id="myChangeLog" style="height: 650px;width: 100%;"></textarea>
                         </div>
-                        <button id="submitChangeLog" type="button" class="btn btn-primary">
-                            {{ isset($changelog) ? __('default.Save Change Log') : __('default.Save Change Log') }}
+                        <button id="{{isset($changelog) ? 'updateChangeLog' : 'createChangeLog'}}" type="button" class="btn btn-primary">
+                            {{ isset($changelog) ? __('default.Save Change Log') : __('default.Create Change Log') }}
                         </button>
                     </div>
 
@@ -52,9 +52,14 @@
 
     <script>
 
+        var changeLogId = `{{isset($changelog) ? $changelog->id : ''}}`;
+        var changeLogContent = `{{isset($changelog) ? $changelog->body : ''}}`;
+        console.log(changeLogContent);
+
         $(document).ready(function () {
             var simplemde = new SimpleMDE({ element: document.getElementById("myChangeLog") });
-            $('#submitChangeLog').click(function (){
+            if(changeLogContent.trim() !== '') simplemde.value(changeLogContent);
+            $('#createChangeLog').click(function (){
                 $.ajax({
                     url: '/changelogs/store',
                     method: 'POST',
@@ -66,9 +71,27 @@
                         body: simplemde.value()
                     },
                     success: function (response) {
-                        if (response.success) {
-                        } else {
-                        }
+                        window.location = '/changelogs?success=1'
+                    },
+                    error: function (xhr) {
+                    },
+                    complete: function () {
+                    }
+                });
+            })
+            $('#updateChangeLog').click(function (){
+                $.ajax({
+                    url: '/changelogs/' + changeLogId + '/update',
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        title: $('#title').val(),
+                        body: simplemde.value()
+                    },
+                    success: function (response) {
+                        window.location = '/changelogs?success=1'
                     },
                     error: function (xhr) {
                     },
