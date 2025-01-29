@@ -4,9 +4,9 @@
     <main>
         <div class="container" style="min-height: calc(88vh);">
 
-            @if(isset($msg) && $msg !== '')
+            @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ $msg }}
+                    {{ session('success') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif

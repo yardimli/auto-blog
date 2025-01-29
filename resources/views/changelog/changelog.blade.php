@@ -9,22 +9,34 @@
                 <div class="col-12 col-xl-8 col-lg-8 mx-auto">
                     <h5>{{ isset($changelog) ? __('default.Edit Change Log') : __('default.Create Change Log') }}</h5>
 
-                    <!-- Title -->
-                    <div class="mb-3">
-                        <label for="title" class="form-label">{{ __('default.Title') }}</label>
-                        <input type="text" class="form-control" id="title" name="title"
+                    <form id="articleForm" method="POST"
+                          action="{{ isset($changelog) ? route('changelogs.update', $changelog->id) : route('changelogs.store') }}">
+                        @csrf
+                        @if(isset($changelog))
+                            @method('PUT')
+                        @endif
+                        <!-- Title -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">{{ __('default.Title') }}</label>
+                            <input type="text" class="form-control" id="title" name="title"
                                value="{{ isset($changelog) ? $changelog->title : old('title') }}" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <div style="height: 700px; margin-bottom: 15px;">
-                            <textarea id="myChangeLog" style="height: 650px;width: 100%;"></textarea>
                         </div>
-                        <button id="{{isset($changelog) ? 'updateChangeLog' : 'createChangeLog'}}" type="button" class="btn btn-primary">
-                            {{ isset($changelog) ? __('default.Save Change Log') : __('default.Create Change Log') }}
-                        </button>
-                    </div>
 
+                        {{--   Change Log  --}}
+                        <div class="mb-3">
+                            <input type="hidden" class="form-control" id="logBody" name="body">
+                            <div style="height: 700px; margin-bottom: 15px;">
+                                <textarea id="myChangeLog" style="height: 650px;width: 100%;"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <button id="{{isset($changelog) ? 'updateChangeLog' : 'createChangeLog'}}" type="submit" class="btn btn-primary">
+                                {{ isset($changelog) ? __('default.Save Change Log') : __('default.Create Change Log') }}
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
         </div>
@@ -59,46 +71,12 @@
         $(document).ready(function () {
             var simplemde = new SimpleMDE({ element: document.getElementById("myChangeLog") });
             if(changeLogContent.trim() !== '') simplemde.value(changeLogContent);
-            $('#createChangeLog').click(function (){
-                $.ajax({
-                    url: '/changelogs/store',
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        title: $('#title').val(),
-                        body: simplemde.value()
-                    },
-                    success: function (response) {
-                        window.location = '/changelogs?success=1'
-                    },
-                    error: function (xhr) {
-                    },
-                    complete: function () {
-                    }
-                });
-            })
-            $('#updateChangeLog').click(function (){
-                $.ajax({
-                    url: '/changelogs/' + changeLogId + '/update',
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data: {
-                        title: $('#title').val(),
-                        body: simplemde.value()
-                    },
-                    success: function (response) {
-                        window.location = '/changelogs?success=1'
-                    },
-                    error: function (xhr) {
-                    },
-                    complete: function () {
-                    }
-                });
-            })
+
+            simplemde.codemirror.on("change", function(){
+                console.log(simplemde.value());
+                $('#logBody').val(simplemde.value());
+            });
+            
         });
 
     </script>

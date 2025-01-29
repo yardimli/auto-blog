@@ -19,14 +19,7 @@ class ChangeLogController extends Controller
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
-    $success = $request->input('success');
-    $msg = '';
-    if($success == '1'){
-      $msg = 'Change log created successfully.';
-    }
-
-    return view('changelog.index', compact('changelogs', 'msg'));
-//      ->with('success', __('Change log created successfully.'));
+    return view('changelog.index', compact('changelogs'));
   }
 
   public function create()

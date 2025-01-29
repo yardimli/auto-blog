@@ -141,7 +141,7 @@
       Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
       Route::post('/store', [ChangeLogController::class, 'store'])->name('changelogs.store');
       Route::get('/{changelog}/edit', [ChangeLogController::class, 'edit'])->name('changelogs.edit');
-      Route::post('{changelog}/update', [ChangeLogController::class, 'update'])->name('changelogs.update');
+      Route::put('{changelog}/update', [ChangeLogController::class, 'update'])->name('changelogs.update');
       Route::delete('/{changelog}', [ChangeLogController::class, 'destroy'])->name('changelogs.destroy');
     });
 
