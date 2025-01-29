@@ -428,6 +428,8 @@
     'Released' => 'Released',
     'Released At' => 'Released At',
     'Author' => 'Author',
+    'Are you sure you want to delete this log?' => 'Are you sure you want to delete this log?',
+    'Log deleted successfully' => 'Log deleted successfully',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

@@ -46,4 +46,13 @@ class ChangeLogController extends Controller
 
   }
 
+  public function destroy(ChangeLog $changelog)
+  {
+
+    $changelog->delete();
+
+    return redirect()->route('changelogs.index')
+      ->with('success', __('default.Log deleted successfully'));
+  }
+
 }
