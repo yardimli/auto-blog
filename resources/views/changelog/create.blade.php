@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Create Release Note'))
+@section('title', __('Create Change Log'))
 @section('content')
     <!-- Main content START -->
     <main>
@@ -7,25 +7,23 @@
             <div class="row mt-3">
                 <!-- Main content START -->
                 <div class="col-12 col-xl-8 col-lg-8 mx-auto">
-                    <h5>{{ isset($release) ? __('default.Edit Release Note') : __('default.Create Release Note') }}</h5>
+                    <h5>{{ isset($changelog) ? __('default.Edit Change Log') : __('default.Create Change Log') }}</h5>
 
                     <!-- Title -->
                     <div class="mb-3">
                         <label for="title" class="form-label">{{ __('default.Title') }}</label>
                         <input type="text" class="form-control" id="title" name="title"
-                               value="{{ isset($release) ? $release->title : old('title') }}" required>
+                               value="{{ isset($changelog) ? $changelog->title : old('title') }}" required>
                     </div>
 
                     <div class="mb-3">
-                        <div style="height: 500px; margin-bottom: 15px;">
-                            <textarea id="myReleaseNote" style="height: 450px;width: 100%;"></textarea>
+                        <div style="height: 700px; margin-bottom: 15px;">
+                            <textarea id="myChangeLog" style="height: 650px;width: 100%;"></textarea>
                         </div>
-                        <button id="submitReleaseNote" type="button" class="btn btn-primary">
-                            {{ isset($release) ? __('default.Save Release Note') : __('default.Save Release Note') }}
+                        <button id="submitChangeLog" type="button" class="btn btn-primary">
+                            {{ isset($changelog) ? __('default.Save Change Log') : __('default.Save Change Log') }}
                         </button>
                     </div>
-
-
 
                 </div>
             </div>
@@ -44,19 +42,21 @@
         html[data-bs-theme="dark"] .editor-toolbar a {
             color: white !important;
         }
+        html[data-bs-theme="dark"] label[for="title"] {
+            color: white !important;
+        }
         .CodeMirror {
-            height: 450px !important;
+            height: 650px !important;
         }
     </style>
 
     <script>
 
         $(document).ready(function () {
-            var simplemde = new SimpleMDE({ element: document.getElementById("myReleaseNote") });
-
-            $('#submitReleaseNote').click(function (){
+            var simplemde = new SimpleMDE({ element: document.getElementById("myChangeLog") });
+            $('#submitChangeLog').click(function (){
                 $.ajax({
-                    url: '/releases/store',
+                    url: '/changelogs/store',
                     method: 'POST',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -67,24 +67,17 @@
                     },
                     success: function (response) {
                         if (response.success) {
-
                         } else {
-
                         }
                     },
                     error: function (xhr) {
-
                     },
                     complete: function () {
-
                     }
                 });
             })
-
         });
 
     </script>
-
-
 
 @endpush

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Str;
 
-class ReleaseNote extends Model
+class ChangeLog extends Model
 {
-  protected $table = "release_notes";
+  protected $table = "change_logs";
   protected $fillable = [
     'user_id',
     'title',

@@ -1,6 +1,6 @@
 <?php
 
-  use App\Http\Controllers\ReleaseController;
+  use App\Http\Controllers\ChangeLogController;
 	use App\Http\Controllers\ArticleController;
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
@@ -136,14 +136,10 @@
 			Route::get('/get-images', [ArticleController::class, 'getImages'])->name('articles.get-images');
 		});
 
-    Route::prefix('releases')->group(function () {
-      Route::get('/', [ReleaseController::class, 'index'])->name('releases.index');
-      Route::get('/create', [ReleaseController::class, 'create'])->name('releases.create');
-      Route::post('/store', [ReleaseController::class, 'store'])->name('releases.store');
-      Route::get('/{article}/edit', [ReleaseController::class, 'edit'])->name('releases.edit');
-      Route::put('/{article}', [ReleaseController::class, 'update'])->name('releases.update');
-      Route::delete('/{article}', [ReleaseController::class, 'destroy'])->name('releases.destroy');
-      Route::get('/get-images', [ReleaseController::class, 'getImages'])->name('releases.get-images');
+    Route::prefix('changelogs')->group(function () {
+      Route::get('/', [ChangeLogController::class, 'index'])->name('changelogs.index');
+      Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
+      Route::post('/store', [ChangeLogController::class, 'store'])->name('changelogs.store');
     });
 
 	});

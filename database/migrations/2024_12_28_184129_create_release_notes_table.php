@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('release_notes', function (Blueprint $table) {
+        Schema::create('change_logs', function (Blueprint $table) {
           $table->engine('InnoDB');
           $table->id();
           $table->integer('user_id')->index()->default(0);
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('release_notes');
+        Schema::dropIfExists('change_logs');
     }
 };

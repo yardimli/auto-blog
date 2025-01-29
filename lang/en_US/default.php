@@ -423,8 +423,8 @@
 		'Publication Date' => 'Publication Date',
 		'Update Article' => 'Update Article',
 
-    'Create Release Note' => 'Create Release Note',
-    'Save Release Note' => 'Save',
+    'Create Change Log' => 'Create Change Log',
+    'Save Change Log' => 'Save',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',

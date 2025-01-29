@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ReleaseNote;
+use App\Models\ChangeLog;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ReleaseController extends Controller
+class ChangeLogController extends Controller
 {
 
-  public $release;
+  public $changelog;
 
   public function create()
   {
-    return view('user.release');
+    return view('changelog.create');
   }
 
   public function store(Request $request)
@@ -29,10 +29,10 @@ class ReleaseController extends Controller
     // Add user_id to the validated data
     $validated['user_id'] = auth()->id();
 
-    $release = ReleaseNote::create($validated);
+    ChangeLog::create($validated);
 
-    return redirect()->route('releases.create')
-      ->with('success', __('Release created successfully.'));
+    return redirect()->route('changelogs.create')
+      ->with('success', __('Change log created successfully.'));
 
   }
 
