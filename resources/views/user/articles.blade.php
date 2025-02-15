@@ -40,15 +40,15 @@
 										<tbody>
 										@foreach($articles as $article)
 											<tr>
-												<td>{{ Str::limit($article->title, 50) }}</td>
-												<td>{{ $article->language->language_name }}</td>
-												<td>
+												<td style="vertical-align: middle;">{{ Str::limit($article->title, 50) }}</td>
+												<td style="vertical-align: middle;">{{ $article->language->language_name }}</td>
+												<td style="vertical-align: middle;">
                                                     <span class="badge bg-{{ $article->is_published ? 'success' : 'warning' }}">
                                                         {{ $article->is_published ? __('default.Published') : __('default.Draft') }}
                                                     </span>
 												</td>
-												<td>{{ $article->created_at->format('Y-m-d H:i') }}</td>
-												<td>
+												<td style="vertical-align: middle;">{{ $article->created_at->format('Y-m-d H:i') }}</td>
+												<td style="vertical-align: middle;">
 													<form action="{{ route('articles.destroy', $article->id) }}"
 														  method="POST"
 														  class="d-inline"
