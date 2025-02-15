@@ -235,8 +235,8 @@ Header START -->
 										<p class="small m-0">{{ Auth::user()->username }}</p>
 									</div>
 								</div>
-								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"
-								   href="{{ route('settings.account') }}">{{ __('Images') }}</a>
+{{--								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"--}}
+{{--								   href="{{ route('settings.account') }}">{{ __('Images') }}</a>--}}
 							</li>
 							<a class="dropdown-item" href="{{route('settings.account')}}"><i
 									class="bi bi-person  me-2"></i>{{__('default.Settings')}}</a>

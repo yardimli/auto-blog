@@ -1,10 +1,14 @@
 @extends('user.pages.layout')
 
 @section('user-content')
-	<div class="row">
-		<div class="col-md-12">
-			<h2>Feedback</h2>
-			<p>Give us your feedback</p>
-		</div>
+	<div class="container">
+		<h2>{{ $pageSettings->title ?? 'Feedback Page' }}</h2>
+		@if($pageSettings && $pageSettings->description)
+			<div class="page-description mb-4">
+				{{ $pageSettings->description ?? '' }}
+			</div>
+		@endif
+		
+		{{-- Rest of the page content --}}
 	</div>
 @endsection

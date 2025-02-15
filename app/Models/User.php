@@ -96,4 +96,9 @@
 		}
 
 
+		public function pageSettings()
+		{
+			return $this->hasMany(UserPageSetting::class);
+		}
+
 	}

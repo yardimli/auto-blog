@@ -438,4 +438,5 @@
 		'Company Name' => 'Company Name',
 		'My Company' => 'My Company',
 		'Page' => 'Page',
+		'Page Settings' => 'Page Settings',
 	];

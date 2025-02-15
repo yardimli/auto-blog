@@ -94,6 +94,9 @@
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
 		Route::post('/settings/api-keys', [UserSettingsController::class, 'updateApiKeys'])->name('settings-update-api-keys');
 
+		Route::get('/settings/pages', [UserSettingsController::class, 'pages'])->name('settings.pages');
+		Route::put('/settings/pages', [UserSettingsController::class, 'updatePages'])->name('settings.pages.update');
+
 		Route::get('/users', [UserSettingsController::class, 'admin_index'])->name('admin-index');
 		Route::post('/login-as', [UserSettingsController::class, 'loginAs'])->name('users-login-as');
 

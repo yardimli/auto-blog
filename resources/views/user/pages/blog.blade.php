@@ -1,14 +1,16 @@
 @extends('user.pages.layout')
 
 @section('user-content')
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<h1 class="mb-4">Blog</h1>
-			</div>
-		</div>
-		
-		<div class="row">
+	
+		<div class="container">
+			<h2>{{ $pageSettings->title ?? 'Blog Page' }}</h2>
+			@if($pageSettings && $pageSettings->description)
+				<div class="page-description mb-4">
+					{{ $pageSettings->description ?? '' }}
+				</div>
+			@endif
+			
+			<div class="row">
 			@foreach($articles as $article)
 				<div class="col-md-4 mb-4">
 					<div class="card h-100">

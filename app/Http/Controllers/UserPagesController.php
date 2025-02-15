@@ -34,17 +34,12 @@
 			return $user;
 		}
 
-		public function userHome($username)
-		{
-			$user = $this->getUserOrFail($username);
-			return view('user.pages.home', compact('user'));
-		}
-
 		// UserPagesController.php
 
 		public function userBlog($username)
 		{
 			$user = $this->getUserOrFail($username);
+			$pageSettings = $this->getPageSettings($user, 'blog');
 
 			$articles = Article::with(['featuredImage', 'categories', 'language'])
 				->where('user_id', $user->id)
@@ -52,12 +47,13 @@
 				->orderBy('posted_at', 'desc')
 				->paginate(10);
 
-			return view('user.pages.blog', compact('user', 'articles'));
+			return view('user.pages.blog', compact('user', 'pageSettings',  'articles'));
 		}
 
 		public function userBlogArticle($username, $slug)
 		{
 			$user = $this->getUserOrFail($username);
+			$pageSettings = $this->getPageSettings($user, 'blog');
 
 			$article = Article::with(['featuredImage', 'categories', 'language'])
 				->where('user_id', $user->id)
@@ -78,50 +74,74 @@
 				->limit(3)
 				->get();
 
-			return view('user.pages.blog-article', compact('user', 'article', 'recentArticles'));
+			return view('user.pages.blog-article', compact('user', 'pageSettings',  'article', 'recentArticles'));
 		}
+
+		public function userHome($username)
+		{
+			$user = $this->getUserOrFail($username);
+			$pageSettings = $this->getPageSettings($user, 'home');
+			return view('user.pages.home', compact('user',  'pageSettings'));
+		}
+
 
 		public function userHelp($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.help', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'help');
+			return view('user.pages.help', compact('user', 'pageSettings') );
 		}
 
 		public function userRoadmap($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.roadmap', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'roadmap');
+			return view('user.pages.roadmap', compact('user', 'pageSettings') );
 		}
 
 		public function userFeedback($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.feedback', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'feedback');
+			return view('user.pages.feedback', compact('user', 'pageSettings') );
 		}
 
 		public function userChangelog($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.changelog', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'changelog');
+			return view('user.pages.changelog', compact('user', 'pageSettings') );
 		}
 
 		public function userTerms($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.terms', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'terms');
+			return view('user.pages.terms', compact('user', 'pageSettings') );
 		}
 
 		public function userPrivacy($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.privacy', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'privacy');
+			return view('user.pages.privacy', compact('user', 'pageSettings') );
 		}
 
 		public function userCookieConsent($username)
 		{
 			$user = $this->getUserOrFail($username);
-			return view('user.pages.cookie-consent', compact('user'));
+			$pageSettings = $this->getPageSettings($user, 'cookie');
+			return view('user.pages.cookie-consent', compact('user', 'pageSettings') );
 		}
+
+		private function getPageSettings($user, $pageType)
+		{
+			return $user->pageSettings()
+				->where('page_type', $pageType)
+				->first();
+		}
+
+
 
 		//------------------------------------------------------------------------------
 
