@@ -66,6 +66,23 @@ class ChangeLogController extends Controller
 
   }
 
+  public function toggleReleased(Request $request, ChangeLog $changelog)
+  {
+    $validated = $request->validate([
+      'id' => 'required',
+      'is_released' => 'required'
+    ]);
+
+    $is_released = $request->input('is_released') === 'true';
+    $released_at = ($is_released) ? now() : null;
+    $changelog->update([
+      'is_released' => $is_released,
+      'released_at' => $released_at
+    ]);
+
+    return json_encode(array('time' => ($is_released) ? $released_at->format('Y-m-d H:i') : null));
+  }
+
   public function destroy(ChangeLog $changelog)
   {
     $changelog->delete();

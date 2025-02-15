@@ -41,16 +41,14 @@
                                         <tbody>
                                         @foreach($changelogs as $changelog)
                                             <tr>
-                                                <td>{{ Str::limit($changelog->title, 50) }}</td>
-                                                <td>{{ $changelog->user->name }}</td>
-                                                <td>
-                                                    <span class="badge bg-{{ $changelog->is_released ? 'success' : 'warning' }}">
-                                                        {{ $changelog->is_released ? __('default.Released') : __('default.Draft') }}
-                                                    </span>
+                                                <td style="vertical-align: middle;">{{ Str::limit($changelog->title, 50) }}</td>
+                                                <td style="vertical-align: middle;">{{ $changelog->user->name }}</td>
+                                                <td style="vertical-align: middle;">
+                                                    <input class="statusToggle" type="checkbox" {{ $changelog->is_released ? 'checked' : '' }} data-id="{{$changelog->id}}" data-toggle="toggle" data-size="sm" data-onlabel="Released" data-offlabel="Draft" data-onstyle="success" data-offstyle="warning">
                                                 </td>
-                                                <td>{{ ($changelog->released_at) ? $changelog->release_at->format('Y-m-d H:i') : '' }}</td>
-                                                <td>{{ $changelog->created_at->format('Y-m-d H:i') }}</td>
-                                                <td>
+                                                <td id="released_at_{{$changelog->id}}" style="vertical-align: middle;">{{ ($changelog->released_at) ? $changelog->released_at->format('Y-m-d H:i') : '' }}</td>
+                                                <td style="vertical-align: middle;">{{ $changelog->created_at->format('Y-m-d H:i') }}</td>
+                                                <td style="vertical-align: middle;">
                                                     <form action="{{ route('changelogs.destroy', $changelog->id) }}"
                                                           method="POST"
                                                           class="d-inline"
@@ -85,3 +83,32 @@
         </div>
     </main>
 @endsection
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('.statusToggle').change(function () {
+            var id=$(this).attr('data-id');
+            $.ajax({
+                url: '/changelogs/toggleReleased/' + $(this).attr('data-id'),
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    id: id,
+                    is_released: $(this).prop('checked')
+                },
+                dataType: 'JSON',
+                success: function (response) {
+                    document.querySelector('#released_at_' + id).innerHTML = response.time;
+                },
+                error: function (xhr) {
+                },
+                complete: function () {
+                }
+            });
+        })
+    });
+
+</script>
+@endpush

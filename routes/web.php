@@ -146,6 +146,7 @@
       Route::get('/{changelog}/edit', [ChangeLogController::class, 'edit'])->name('changelogs.edit');
       Route::put('{changelog}/update', [ChangeLogController::class, 'update'])->name('changelogs.update');
       Route::delete('/{changelog}', [ChangeLogController::class, 'destroy'])->name('changelogs.destroy');
+      Route::post('/toggleReleased/{changelog}', [ChangeLogController::class, 'toggleReleased'])->name('changelogs.toggleReleased');
     });
 
 	});
