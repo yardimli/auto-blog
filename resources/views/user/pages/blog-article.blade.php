@@ -3,19 +3,7 @@
 @section('user-content')
 	<div class="container">
 		<article class="blog-post">
-			@if($article->featuredImage)
-				<div class="featured-image mb-4">
-					<img src="{{ $article->featuredImage->getLargeUrl() }}"
-					     class="img-fluid"
-					     alt="{{ $article->featuredImage->image_alt }}">
-				</div>
-			@endif
 			
-			<div class="mb-3">
-				@foreach($article->categories as $category)
-					<span class="badge bg-secondary me-1">{{ $category->category_name }}</span>
-				@endforeach
-			</div>
 			
 			<h1>{{ $article->title }}</h1>
 			
@@ -27,6 +15,19 @@
 				<span>Published on {{ $article->posted_at->format('F d, Y') }}</span>
 			</div>
 			
+			@if($article->featuredImage)
+				<div class="featured-image mb-4 text-center">
+					<img src="{{ $article->featuredImage->getLargeUrl() }}"
+					     class="img-fluid" style="max-width: 600px; border-radius: 10px;"
+					     alt="{{ $article->featuredImage->image_alt }}">
+				</div>
+			@endif
+			
+			<div class="mb-3">
+				@foreach($article->categories as $category)
+					<span class="badge bg-secondary me-1">{{ $category->category_name }}</span>
+				@endforeach
+			</div>
 			@if($article->short_description)
 				<div class="lead mb-4">
 					{{ $article->short_description }}

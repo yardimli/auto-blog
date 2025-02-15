@@ -10,7 +10,7 @@
 		
 		<div class="row">
 			@foreach($articles as $article)
-				<div class="col-md-6 mb-4">
+				<div class="col-md-4 mb-4">
 					<div class="card h-100">
 						@if($article->featuredImage)
 							<img src="{{ $article->featuredImage->getMediumUrl() }}"
