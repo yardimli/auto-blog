@@ -35,24 +35,30 @@
 			return $this->hasMany(Article::class, 'featured_image_id');
 		}
 
-		// You might want to add methods for handling image URLs
+		// app/Models/Image.php
+
+		public function getImageBasePath(): string
+		{
+			return $this->image_type === 'generated' ? 'ai-images' : 'upload-images';
+		}
+
 		public function getOriginalUrl(): string
 		{
-			return asset('storage/upload-images/original/' . $this->image_original_filename);
+			return asset('storage/' . $this->getImageBasePath() . '/original/' . $this->image_original_filename);
 		}
 
 		public function getLargeUrl(): string
 		{
-			return asset('storage/upload-images/large/' . $this->image_large_filename);
+			return asset('storage/' . $this->getImageBasePath() . '/large/' . $this->image_large_filename);
 		}
 
 		public function getMediumUrl(): string
 		{
-			return asset('storage/upload-images/medium/' . $this->image_medium_filename);
+			return asset('storage/' . $this->getImageBasePath() . '/medium/' . $this->image_medium_filename);
 		}
 
 		public function getSmallUrl(): string
 		{
-			return asset('storage/upload-images/small/' . $this->image_small_filename);
+			return asset('storage/' . $this->getImageBasePath() . '/small/' . $this->image_small_filename);
 		}
 	}

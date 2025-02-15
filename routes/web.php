@@ -94,6 +94,9 @@
 		Route::post('/settings/password', [UserSettingsController::class, 'updatePassword'])->name('settings-password-update');
 		Route::post('/settings/api-keys', [UserSettingsController::class, 'updateApiKeys'])->name('settings-update-api-keys');
 
+		Route::get('/settings/pages', [UserSettingsController::class, 'pages'])->name('settings.pages');
+		Route::put('/settings/pages', [UserSettingsController::class, 'updatePages'])->name('settings.pages.update');
+
 		Route::get('/users', [UserSettingsController::class, 'admin_index'])->name('admin-index');
 		Route::post('/login-as', [UserSettingsController::class, 'loginAs'])->name('users-login-as');
 
@@ -150,6 +153,7 @@
 	// User-specific routes
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
+	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
 	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 	Route::get('/@{username}/feedback', [UserPagesController::class, 'userFeedback'])->name('user.feedback');

@@ -18,35 +18,48 @@
 									<div class="card-body">
 										<ul class="nav nav-tabs nav-pills nav-pills-soft flex-column fw-bold gap-2 border-0">
 											<li class="nav-item">
-												<a class="nav-link {{ Route::currentRouteName() == 'settings.account' ? 'active' : '' }}" style="margin-bottom: 0px;"
+												<a class="nav-link {{ Route::currentRouteName() == 'settings.account' ? 'active' : '' }}"
+												   style="margin-bottom: 0px;"
 												   href="{{ route('settings.account') }}">
 													<img class="me-2 h-20px" src="/assets/images/icon/person-outline-filled.svg" alt="">
 													{{__('default.Account')}}
 												</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link {{ Route::currentRouteName() == 'settings.languages' ? 'active' : '' }}" style="margin-bottom: 0px;"
+												<a href="{{ route('settings.pages') }}"
+												   style="margin-bottom: 0px;"
+												   class="nav-link {{ Request::routeIs('settings.pages') ? 'active' : '' }}">
+													<img class="me-2 h-20px" src="/assets/images/icon/folder-open-outline-filled.svg" alt="">
+													{{ __('default.Page Settings') }}
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link {{ Route::currentRouteName() == 'settings.languages' ? 'active' : '' }}"
+												   style="margin-bottom: 0px;"
 												   href="{{ route('settings.languages') }}">
 													<img class="me-2 h-20px" src="/assets/images/icon/earth-outline-filled.svg" alt="">
 													{{__('default.Languages')}}
 												</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link {{ Route::currentRouteName() == 'settings.categories' ? 'active' : '' }}" style="margin-bottom: 0px;"
+												<a class="nav-link {{ Route::currentRouteName() == 'settings.categories' ? 'active' : '' }}"
+												   style="margin-bottom: 0px;"
 												   href="{{ route('settings.categories') }}">
 													<img class="me-2 h-20px" src="/assets/images/icon/folder-outline-filled.svg" alt="">
 													{{__('default.Categories')}}
 												</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link {{ Route::currentRouteName() == 'settings.images' ? 'active' : '' }}" style="margin-bottom: 0px;"
+												<a class="nav-link {{ Route::currentRouteName() == 'settings.images' ? 'active' : '' }}"
+												   style="margin-bottom: 0px;"
 												   href="{{ route('settings.images') }}">
 													<img class="me-2 h-20px" src="/assets/images/icon/image-outline-filled.svg" alt="">
 													{{__('default.Images')}}
 												</a>
 											</li>
 											<li class="nav-item">
-												<a class="nav-link {{ Route::currentRouteName() == 'settings.close-account' ? 'active' : '' }}" style="margin-bottom: 0px;"
+												<a class="nav-link {{ Route::currentRouteName() == 'settings.close-account' ? 'active' : '' }}"
+												   style="margin-bottom: 0px;"
 												   href="{{ route('settings.close-account') }}">
 													<img class="me-2 h-20px" src="/assets/images/icon/trash-var-outline-filled.svg" alt="">
 													{{__('default.Close Account')}}
@@ -84,9 +97,9 @@
 							</ul>
 						</div>
 					@endif
-
+					
 					<div id="alertContainer"></div>
-
+					
 					@yield('settings-content')
 				</div>
 			</div>
@@ -115,6 +128,6 @@
 		
 		$(document).ready(function () {
 		});
-		
+	
 	</script>
 @endpush

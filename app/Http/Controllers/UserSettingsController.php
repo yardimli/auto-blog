@@ -239,4 +239,35 @@
 			return redirect()->back();
 		}
 
+		public function pages()
+		{
+			$pageSettings = auth()->user()->pageSettings()
+				->get()
+				->keyBy('page_type');
+
+			return view('user.page-settings', compact('pageSettings'));
+		}
+
+		public function updatePages(Request $request)
+		{
+			$validated = $request->validate([
+				'pages.*.title' => 'nullable|string|max:255',
+				'pages.*.description' => 'nullable|string|max:1000',
+			]);
+
+			$pageTypes = ['home', 'blog', 'help', 'roadmap', 'feedback', 'changelog', 'terms', 'privacy', 'cookie'];
+
+			foreach ($pageTypes as $pageType) {
+				auth()->user()->pageSettings()->updateOrCreate(
+					['page_type' => $pageType],
+					[
+						'title' => $validated['pages'][$pageType]['title'] ?? null,
+						'description' => $validated['pages'][$pageType]['description'] ?? null,
+					]
+				);
+			}
+
+			return redirect()->back()->with('success', 'Page settings updated successfully');
+		}
+
 	}
