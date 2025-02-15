@@ -150,6 +150,7 @@
 	// User-specific routes
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
+	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
 	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 	Route::get('/@{username}/feedback', [UserPagesController::class, 'userFeedback'])->name('user.feedback');

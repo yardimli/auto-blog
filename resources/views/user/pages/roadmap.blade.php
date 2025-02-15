@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Roadmap</h2>
-			<p>Company Blog Page</p>
+			<p>This is our RoadMap a KanBan Board</p>
 		</div>
 	</div>
 @endsection

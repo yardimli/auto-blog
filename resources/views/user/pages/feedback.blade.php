@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Feedback</h2>
-			<p>Company Blog Page</p>
+			<p>Give us your feedback</p>
 		</div>
 	</div>
 @endsection

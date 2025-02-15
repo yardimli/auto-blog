@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>Terms & Conditions</h2>
-			<p>Company Blog Page</p>
+			<p>Our Terms Are...</p>
 		</div>
 	</div>
 @endsection
