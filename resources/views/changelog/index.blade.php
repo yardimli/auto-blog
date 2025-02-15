@@ -76,7 +76,7 @@
 
                                 <!-- Pagination -->
                                 <div class="d-flex justify-content-center mt-4">
-                                    {{ $changelogs->links() }}
+                                    {{ $changelogs->links('pagination::bootstrap-5') }}
                                 </div>
                             @endif
                         </div>
