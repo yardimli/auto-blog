@@ -49,22 +49,21 @@
 												</td>
 												<td>{{ $article->created_at->format('Y-m-d H:i') }}</td>
 												<td>
-													<div class="btn-group">
-														<a href="{{ route('articles.edit', $article->id) }}"
-														   class="btn btn-sm btn-primary">
-															{{ __('default.Edit') }}
-														</a>
-														<form action="{{ route('articles.destroy', $article->id) }}"
-														      method="POST"
-														      class="d-inline"
-														      onsubmit="return confirm('{{ __('default.Are you sure you want to delete this article?') }}')">
+													<form action="{{ route('articles.destroy', $article->id) }}"
+														  method="POST"
+														  class="d-inline"
+														  onsubmit="return confirm('{{ __('default.Are you sure you want to delete this article?') }}')">
+														<div class="btn-group">
+															<a href="{{ route('articles.edit', $article->id) }}" class="btn btn-sm btn-primary">
+																{{ __('default.Edit') }}
+															</a>
 															@csrf
 															@method('DELETE')
 															<button type="submit" class="btn btn-sm btn-danger">
 																{{ __('default.Delete') }}
 															</button>
-														</form>
-													</div>
+														</div>
+													</form>
 												</td>
 											</tr>
 										@endforeach
