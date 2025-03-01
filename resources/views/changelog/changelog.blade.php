@@ -70,7 +70,10 @@
 
         $(document).ready(function () {
             var simplemde = new SimpleMDE({ element: document.getElementById("myChangeLog") });
-            if(changeLogContent.trim() !== '') simplemde.value(changeLogContent);
+            if(changeLogContent.trim() !== ''){
+                simplemde.value(changeLogContent);
+                $('#logBody').val(simplemde.value());
+            }
 
             simplemde.codemirror.on("change", function(){
                 console.log(simplemde.value());
