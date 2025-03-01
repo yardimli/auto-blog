@@ -14,7 +14,7 @@
             <div class="row mt-3">
                 <div class="col-12">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5>{{ __('default.Change Logs') }}</h5>
+                        <h5>{{ __('default.Change Log') }}</h5>
                         <a href="{{ route('changelogs.create') }}" class="btn btn-primary">
                             {{ __('default.Create Change Log') }}
                         </a>

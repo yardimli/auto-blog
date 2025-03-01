@@ -185,7 +185,7 @@ Header START -->
 					</li>
 					<li class="nav-item">
 					<a class="nav-link {{ Request::is($user->username . '/changelog') ? 'active' : '' }}"
-					   href="{{ route('user.changelog', $user->username) }}">Changelog</a>
+					   href="{{ route('user.changelog', $user->username) }}">Change Log</a>
 					</li>
 				
 				

@@ -423,7 +423,7 @@
 		'Publication Date' => 'Publication Date',
 		'Update Article' => 'Update Article',
 
-    'Change Logs' => 'Change Logs',
+    'Change Log' => 'Change Log',
     'Create Change Log' => 'Create Change Log',
     'Save Change Log' => 'Save Change Log',
     'Released' => 'Released',
