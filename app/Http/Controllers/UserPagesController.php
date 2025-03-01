@@ -3,7 +3,8 @@
 	namespace App\Http\Controllers;
 
 	use App\Models\Article;
-	use Carbon\Carbon;
+  use App\Models\ChangeLog;
+  use Carbon\Carbon;
 	use Illuminate\Http\Request;
 	use App\Models\User;
 	use App\Models\NewOrder;
@@ -110,7 +111,18 @@
 		{
 			$user = $this->getUserOrFail($username);
 			$pageSettings = $this->getPageSettings($user, 'changelog');
-			return view('user.pages.changelog', compact('user', 'pageSettings') );
+      $logs = ChangeLog::with(['user'])
+        ->where('is_released', 1)
+        ->orderBy('released_at', 'desc')
+        ->get();
+      $logsGroupByDate = [];
+      foreach ($logs as $key => $log) {
+        $date = $log->released_at->format('F jS, Y');
+        if(!array_key_exists($date, $logsGroupByDate)) $logsGroupByDate[$date] = [];
+        $logsGroupByDate[$date][] = $log;
+      }
+
+			return view('user.pages.changelog', compact('user', 'pageSettings', 'logs', 'logsGroupByDate'));
 		}
 
 		public function userTerms($username)
