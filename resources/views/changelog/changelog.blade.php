@@ -24,8 +24,8 @@
 
                         {{--   Change Log  --}}
                         <div class="mb-3">
-                            <div id="editormd">
-                                <textarea id="editormdTextarea" name="body" style="display:none;">
+                            <div id="editormd" class="editormd">
+                                <textarea name="body" style="display:none;">
 {{ isset($changelog) ? $changelog->body : '### Changelog.md
 **Markdown Editor**: Write down your change log here.' }}
                                 </textarea>
@@ -48,7 +48,7 @@
 @endsection
 
 <script src="/js/jquery-3.7.0.min.js"></script>
-<script src="/editormd/editormd.js"></script>
+<script src="/editormd/editormd.min.js"></script>
 <script src="/editormd/languages/en.js"></script>
 
 <link rel="stylesheet" href="/editormd/css/editormd.css" />
@@ -69,9 +69,10 @@
         $(document).ready(function () {
 
             var editor = editormd("editormd", {
-                // width  : "100%",
+                width  : "100%",
                 height : "750px",
                 path   : "/editormd/lib/",
+                emoji  : true,
                 onchange: function() {
                 },
             })
