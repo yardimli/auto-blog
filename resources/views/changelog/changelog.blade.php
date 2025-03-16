@@ -6,7 +6,7 @@
         <div class="container mb-5" style="min-height: calc(88vh);">
             <div class="row mt-3">
                 <!-- Main content START -->
-                <div class="col-12 col-xl-8 col-lg-8 mx-auto">
+                <div class="col-12 mx-auto">
                     <h5>{{ isset($changelog) ? __('default.Edit Change Log') : __('default.Create Change Log') }}</h5>
 
                     <form id="articleForm" method="POST"
@@ -24,9 +24,11 @@
 
                         {{--   Change Log  --}}
                         <div class="mb-3">
-                            <input type="hidden" class="form-control" id="logBody" name="body">
-                            <div style="height: 700px; margin-bottom: 15px;">
-                                <textarea id="myChangeLog" style="height: 650px;width: 100%;"></textarea>
+                            <div id="editormd">
+                                <textarea id="editormdTextarea" name="body" style="display:none;">
+{{ isset($changelog) ? $changelog->body : '### Changelog.md
+**Markdown Editor**: Write down your change log here.' }}
+                                </textarea>
                             </div>
                         </div>
 
@@ -45,8 +47,11 @@
     @include('layouts.footer')
 @endsection
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="/js/jquery-3.7.0.min.js"></script>
+<script src="/editormd/editormd.js"></script>
+<script src="/editormd/languages/en.js"></script>
+
+<link rel="stylesheet" href="/editormd/css/editormd.css" />
 
 @push('scripts')
 
@@ -57,29 +62,20 @@
         html[data-bs-theme="dark"] label[for="title"] {
             color: white !important;
         }
-        .CodeMirror {
-            height: 650px !important;
-        }
     </style>
 
     <script>
 
-        var changeLogId = `{{isset($changelog) ? $changelog->id : ''}}`;
-        var changeLogContent = `{{isset($changelog) ? $changelog->body : ''}}`;
-        console.log(changeLogContent);
-
         $(document).ready(function () {
-            var simplemde = new SimpleMDE({ element: document.getElementById("myChangeLog") });
-            if(changeLogContent.trim() !== ''){
-                simplemde.value(changeLogContent);
-                $('#logBody').val(simplemde.value());
-            }
 
-            simplemde.codemirror.on("change", function(){
-                console.log(simplemde.value());
-                $('#logBody').val(simplemde.value());
-            });
-            
+            var editor = editormd("editormd", {
+                // width  : "100%",
+                height : "750px",
+                path   : "/editormd/lib/",
+                onchange: function() {
+                },
+            })
+
         });
 
     </script>
