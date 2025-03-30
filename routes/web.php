@@ -1,12 +1,15 @@
 <?php
 
-  use App\Http\Controllers\ChangeLogController;
+	use App\Http\Controllers\ChangeLogController;
 	use App\Http\Controllers\ArticleController;
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
+	use App\Http\Controllers\FeedbackController;
+	use App\Http\Controllers\HelpSystemController;
 	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
+	use App\Http\Controllers\RoadmapController;
 	use App\Http\Controllers\StaticPagesController;
 	use App\Http\Controllers\UserPagesController;
 	use App\Http\Controllers\UserSettingsController;
@@ -139,15 +142,27 @@
 			Route::get('/get-images', [ArticleController::class, 'getImages'])->name('articles.get-images');
 		});
 
-    Route::prefix('changelogs')->group(function () {
-      Route::get('/', [ChangeLogController::class, 'index'])->name('changelogs.index');
-      Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
-      Route::post('/store', [ChangeLogController::class, 'store'])->name('changelogs.store');
-      Route::get('/{changelog}/edit', [ChangeLogController::class, 'edit'])->name('changelogs.edit');
-      Route::put('{changelog}/update', [ChangeLogController::class, 'update'])->name('changelogs.update');
-      Route::delete('/{changelog}', [ChangeLogController::class, 'destroy'])->name('changelogs.destroy');
-      Route::post('/toggleReleased/{changelog}', [ChangeLogController::class, 'toggleReleased'])->name('changelogs.toggleReleased');
-    });
+		Route::prefix('feedback')->group(function () {
+			Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
+		});
+
+		Route::prefix('roadmap')->group(function () {
+			Route::get('/', [RoadmapController::class, 'index'])->name('roadmap.index');
+		});
+
+		Route::prefix('helpsystem')->group(function () {
+			Route::get('/', [HelpSystemController::class, 'index'])->name('helpsystem.index');
+		});
+
+		Route::prefix('changelogs')->group(function () {
+			Route::get('/', [ChangeLogController::class, 'index'])->name('changelogs.index');
+			Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
+			Route::post('/store', [ChangeLogController::class, 'store'])->name('changelogs.store');
+			Route::get('/{changelog}/edit', [ChangeLogController::class, 'edit'])->name('changelogs.edit');
+			Route::put('{changelog}/update', [ChangeLogController::class, 'update'])->name('changelogs.update');
+			Route::delete('/{changelog}', [ChangeLogController::class, 'destroy'])->name('changelogs.destroy');
+			Route::post('/toggleReleased/{changelog}', [ChangeLogController::class, 'toggleReleased'])->name('changelogs.toggleReleased');
+		});
 
 	});
 

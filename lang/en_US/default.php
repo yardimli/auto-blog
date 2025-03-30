@@ -439,4 +439,8 @@
 		'My Company' => 'My Company',
 		'Page' => 'Page',
 		'Page Settings' => 'Page Settings',
+
+		'Feedback' => 'Feedback',
+		'Help System' => 'Help System',
+		'Roadmap' => 'Roadmap',
 	];

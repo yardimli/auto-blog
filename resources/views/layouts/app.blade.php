@@ -32,7 +32,7 @@
 	<!-- Theme CSS -->
 	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 	<link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
-
+	
 	{{-- Bootstrap Toggle --}}
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/css/bootstrap5-toggle.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap5-toggle@5.1.1/js/bootstrap5-toggle.ecmas.min.js"></script>
@@ -169,26 +169,38 @@ Header START -->
 				<ul class="navbar-nav navbar-nav-scroll ms-auto">
 					@if (Auth::user())
 						<li class="nav-item">
-							<a class="nav-link" href="/{{'@'.Auth::user()->username}}">{{Auth::user()->username}}'s {{__('default.Page')}}</a>
+							<a class="nav-link" href="/{{'@'.Auth::user()->username}}">{{Auth::user()->username}}
+								's {{__('default.Page')}}</a>
 						</li>
 					@endif
-
+					
 					{{--					<li class="nav-item">--}}
 					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
 					{{--					</li>--}}
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
 					</li>
-
+					
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('changelogs.index')}}">{{__('Change Logs')}}</a>
 					</li>
 					
 					<li class="nav-item">
+						<a class="nav-link" href="{{route('helpsystem.index')}}">{{__('default.Help System')}}</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="{{route('feedback.index')}}">{{__('default.Feedback')}}</a>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="{{route('roadmap.index')}}">{{__('default.Roadmap')}}</a>
+					</li>
+					
+					
+					<li class="nav-item">
 						<a class="nav-link" href="{{route('help-page')}}">{{__('default.Help')}}</a>
 					</li>
-				
-				
 				
 				
 				</ul>
@@ -239,8 +251,8 @@ Header START -->
 										<p class="small m-0">{{ Auth::user()->username }}</p>
 									</div>
 								</div>
-{{--								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"--}}
-{{--								   href="{{ route('settings.account') }}">{{ __('Images') }}</a>--}}
+								{{--								<a class="dropdown-item btn btn-primary-soft btn-sm my-2 text-center"--}}
+								{{--								   href="{{ route('settings.account') }}">{{ __('Images') }}</a>--}}
 							</li>
 							<a class="dropdown-item" href="{{route('settings.account')}}"><i
 									class="bi bi-person  me-2"></i>{{__('default.Settings')}}</a>
