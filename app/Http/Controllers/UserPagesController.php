@@ -100,12 +100,6 @@
 			return view('user.pages.roadmap', compact('user', 'pageSettings') );
 		}
 
-		public function userFeedback($username)
-		{
-			$user = $this->getUserOrFail($username);
-			$pageSettings = $this->getPageSettings($user, 'feedback');
-			return view('user.pages.feedback', compact('user', 'pageSettings') );
-		}
 
 		public function userChangelog($username)
 		{

@@ -101,4 +101,17 @@
 			return $this->hasMany(UserPageSetting::class);
 		}
 
+		public function feedback()
+		{
+			return $this->hasMany(Feedback::class);
+		}
+
+		/**
+		 * Get the feedback votes cast by the user.
+		 */
+		public function feedbackVotes()
+		{
+			return $this->hasMany(FeedbackVote::class);
+		}
+
 	}

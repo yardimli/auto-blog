@@ -4,6 +4,7 @@
 	use App\Http\Controllers\ArticleController;
 	use App\Http\Controllers\CategoryController;
 	use App\Http\Controllers\ChatController;
+	use App\Http\Controllers\FeedbackAdminController;
 	use App\Http\Controllers\FeedbackController;
 	use App\Http\Controllers\HelpSystemController;
 	use App\Http\Controllers\ImageController;
@@ -143,7 +144,7 @@
 		});
 
 		Route::prefix('feedback')->group(function () {
-			Route::get('/', [FeedbackController::class, 'index'])->name('feedback.index');
+			Route::resource('feedback', FeedbackAdminController::class)->except(['create', 'store']);
 		});
 
 		Route::prefix('roadmap')->group(function () {
@@ -172,11 +173,16 @@
 	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
 	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
-	Route::get('/@{username}/feedback', [UserPagesController::class, 'userFeedback'])->name('user.feedback');
+
 	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
 	Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
 	Route::get('/@{username}/privacy', [UserPagesController::class, 'userPrivacy'])->name('user.privacy');
 	Route::get('/@{username}/cookie-consent', [UserPagesController::class, 'userCookieConsent'])->name('user.cookie-consent');
+
+	Route::get('/@{username}/feedback', [FeedbackController::class, 'index'])->name('user.feedback.index');
+	Route::post('/@{username}/feedback', [FeedbackController::class, 'store'])->name('user.feedback.store');
+	Route::post('/@{username}/feedback/{feedback}/vote', [FeedbackController::class, 'vote'])->name('user.feedback.vote');
+
 
 
 	//-------------------------------------------------------------------------

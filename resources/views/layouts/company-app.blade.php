@@ -181,7 +181,7 @@ Header START -->
 					</li>
 					<li class="nav-item">
 					<a class="nav-link {{ Request::is($user->username . '/feedback') ? 'active' : '' }}"
-					   href="{{ route('user.feedback', $user->username) }}">Feedback</a>
+					   href="{{ route('user.feedback.index', $user->username) }}">Feedback</a>
 					</li>
 					<li class="nav-item">
 					<a class="nav-link {{ Request::is($user->username . '/changelog') ? 'active' : '' }}"

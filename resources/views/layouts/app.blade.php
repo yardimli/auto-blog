@@ -178,22 +178,26 @@ Header START -->
 					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
 					{{--					</li>--}}
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
+						<a class="nav-link {{ request()->routeIs('articles.*') ? 'active' : '' }}"
+						   href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('changelogs.index')}}">{{__('Change Logs')}}</a>
+						<a class="nav-link {{ request()->routeIs('changelogs.*') ? 'active' : '' }}"
+						   href="{{route('changelogs.index')}}">{{__('Change Logs')}}</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('helpsystem.index')}}">{{__('default.Help System')}}</a>
+						<a class="nav-link {{ request()->routeIs('helpsystem.*') ? 'active' : '' }}"
+						   href="{{route('helpsystem.index')}}">{{__('default.Help System')}}</a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('feedback.index')}}">{{__('default.Feedback')}}</a>
+						<a class="nav-link {{ request()->routeIs('feedback.*') ? 'active' : '' }}"
+						   href="{{route('feedback.index')}}">{{__('default.Feedback')}}</a>
 					</li>
 					
-					<li class="nav-item">
+					<li class="nav-item {{ request()->routeIs('roadmap.*') ? 'active' : '' }}">
 						<a class="nav-link" href="{{route('roadmap.index')}}">{{__('default.Roadmap')}}</a>
 					</li>
 					
