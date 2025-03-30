@@ -443,4 +443,5 @@
 		'Feedback' => 'Feedback',
 		'Help System' => 'Help System',
 		'Roadmap' => 'Roadmap',
+		'Home' => 'Home',
 	];

@@ -22,6 +22,9 @@
             </div>
         </div>
     </main>
+    
+    @include('layouts.footer')
+
 @endsection
 @push('scripts')
 <script>

@@ -1,4 +1,5 @@
 @extends('user.pages.layout')
+@section('title', $user->company_name . ' - ' . ($pageSettings->title ?? 'Change Logs'))
 
 @section('user-content')
 	<div class="container">

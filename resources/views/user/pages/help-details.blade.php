@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $user->company_name . ' - ' . ($pageSettings->title ?? 'Help Page'))
 
 @section('title', 'Help')
 

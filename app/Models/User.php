@@ -100,10 +100,20 @@
 		{
 			return $this->hasMany(UserPageSetting::class);
 		}
-
-		public function feedback()
+		/**
+		 * Get the feedback items SUBMITTED BY this user.
+		 */
+		public function submittedFeedback()
 		{
-			return $this->hasMany(Feedback::class);
+			return $this->hasMany(Feedback::class, 'user_id');
+		}
+
+		/**
+		 * Get the feedback items OWNED BY (submitted TO) this user.
+		 */
+		public function ownedFeedback()
+		{
+			return $this->hasMany(Feedback::class, 'owner_user_id');
 		}
 
 		/**
@@ -112,6 +122,24 @@
 		public function feedbackVotes()
 		{
 			return $this->hasMany(FeedbackVote::class);
+		}
+
+		/**
+		 * Get the URL for the user's profile photo.
+		 * (Included from original User model)
+		 */
+		public function getProfilePhotoUrlAttribute()
+		{
+			if ($this->avatar) {
+				if (filter_var($this->avatar, FILTER_VALIDATE_URL)) {
+					return $this->avatar; // Already a full URL
+				}
+				// Assume stored relative path if not a URL
+				return \Illuminate\Support\Facades\Storage::url($this->avatar);
+			}
+
+			// Return default image if no avatar
+			return '/assets/images/avatar/placeholder.jpg'; // Or use a different default
 		}
 
 	}

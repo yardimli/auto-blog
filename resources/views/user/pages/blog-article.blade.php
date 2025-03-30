@@ -1,10 +1,9 @@
 @extends('user.pages.layout')
+@section('title', $user->company_name . ' - ' . $article->title)
 
 @section('user-content')
 	<div class="container">
 		<article class="blog-post">
-			
-			
 			<h1>{{ $article->title }}</h1>
 			
 			@if($article->subtitle)

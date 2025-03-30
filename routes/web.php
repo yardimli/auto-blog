@@ -144,6 +144,7 @@
 		});
 
 		Route::prefix('feedback')->group(function () {
+
 			Route::resource('feedback', FeedbackAdminController::class)->except(['create', 'store']);
 		});
 
@@ -189,3 +190,5 @@
 
 	Auth::routes();
 	Auth::routes(['verify' => true]);
+
+	Route::fallback(function() { abort(404); });

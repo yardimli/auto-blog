@@ -12,6 +12,7 @@
 		{
 			Schema::create('feedback', function (Blueprint $table) {
 				$table->id();
+				$table->foreignId('owner_user_id')->constrained('users')->onDelete('cascade');
 				$table->foreignId('user_id')->nullable()->constrained()->onDelete('set null'); // Nullable for guest feedback
 				$table->string('guest_email')->nullable(); // Optional email for guests
 				$table->string('title');
@@ -19,6 +20,9 @@
 				$table->string('status')->default('Open'); // e.g., Open, Under Review, Planned, Complete, Closed
 				$table->integer('votes_count')->default(0); // Cache for vote counts
 				$table->timestamps();
+
+				$table->index('owner_user_id');
+
 			});
 		}
 

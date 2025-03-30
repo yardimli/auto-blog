@@ -1,4 +1,5 @@
 @extends('user.pages.layout')
+@section('title', $user->company_name . ' - ' . ($pageSettings->title ?? 'Roadmap Page'))
 
 @section('user-content')
 	<div class="container">
