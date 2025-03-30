@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{__('default.Auto Blog')}} - {{__('default.Boilerplate Site Tagline')}}</title>
+	<title>{{__('default.Product Name')}} - {{__('default.Site Tagline')}}</title>
 
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="my-laravel-saas-site.com">
-	<meta name="description" content="{{__('default.Auto Blog')}} - {{__('default.Boilerplate Site Tagline')}}">
+	<meta name="author" content="contentero.com">
+	<meta name="description" content="{{__('default.Product Name')}} - {{__('default.Site Tagline')}}">
 
 	<!-- Dark mode -->
 	<script>
@@ -140,7 +140,7 @@
              <!-- Button -->
              <div class="d-grid"><button type="submit" class="btn btn-lg btn-primary">Reset password</button></div>
              <!-- Copyright -->
-             <p class="mb-0 mt-3">©2024 <a target="_blank" href="https://www.my-laravel-saas-site.com/">{{__('default.Auto Blog')}}.</a> All rights reserved</p>
+             <p class="mb-0 mt-3">©2024 <a target="_blank" href="https://www.contentero.com/">{{__('default.Product Name')}}.</a> All rights reserved</p>
            </form>
           <!-- Form END -->
         </div>

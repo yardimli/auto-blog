@@ -38,7 +38,7 @@
 			}
 
 
-			return $this->from(env('MAIL_FROM_ADDRESS','support@my-laravel-saas-site.com'), env('MAIL_FROM_NAME', 'my-laravel-saas-site.com Support'))
+			return $this->from(env('MAIL_FROM_ADDRESS','support@contentero.com'), env('MAIL_FROM_NAME', 'contentero.com Support'))
 				->subject($subject)
 				->view($email_view)
 				->with(['name' => $this->name, 'email' => $this->email]);

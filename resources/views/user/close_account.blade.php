@@ -13,7 +13,7 @@
 				<p
 					class="mb-2">{{__('default.Please note that deleting your account may result in the permanent loss of your data.')}}</p>
 				<p
-					class="mb-2">{{__('default.We are sad to see you go, but we hope that Auto Blog has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!')}}</p>
+					class="mb-2">{{__('default.We are sad to see you go, but we hope that Contentero has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!')}}</p>
 			</div>
 			<!-- Card header START -->
 			<!-- Card body START -->

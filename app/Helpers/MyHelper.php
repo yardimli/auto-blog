@@ -481,8 +481,8 @@
 			} else {
 				$headers[] = 'Content-Type: application/json';
 				$headers[] = "Authorization: Bearer " . $llm_api_key;
-				$headers[] = "HTTP-Referer: https://my-laravel-saas-site.com";
-				$headers[] = "X-Title: AutoBlog";
+				$headers[] = "HTTP-Referer: https://contentero.com";
+				$headers[] = "X-Title: Contentero";
 			}
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 

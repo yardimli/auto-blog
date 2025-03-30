@@ -5,11 +5,7 @@
 // Found in: app\Http\Controllers\BookCodexController.php
 		'Codex saved successfully' => 'Kodeks başarıyla kaydedildi',
 
-// Found in: resources\views\auth\forgot-password.blade.php, resources\views\emails\reset_password.blade.php, resources\views\emails\thankyouforyourorder.blade.php, resources\views\emails\verify-email.blade.php, resources\views\emails\welcome.blade.php, resources\views\errors\error-404.blade.php, resources\views\landing\landing.blade.php, resources\views\layouts\app.blade.php, resources\views\layouts\footer.blade.php, resources\views\user\codex.blade.php, resources\views\user\edit-book.blade.php, resources\views\user\my-books.blade.php, resources\views\user\privacy.blade.php, resources\views\user\showcase-library.blade.php, resources\views\user\stories.blade.php, resources\views\user\terms.blade.php, resources\views\welcome.blade.php
-		'Auto Blog' => 'SaaS Laravel Kalıbı',
-
-// Found in: resources\views\auth\forgot-password.blade.php, resources\views\auth\login.blade.php, resources\views\auth\register.blade.php, resources\views\emails\welcome.blade.php, resources\views\errors\error-404.blade.php, resources\views\landing\landing.blade.php, resources\views\layouts\app.blade.php, resources\views\paypal\paypal-finish-page.blade.php, resources\views\user\my-books.blade.php, resources\views\user\showcase-library.blade.php, resources\views\user\stories.blade.php
-		'Boilerplate Site Tagline' => 'Kalıp Site Sloganı',
+		'Site Tagline' => 'Kalıp Site Sloganı',
 
 // Found in: resources\views\auth\login.blade.php
 		'Log in with Google' => 'Google ile Giriş Yap',
@@ -48,7 +44,7 @@
 		'Settings' => 'Ayarlar',
 
 // Found in: resources\views\user\all-beats.blade.php
-		'Auto Blog - Book Beats' => 'Yapay Zeka ile Kitap Yazın - Kitap Vuruşları',
+		'Contentero - Book Beats' => 'Yapay Zeka ile Kitap Yazın - Kitap Vuruşları',
 		'Back to Chapters' => 'Bölümlere Geri Dön',
 
 // Found in: resources\views\user\all-beats.blade.php, resources\views\user\edit-book.blade.php
@@ -263,7 +259,7 @@
 		'Delete account' => 'Hesabı sil',
 		'We are sorry to hear that you wish to delete your account.' => 'Hesabınızı silmek istediğinizi duyduğumuza üzüldük.',
 		'Please note that deleting your account may result in the permanent loss of your data.' => 'Lütfen hesabınızı silmenin verilerinizin kalıcı olarak kaybına neden olabileceğini unutmayın.',
-		'We are sad to see you go, but we hope that Auto Blog has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!' => 'Gitmenize üzülüyoruz, ancak Auto Blog\'ın sizin için keyifli bir deneyim olduğunu umuyoruz. Gelecekteki çalışmalarınızda size en iyisini diliyoruz. Hoşça kalın!',
+		'We are sad to see you go, but we hope that Contentero has been an enjoyable experience for you. We wish you the best in your future endeavors. Goodbye!' => 'Gitmenize üzülüyoruz, ancak Contentero\'ın sizin için keyifli bir deneyim olduğunu umuyoruz. Gelecekteki çalışmalarınızda size en iyisini diliyoruz. Hoşça kalın!',
 		'Before you go...' => 'Gitmeden önce...',
 		'If you delete your account, you will lose your all data.' => 'Hesabınızı silerseniz, tüm verilerinizi kaybedeceksiniz.',
 		'Keep my account' => 'Hesabımı koru',
@@ -316,7 +312,7 @@
 		'We\'ll never share your email with anyone else.' => 'E-postanızı asla başkalarıyla paylaşmayacağız.',
 		'I Agree with' => '<a href=":terms_url">Şartlar</a> ve <a href=":privacy_url">Gizlilik</a> politikasını kabul ediyorum',
 		'Already Have Account Sign In' => 'Zaten Hesabınız Var Mı? <a href=":login_url">Giriş Yapın</a>',
-		'&copy; 2024 my-laravel-saas-site.com All rights reserved.' => '&copy; 2024 my-laravel-saas-site.com Tüm hakları saklıdır.',
+		'&copy; 2024 contentero.com All rights reserved.' => '&copy; 2024 contentero.com Tüm hakları saklıdır.',
 		'Email address' => 'E-posta adresi',
 		'Or' => 'Veya',
 		'at least 8 characters' => 'en az 8 karakter',
@@ -329,7 +325,7 @@
 		'Privacy' => 'Gizlilik',
 		'Change Log' => 'Değişiklik Günlüğü',
 
-		'Welcome to Auto Blog' => 'Auto Blog\'e Hoş Geldiniz',
+		'Welcome to Contentero' => 'Contentero\'e Hoş Geldiniz',
 
 		'I can\'t believe it\'s free!' => 'İnanamıyorum, ücretsiz!',
 

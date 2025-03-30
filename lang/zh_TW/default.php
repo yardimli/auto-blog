@@ -20,7 +20,7 @@
 		'Forum' => '論壇',
 		'Teaching' => '教學',
 		'How to guide' => '如何指南',
-		'my-laravel-saas-site.com' => '織音之旋律',
+		'contentero.com' => '織音之旋律',
 		'Terms & Conditions' => '條款和條件',
 		'I agree to the Terms and Conditions.' => '<a href=":url" target="_blank">我同意條款和條件</a>',
 		'NAME' => '名字',
@@ -29,7 +29,7 @@
 		'RELEASE DATE' => '發行日期',
 		'LABEL' => '標籤',
 		'FORMAT' => '格式',
-		'© 2024 my-laravel-saas-site.com. All rights reserved.' => '© 2024 my-laravel-saas-site.com.',
+		'© 2024 contentero.com. All rights reserved.' => '© 2024 contentero.com.',
 		'Create Account' => '創建帳戶',
 		'Purchase History' => '訂單記錄',
 		'Account' => '個人檔案',
@@ -102,7 +102,7 @@
 		'If you have not received the verification email, please click the button below.' => '如果您沒有收到驗證電子郵件，請點擊下面的按鈕。',
 		'Resend Verification Email' => '重新發送驗證電子郵件',
 
-		'Welcome to my-laravel-saas-site.com!' => '歡迎來到 my-laravel-saas-site.com！',
+		'Welcome to contentero.com!' => '歡迎來到 contentero.com！',
 		'Let\'s learn something new today!' => '讓我們今天學點新東西吧!',
 		'Its your turn to join.' => '已經有數百名學生加入我們，現在輪到你了。', //Hundreds of Bots have already joined us, now it\'s your turn.
 		'signup_terms' => '註冊即表示您同意 <a href=":url" target="_blank">條款和條件</a>', //By signing up, you agree to the <a href="{{route('terms-page')}}" target="_blank" class="">Terms and Conditions</a>
@@ -305,7 +305,7 @@
 		'Success' => '成功',
 		'Failure' => '失敗',
 		'RESPONSE FROM GATEWAY:' => '來自支付平台的回應：',
-		'If you have any questions, please contact us at <a href="mailto:support@my-laravel-saas-site.com">support@my-laravel-saas-site.com</a>. Include the above information in your email. Thank you.' => '如果您有任何問題，請聯繫我們 <a href="mailto:support@my-laravel-saas-site.com">support@my-laravel-saas-site.com</a>. 請在您的郵件中包含上述信息。謝謝。',
+		'If you have any questions, please contact us at <a href="mailto:support@contentero.com">support@contentero.com</a>. Include the above information in your email. Thank you.' => '如果您有任何問題，請聯繫我們 <a href="mailto:support@contentero.com">support@contentero.com</a>. 請在您的郵件中包含上述信息。謝謝。',
 
 		'Write a Location' => '輸入地址',
 		'Profile Picture' => '個人資料圖片',
@@ -490,7 +490,7 @@
 		'Success' => 'Success',
 		'Failure' => 'Failure',
 		'RESPONSE FROM GATEWAY:' => 'RESPONSE FROM GATEWAY:',
-		'If you have any questions, please contact us at <a href="mailto:support@my-laravel-saas-site.com">support@my-laravel-saas-site.com</a>. Include the above information in your email. Thank you.' => 'If you have any questions, please contact us at <a href="mailto:support@my-laravel-saas-site.com">support@my-laravel-saas-site.com</a>. Include the above information in your email. Thank you.',
+		'If you have any questions, please contact us at <a href="mailto:support@contentero.com">support@contentero.com</a>. Include the above information in your email. Thank you.' => 'If you have any questions, please contact us at <a href="mailto:support@contentero.com">support@contentero.com</a>. Include the above information in your email. Thank you.',
 
 		'Write a Location' => 'Write a Location',
 		'Profile Picture' => 'Profile Picture',

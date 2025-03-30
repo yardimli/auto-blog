@@ -15,7 +15,7 @@
 					<div class="col-md-6 text-center">
 						<!-- Title -->
 						<h1 class="text-white" style="background-color: rgba(0,0,0,0.5)">Purchase Results</h1>
-						<span class="mb-4 text-white" style="background-color: rgba(0,0,0,0.5)">{{__('default.Boilerplate Site Tagline')}}</span>
+						<span class="mb-4 text-white" style="background-color: rgba(0,0,0,0.5)">{{__('default.Site Tagline')}}</span>
 					</div>
 				</div>
 			</div>
@@ -41,7 +41,7 @@
 								echo '<textarea class="form-control" style="min-height:300px;">';
 								print_r($response);
 								echo '</textarea><br>';
-								echo 'If you have any questions, please contact us at <a href="mailto:support@my-laravel-saas-site.com">support@my-laravel-saas-site.com</a>. Include the above information in your email. Thank you.';
+								echo 'If you have any questions, please contact us at <a href="mailto:support@contentero.com">support@contentero.com</a>. Include the above information in your email. Thank you.';
 							?>
 								
 								

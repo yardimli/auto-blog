@@ -1,7 +1,7 @@
 /**
- * Boilerplate Site Tagline
+ * Site Tagline
  *
- * @author Auto Blog (https://www.my-laravel-saas-site.com/)
+ * @author Contentero (https://www.contentero.com/)
  * @version 1.1.0
  **/
 

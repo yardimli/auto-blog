@@ -261,7 +261,7 @@
 						<br>
 						**Coming Soon: The Control Initial Prompt feature enables you to manage the starting point of a story, as well as guide the AI's suggestions and rewrites. This is helpful for steering the AI's direction when crafting a narrative.
 						<br>
-						***Coming Soon: When you use your own OpenAI key, you will not be using any tokens supplied by Auto Blog. Instead, you will utilize your own tokens and make payments directly to OpenAI for their usage. Please note that this feature requires annual renewal.
+						***Coming Soon: When you use your own OpenAI key, you will not be using any tokens supplied by Contentero. Instead, you will utilize your own tokens and make payments directly to OpenAI for their usage. Please note that this feature requires annual renewal.
 					</div>
 					<!-- Pricing item END -->
 				</div>  <!-- Row END -->

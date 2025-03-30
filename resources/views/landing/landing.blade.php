@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About')
+@section('title', 'All-in-One SaaS Infrastructure')
 
 @section('content')
 	<style>

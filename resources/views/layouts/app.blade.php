@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-	<title>{{__('default.Books By AI')}} - @yield('title', 'Home')</title>
+	<title>{{__('default.Product Name')}} - @yield('title', 'Home')</title>
 	
 	<!-- Meta Tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="author" content="fictionfusion.io">
 	<meta name="description"
-	      content="{{__('default.Books By AI')}} - {{__('default.Boilerplate Site Tagline')}}">
+	      content="{{__('default.Product Name')}} - {{__('default.Site Tagline')}}">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	
 	<script src="/assets/js/core/jquery.min.js"></script>

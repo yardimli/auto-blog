@@ -20,7 +20,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!-- SITE TITLE -->
-	<title>{{__('default.Boilerplate Site Tagline')}}</title>
+	<title>{{__('default.Site Tagline')}}</title>
 	
 	<!-- FAVICON AND TOUCH ICONS -->
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -201,12 +201,12 @@
 									
 									<!-- Text -->
 									<p
-										class="p-md mt-25">{{__('default.Boilerplate Site Tagline')}}
+										class="p-md mt-25">{{__('default.Site Tagline')}}
 									</p>
 									
 									<!-- Copyright -->
 									<div class="register-page-copyright">
-										<p class="p-sm">{{__('default.&copy; 2024 my-laravel-saas-site.com All rights reserved.')}}</p>
+										<p class="p-sm">{{__('default.&copy; 2024 contentero.com All rights reserved.')}}</p>
 									</div>
 								
 								</div>

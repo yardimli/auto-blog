@@ -40,7 +40,7 @@
 			</div>
 			<div class="col-md-4">
 				<!-- Copyright START -->
-				<p class="text-center text-md-end mb-0">©2024 <a class="text-body" href="https://www.my-laravel-saas-site.com"> {{__('default.Auto Blog')}}</p>
+				<p class="text-center text-md-end mb-0">©2024 <a class="text-body" href="https://www.contentero.com"> {{__('default.Product Name')}}</p>
 				<!-- Copyright END -->
 			</div>
 		</div>

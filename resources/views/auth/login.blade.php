@@ -93,12 +93,12 @@
 											<img class="img-fluid" src="/images/logo.png" id="site_logo" alt="logo-image">
 											
 											<!-- Text -->
-											<p class="p-md mt-25">{{__('default.Boilerplate Site Tagline')}}
+											<p class="p-md mt-25">{{__('default.Site Tagline')}}
 											</p>
 
 											<!-- Copyright -->
 											<div class="register-page-copyright">
-												<p class="p-sm">&copy; 2024 my-laravel-saas-site.com</p>
+												<p class="p-sm">&copy; 2024 contentero.com</p>
 											</div>
 
 										</div>

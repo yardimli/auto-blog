@@ -1918,7 +1918,7 @@
 							<p class="c5 c8 c10"><span class="c1"></span></p>
 							<ul class="c4 lst-kix_suxqkadflmqm-0">
 								<li class="c5 c6 li-bullet-0"><span>&quot;</span><span class="c0">Company</span><span>&quot; (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to </span><span
-										class="c12">{{__('default.Auto Blog')}}<br><br></span><span class="c1">For the purpose of the GDPR, the Company is the Data Controller.</span>
+										class="c12">{{__('default.Product Name')}}<br><br></span><span class="c1">For the purpose of the GDPR, the Company is the Data Controller.</span>
 								</li>
 							</ul>
 							<p class="c5 c8 c10"><span class="c1"></span></p>
@@ -1984,7 +1984,7 @@
 							<ul class="c4 lst-kix_suxqkadflmqm-0">
 								<li class="c5 c6 li-bullet-0"><span>&quot;</span><span
 										class="c0">Website</span><span>&quot; refers to </span><span
-										class="c12">my-laravel-saas-site.com</span><span>, accessible from </span><span class="c1 c12">https://my-laravel-saas-site.com</span>
+										class="c12">contentero.com</span><span>, accessible from </span><span class="c1 c12">https://contentero.com</span>
 								</li>
 							</ul>
 							<p class="c5 c8 c10"><span class="c1"></span></p>
@@ -2506,7 +2506,7 @@
 							</p>
 							<p class="c5 c8"><span class="c1 c12"></span></p>
 							<ul class="c4 lst-kix_nwjcx6qwqb28-0 start">
-								<li class="c5 c6 li-bullet-0"><span>By sending us an email: </span><span class="c12">support@my-laravel-saas-site.com</span>
+								<li class="c5 c6 li-bullet-0"><span>By sending us an email: </span><span class="c12">support@contentero.com</span>
 								</li>
 							</ul>
 							<p class="c5 c8"><span class="c1"></span></p>
@@ -2639,7 +2639,7 @@
 									class="c1">If you have any questions about this Privacy Policy, You can contact us:</span></p>
 							<p class="c5 c8"><span class="c1"></span></p>
 							<ul class="c4 lst-kix_nwjcx6qwqb28-0">
-								<li class="c5 c6 li-bullet-0"><span>By sending us an email: </span><span class="c1 c12">support@my-laravel-saas-site.com</span>
+								<li class="c5 c6 li-bullet-0"><span>By sending us an email: </span><span class="c1 c12">support@contentero.com</span>
 								</li>
 							</ul>
 							<p class="c5 c8"><span class="c1"></span></p>

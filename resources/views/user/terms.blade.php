@@ -904,7 +904,7 @@
 								<li class="c0 li-bullet-0"><span>&ldquo;</span><span class="c6">Account</span><span class="c1">&rdquo; means a unique account created for You to access our Service or parts of our Service.</span>
 								</li>
 								<li class="c0 li-bullet-0"><span>&ldquo;</span><span class="c6">Company</span><span>&rdquo; (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to </span><span
-										class="c10">{{__('default.Auto Blog')}}</span></li>
+										class="c10">{{__('default.Product Name')}}</span></li>
 								<li class="c0 li-bullet-0"><span>&ldquo;</span><span
 										class="c6">Country</span><span>&rdquo; refers to </span><span
 										class="c10">Taiwan</span><span>.</span></li>
@@ -926,7 +926,7 @@
 								</li>
 								<li class="c0 li-bullet-0"><span>&quot;</span><span
 										class="c6">Website</span><span>&quot; refers to </span><span
-										class="c10">my-laravel-saas-site.com</span><span>, accessible from </span><span class="c1 c10">https://my-laravel-saas-site.com</span>
+										class="c10">contentero.com</span><span>, accessible from </span><span class="c1 c10">https://contentero.com</span>
 								</li>
 								<li class="c0 li-bullet-0"><span>&ldquo;</span><span class="c6">You</span><span class="c1">&rdquo; means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</span>
 								</li>
@@ -1017,7 +1017,7 @@
 							</p>
 							<p class="c3"><span class="c1"></span></p>
 							<p class="c5"><span>If You are a copyright owner, or authorized on behalf of one, and You believe that the copyrighted work has been copied in a way that constitutes copyright infringement that is taking place through the Service, You must submit Your notice in writing to the attention of our copyright agent via email (</span><span
-									class="c10">support@my-laravel-saas-site.com</span><span class="c1">) and include in Your notice a detailed description of the alleged infringement.</span>
+									class="c10">support@contentero.com</span><span class="c1">) and include in Your notice a detailed description of the alleged infringement.</span>
 							</p>
 							<p class="c3"><span class="c1"></span></p>
 							<p class="c5"><span class="c1">You may be held accountable for damages (including costs and attorneys&#39; fees) for misrepresenting that any Content is infringing Your copyright.</span>
@@ -1043,7 +1043,7 @@
 								</li>
 							</ul>
 							<p class="c3"><span class="c1"></span></p>
-							<p class="c5"><span>You can contact our copyright agent via email (</span><span class="c10">support@my-laravel-saas-site.com</span><span
+							<p class="c5"><span>You can contact our copyright agent via email (</span><span class="c10">support@contentero.com</span><span
 									class="c1">). Upon receipt of a notification, the Company will take whatever action, in its sole discretion, it deems appropriate, including removal of the challenged content from the Service.</span>
 							</p>
 							<h2 class="c4" id="h.n4cxns97ju4b"><span class="c11">Intellectual Property</span></h2>
@@ -1136,7 +1136,7 @@
 									class="c1">If you have any questions about these Terms of Service, You can contact us:</span></p>
 							<p class="c3"><span class="c1"></span></p>
 							<ul class="c8 lst-kix_ovyc9g2njzgd-0 start">
-								<li class="c0 li-bullet-0"><span>By sending us an email: </span><span class="c10">support@my-laravel-saas-site.com</span>
+								<li class="c0 li-bullet-0"><span>By sending us an email: </span><span class="c10">support@contentero.com</span>
 								</li>
 							</ul>
 							<p class="c3"><span class="c1"></span></p>

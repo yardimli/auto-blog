@@ -30,15 +30,15 @@
 			$subject = '【織音】- 密碼重設申請';
 			$email_view = 'emails.reset_password_zh_TW';
 			if ($locale == 'en_US') {
-				$subject = '【Auto Blog】- Password Reset Request';
+				$subject = '【Contentero】- Password Reset Request';
 				$email_view = 'emails.reset_password';
 			}
 			if ($locale == 'tr_TR') {
-				$subject = '【Auto Blog】- Şifre Sıfırlama İsteği';
+				$subject = '【Contentero】- Şifre Sıfırlama İsteği';
 				$email_view = 'emails.reset_password_tr';
 			}
 
-			return $this->from(env('MAIL_FROM_ADDRESS','support@my-laravel-saas-site.com'), env('MAIL_FROM_NAME', 'Auto Blog Support'))
+			return $this->from(env('MAIL_FROM_ADDRESS','support@contentero.com'), env('MAIL_FROM_NAME', 'Contentero Support'))
 				->subject($subject)
 				->view($email_view)
 				->with(['token' => $this->token, 'email' => $this->email]);

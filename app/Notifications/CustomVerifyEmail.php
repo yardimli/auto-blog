@@ -47,11 +47,11 @@
 			$subject = '織音-電子信箱驗證信';
 			$email_view = 'emails.verify-email_zh_TW';
 			if ($locale == 'en_US') {
-				$subject = 'Please verify your Auto Blog email address.';
+				$subject = 'Please verify your Contentero email address.';
 				$email_view = 'emails.verify-email';
 			}
 			if ($locale == 'tr_TR') {
-				$subject = 'Lütfen Auto Blog e-posta adresinizi doğrulayın.';
+				$subject = 'Lütfen Contentero e-posta adresinizi doğrulayın.';
 				$email_view = 'emails.verify-email_tr';
 			}
 

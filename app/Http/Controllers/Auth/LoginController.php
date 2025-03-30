@@ -3,10 +3,10 @@
 
 =========================================================
 
-* Song Page: https://my-laravel-saas-site.com/product
-* Copyright 2018 my-laravel-saas-site.com (https://my-laravel-saas-site.com)
+* Song Page: https://contentero.com/product
+* Copyright 2018 contentero.com (https://contentero.com)
 
-* Coded by my-laravel-saas-site.com
+* Coded by contentero.com
 
 =========================================================
 

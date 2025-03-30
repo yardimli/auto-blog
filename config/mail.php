@@ -101,8 +101,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'support@my-laravel-saas-site.com'),
-        'name' => env('MAIL_FROM_NAME', 'Auto Blog Support'),
+        'address' => env('MAIL_FROM_ADDRESS', 'support@contentero.com'),
+        'name' => env('MAIL_FROM_NAME', 'Contentero Support'),
     ],
 
     /*
