@@ -406,6 +406,7 @@
 		'Title' => 'Title',
 		'Created At' => 'Created At',
 		'Published' => 'Published',
+    'Published At' => 'Published At',
 		'Draft' => 'Draft',
 		'Are you sure you want to delete this article?' => 'Are you sure you want to delete this article?',
 		'Edit Article' => 'Edit Article',
@@ -422,13 +423,19 @@
     'Change Log' => 'Change Log',
     'Create Change Log' => 'Create Change Log',
     'Save Change Log' => 'Save Change Log',
+    'Edit Change Log' => 'Edit Change Log',
     'Released' => 'Released',
     'Released At' => 'Released At',
     'Author' => 'Author',
     'Are you sure you want to delete this log?' => 'Are you sure you want to delete this log?',
     'Log deleted successfully.' => 'Log deleted successfully.',
     'Log updated successfully.' => 'Log updated successfully.',
-    'Edit Change Log' => 'Edit Change Log',
+
+
+    'Help Article' => 'Help Article',
+    'Create Help Article' => 'Create Help Article',
+    'Save Help Article' => 'Save Help Article',
+    'Edit Help Article' => 'Edit Help Article',
 
 		'Company Description' => 'Company Description',
 		'Company Name' => 'Company Name',
@@ -437,7 +444,7 @@
 		'Page Settings' => 'Page Settings',
 
 		'Feedback' => 'Feedback',
-		'Help System' => 'Help System',
+		'Help Articles' => 'Help Articles',
 		'Roadmap' => 'Roadmap',
 		'Home' => 'Home',
 
