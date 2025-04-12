@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                             @if($changelogs->isEmpty())
-                                <p class="text-center my-3">{{ __('default.No changelogs found') }}</p>
+                                <p class="text-center my-3">{{ __('No changelogs found') }}</p>
                             @else
                                 <div class="table-responsive">
                                     <table class="table table-hover">
