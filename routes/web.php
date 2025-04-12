@@ -6,7 +6,7 @@
 	use App\Http\Controllers\ChatController;
 	use App\Http\Controllers\FeedbackAdminController;
 	use App\Http\Controllers\FeedbackController;
-	use App\Http\Controllers\HelpSystemController;
+	use App\Http\Controllers\HelpController;
 	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
@@ -50,15 +50,13 @@
 
 	Route::get('/privacy', [StaticPagesController::class, 'privacy'])->name('privacy-page');
 	Route::get('/terms', [StaticPagesController::class, 'terms'])->name('terms-page');
-	Route::get('/help', [StaticPagesController::class, 'help'])->name('help-page');
-	Route::get('/help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('help-details');
+	Route::get('/site-help', [StaticPagesController::class, 'help'])->name('help-page');
+	Route::get('/site-help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('help-details');
 	Route::get('/about', [StaticPagesController::class, 'about'])->name('about-page');
 	Route::get('/contact', [StaticPagesController::class, 'contact'])->name('contact-page');
 	Route::get('/onboarding', [StaticPagesController::class, 'onboarding'])->name('onboarding-page');
 	Route::get('/change-log', [StaticPagesController::class, 'changeLog'])->name('change-log-page');
 	Route::get('/buy-packages', [UserSettingsController::class, 'buyPackages'])->name('buy-packages');
-
-	Route::get('/help', [StaticPagesController::class, 'help'])->name('help-page');
 
 	//-------------------------------------------------------------------------
 
@@ -152,8 +150,8 @@
 			Route::get('/', [RoadmapController::class, 'index'])->name('roadmap.index');
 		});
 
-		Route::prefix('helpsystem')->group(function () {
-			Route::get('/', [HelpSystemController::class, 'index'])->name('helpsystem.index');
+		Route::prefix('help')->group(function () {
+			Route::get('/', [HelpController::class, 'index'])->name('help.index');
 		});
 
 		Route::prefix('changelogs')->group(function () {

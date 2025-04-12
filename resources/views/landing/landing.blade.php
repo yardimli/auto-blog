@@ -49,12 +49,12 @@
 		</div>
 	</section>
 	
-	<!-- Help System Section -->
+	<!-- Help Articles Section -->
 	<section class="py-5 bg-light">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-6 order-lg-2">
-					<img src="/images/help.png" class="img-fluid" alt="Help System">
+					<img src="/images/help.png" class="img-fluid" alt="Help Articles">
 				</div>
 				<div class="col-lg-6 order-lg-1  mt-4 mt-lg-0">
 					<h2>Integrated Help and FAQ System</h2>

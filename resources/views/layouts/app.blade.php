@@ -187,8 +187,8 @@ Header START -->
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link {{ request()->routeIs('helpsystem.*') ? 'active' : '' }}"
-						   href="{{route('helpsystem.index')}}">{{__('default.Help System')}}</a>
+						<a class="nav-link {{ request()->routeIs('help.*') ? 'active' : '' }}"
+						   href="{{route('help.index')}}">{{__('default.Help Articles')}}</a>
 					</li>
 					
 					<li class="nav-item">
@@ -199,13 +199,11 @@ Header START -->
 					<li class="nav-item {{ request()->routeIs('roadmap.*') ? 'active' : '' }}">
 						<a class="nav-link" href="{{route('roadmap.index')}}">{{__('default.Roadmap')}}</a>
 					</li>
-					
-					
+
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('help-page')}}">{{__('default.Help')}}</a>
 					</li>
-				
-				
+
 				</ul>
 			</div>
 			<!-- Main navbar END -->
