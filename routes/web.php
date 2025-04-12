@@ -50,8 +50,8 @@
 
 	Route::get('/privacy', [StaticPagesController::class, 'privacy'])->name('privacy-page');
 	Route::get('/terms', [StaticPagesController::class, 'terms'])->name('terms-page');
-	Route::get('/site-help', [StaticPagesController::class, 'help'])->name('help-page');
-	Route::get('/site-help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('help-details');
+	Route::get('/site-help', [StaticPagesController::class, 'help'])->name('site-help-page');
+	Route::get('/site-help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('site-help-details');
 	Route::get('/about', [StaticPagesController::class, 'about'])->name('about-page');
 	Route::get('/contact', [StaticPagesController::class, 'contact'])->name('contact-page');
 	Route::get('/onboarding', [StaticPagesController::class, 'onboarding'])->name('onboarding-page');
@@ -150,8 +150,9 @@
 			Route::get('/', [RoadmapController::class, 'index'])->name('roadmap.index');
 		});
 
-		Route::prefix('help')->group(function () {
-			Route::get('/', [HelpController::class, 'index'])->name('help.index');
+		Route::prefix('helps')->group(function () {
+			Route::get('/', [HelpController::class, 'index'])->name('helps.index');
+      Route::get('/create', [HelpController::class, 'create'])->name('helps.create');
 		});
 
 		Route::prefix('changelogs')->group(function () {
@@ -170,7 +171,7 @@
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
 	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
-	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
+	Route::get('/@{username}/helps', [UserPagesController::class, 'userHelp'])->name('user.helps');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 
 	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
