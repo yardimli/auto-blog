@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Help;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -11,11 +12,12 @@ class HelpController extends Controller
 {
 
   public $helps;
+  public $categories;
 
   public function index(Request $request)
   {
 
-    $helps = Help::with(['user'])
+    $helps = Help::with(['user', 'category'])
       ->orderBy('created_at', 'desc')
       ->paginate(10);
 
@@ -24,18 +26,21 @@ class HelpController extends Controller
 
   public function create()
   {
-    return view('helps.edit');
+    $categories = Category::where('user_id', auth()->id())->get();
+    return view('helps.edit', compact( 'categories'));
   }
 
   public function edit(Help $help)
   {
-    return view('helps.edit', compact('help'));
+    $categories = Category::where('user_id', auth()->id())->get();
+    return view('helps.edit', compact('help', 'categories'));
   }
 
   public function store(Request $request)
   {
 
     $validated = $request->validate([
+      'category_id' => 'required',
       'title' => 'required|max:255',
       'body' => 'required',
       'order' => 'required',
@@ -55,6 +60,7 @@ class HelpController extends Controller
   public function update(Request $request, Help $help)
   {
     $validated = $request->validate([
+      'category_id' => 'required',
       'title' => 'required|max:255',
       'body' => 'required',
       'order' => 'required',

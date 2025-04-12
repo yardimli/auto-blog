@@ -352,6 +352,7 @@
 
 		'Languages' => 'Languages',
 		'Categories' => 'Categories',
+    'Category' => 'Category',
 		'Manage Languages' => 'Manage Languages',
 		'Configure available languages for your content' => 'Configure available languages for your content',
 		'Add New Language' => 'Add New Language',

@@ -31,8 +31,9 @@
                                         <thead>
                                         <tr>
                                             <th>{{ __('default.Title') }}</th>
-                                            <th>{{ __('default.Author') }}</th>
+                                            <th>{{ __('default.Category') }}</th>
                                             <th>{{ __('default.Status') }}</th>
+                                            <th>{{ __('default.Author') }}</th>
                                             <th>{{ __('default.Published At') }}</th>
                                             <th>{{ __('default.Created At') }}</th>
                                             <th>{{ __('default.Actions') }}</th>
@@ -42,10 +43,11 @@
                                         @foreach($helps as $help)
                                             <tr>
                                                 <td style="vertical-align: middle;">{{ Str::limit($help->title, 50) }}</td>
-                                                <td style="vertical-align: middle;">{{ $help->user->name }}</td>
+                                                <td style="vertical-align: middle;">{{ Str::limit($help->category->category_name) }}</td>
                                                 <td style="vertical-align: middle;">
                                                     <input class="statusToggle" type="checkbox" {{ $help->is_published ? 'checked' : '' }} data-id="{{$help->id}}" data-toggle="toggle" data-size="sm" data-onlabel="Published" data-offlabel="Draft" data-onstyle="success" data-offstyle="warning">
                                                 </td>
+                                                <td style="vertical-align: middle;">{{ $help->user->name }}</td>
                                                 <td id="published_at_{{$help->id}}" style="vertical-align: middle;">{{ ($help->published_at) ? $help->published_at->format('Y-m-d H:i') : '' }}</td>
                                                 <td style="vertical-align: middle;">{{ $help->created_at->format('Y-m-d H:i') }}</td>
                                                 <td style="vertical-align: middle;">

@@ -23,6 +23,20 @@
                                    value="{{ isset($help) ? $help->title : old('title') }}" required>
                         </div>
 
+                        <!-- Category -->
+                        <div class="mb-3">
+                            <label for="title" class="form-label">{{ __('Category') }}</label>
+                            <select class="form-select" id="category_id" name="category_id" required>
+                                <option value="">{{ __('Select Category') }}</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                            {{ (isset($help) && $help->category_id == $category->id) ? 'selected' : '' }}>
+                                        {{ $category->category_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         {{--   Help Article  --}}
                         <div class="mb-3">
                             <div id="editormd" class="editormd">
