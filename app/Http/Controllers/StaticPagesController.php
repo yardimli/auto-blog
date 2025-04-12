@@ -55,12 +55,12 @@
 
 		public function help(Request $request)
 		{
-			return view('help.help');
+			return view('helps.site-help');
 		}
 
 		public function helpDetails(Request $request, $topic)
 		{
-			return view('help.help-details', ['topic' => $topic]);
+			return view('helps.site-help-details', ['topic' => $topic]);
 		}
 
 		public function contact_us(Request $request)
