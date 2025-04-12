@@ -23,6 +23,7 @@
 				'category_description' => 'nullable|string'
 			]);
 
+      $validated['user_id'] = auth()->id();
 			$validated['category_slug'] = Str::slug($validated['category_name']);
 			$category = Category::create($validated);
 
