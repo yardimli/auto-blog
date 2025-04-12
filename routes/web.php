@@ -153,6 +153,11 @@
 		Route::prefix('helps')->group(function () {
 			Route::get('/', [HelpController::class, 'index'])->name('helps.index');
       Route::get('/create', [HelpController::class, 'create'])->name('helps.create');
+      Route::post('/store', [HelpController::class, 'store'])->name('helps.store');
+      Route::get('/{help}/edit', [HelpController::class, 'edit'])->name('helps.edit');
+      Route::put('{help}/update', [HelpController::class, 'update'])->name('helps.update');
+      Route::delete('/{help}', [HelpController::class, 'destroy'])->name('helps.destroy');
+      Route::post('/togglePublished/{help}', [HelpController::class, 'togglePublished'])->name('helps.togglePublished');
 		});
 
 		Route::prefix('changelogs')->group(function () {
