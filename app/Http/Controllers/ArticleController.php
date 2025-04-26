@@ -34,7 +34,7 @@
 		public function edit(Article $article)
 		{
 			$languages = Language::where('active', true)->get();
-			$categories = Category::all();
+			$categories = Category::where('user_id', auth()->id())->get();
 
 			// Get or create chat session for the article
 			$chatSession = ChatSession::firstOrCreate(

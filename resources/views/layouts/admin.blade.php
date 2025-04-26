@@ -378,7 +378,7 @@
 			</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link ps-2 {{ Request::routeIs('knowledgebase.*') ? 'active' : '' }}" href="{{ route('knowledgebase.index') }}">
+			<a class="nav-link ps-2 {{ Request::routeIs('helps.*') ? 'active' : '' }}" href="{{ route('helps.index') }}">
 				<i class="bi bi-book"></i> Knowledge Base
 			</a>
 		</li>

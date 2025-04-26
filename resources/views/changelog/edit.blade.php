@@ -33,12 +33,11 @@
                     </div>
                 </div>
                 
-                {{-- is_released is handled on the index page toggle --}}
-                {{-- You could add it here as a checkbox if needed for initial creation state --}}
-                {{-- <div class="form-check form-switch mb-3">
+
+                <div class="form-check form-switch mb-3">
 										<input class="form-check-input" type="checkbox" id="is_released" name="is_released" value="1" {{ (isset($changelog) && $changelog->is_released) ? 'checked' : '' }}>
 										<label class="form-check-label" for="is_released">Mark as Released</label>
-								</div> --}}
+								</div>
                 
                 
                 <div class="text-end"> {{-- Align buttons right --}}

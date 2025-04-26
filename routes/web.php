@@ -6,7 +6,6 @@
 	use App\Http\Controllers\ChatController;
 	use App\Http\Controllers\FeedbackAdminController;
 	use App\Http\Controllers\FeedbackController;
-	use App\Http\Controllers\KnowledgeBaseController;
 	use App\Http\Controllers\HelpController;
 	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\LanguageController;
@@ -149,10 +148,6 @@
 
 		Route::prefix('roadmap')->group(function () {
 			Route::get('/', [RoadmapController::class, 'index'])->name('roadmap.index');
-		});
-
-		Route::prefix('knowledgebase')->group(function () {
-			Route::get('/', [KnowledgeBaseController::class, 'index'])->name('knowledgebase.index');
 		});
 
 		Route::prefix('helps')->group(function () {
