@@ -77,7 +77,6 @@ class HelpController extends Controller
   public function togglePublished(Request $request, Help $help)
   {
     $validated = $request->validate([
-      'id' => 'required',
       'is_published' => 'required'
     ]);
 
