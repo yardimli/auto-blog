@@ -173,9 +173,9 @@ Header START -->
 						</li>
 					@endif
 					
-					{{--					<li class="nav-item">--}}
-					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
-					{{--					</li>--}}
+					{{--<li class="nav-item">--}}
+					{{--	<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
+					{{--</li>--}}
 					<li class="nav-item">
 						<a class="nav-link {{ request()->routeIs('articles.*') ? 'active' : '' }}"
 						   href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
@@ -188,7 +188,7 @@ Header START -->
 					
 					<li class="nav-item">
 						<a class="nav-link {{ request()->routeIs('helps.*') ? 'active' : '' }}"
-						   href="{{route('helps.index')}}">{{__('default.Help Articles')}}</a>
+						   href="{{route('helps.index')}}">{{__('Help System')}}</a>
 					</li>
 					
 					<li class="nav-item">

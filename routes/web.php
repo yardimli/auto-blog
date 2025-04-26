@@ -176,8 +176,9 @@
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
 	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
-	Route::get('/@{username}/helps', [UserPagesController::class, 'userHelp'])->name('user.helps');
-	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
+  Route::get('/@{username}/help/{topic}', [UserPagesController::class, 'userHelpDetails'])->name('user.help-details');
+  Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 
 	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
 	Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
