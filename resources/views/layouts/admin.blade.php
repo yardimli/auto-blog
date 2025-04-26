@@ -387,7 +387,7 @@
 		<li class="sidebar-heading">Resources</li>
 		
 		<li class="nav-item">
-			<a class="nav-link ps-2 {{ Request::routeIs('help-page') ? 'active' : '' }}" href="{{ route('help-page') }}" target="_blank"> {{-- Open help in new tab? --}}
+			<a class="nav-link ps-2 {{ Request::routeIs('site-help-page') ? 'active' : '' }}" href="{{ route('site-help-page') }}" target="_blank"> {{-- Open help in new tab? --}}
 				<i class="bi bi-question-circle"></i> Help Center
 			</a>
 		</li>
