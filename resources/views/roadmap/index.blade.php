@@ -1,35 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.admin')
+
+@section('title', __('default.Roadmap'))
+@section('page-title', __('default.Roadmap'))
+
+@section('top-bar-actions')
+    {{-- Add button when functionality is ready --}}
+    {{-- <a href="#" class="btn btn-primary btn-sm ms-3">
+         <i class="bi bi-plus-lg me-1"></i> New Roadmap Item
+    </a> --}}
+@endsection
 
 @section('content')
-    <main>
-        <div class="container" style="min-height: calc(88vh);">
-
-            @if(session('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
-
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h5>{{ __('default.Roadmap') }}</h5>
-                    </div>
-
-                    <!-- Roadmap Entries List -->
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-header border-bottom pb-3">
+{{--            <h5 class="card-title mb-0">{{ __('default.Roadmap') }}</h5>--}}
         </div>
-    </main>
-    
-    @include('layouts.footer')
-
+        <div class="card-body text-center py-5">
+            <i class="bi bi-signpost-split display-1 text-muted"></i>
+            <h5 class="mt-3">Roadmap Coming Soon</h5>
+            <p class="text-muted">Plan and share your product's future direction here.</p>
+            {{-- Link to feedback or planning tools --}}
+            {{-- <a href="{{ route('feedback.index') }}" class="btn btn-sm btn-outline-secondary">View Feedback</a> --}}
+        </div>
+    </div>
 @endsection
-@push('scripts')
-<script>
-    $(document).ready(function () {
-    });
 
-</script>
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            // Add JS for Roadmap management when ready
+        });
+    </script>
 @endpush

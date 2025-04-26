@@ -6,7 +6,7 @@
 	use App\Http\Controllers\ChatController;
 	use App\Http\Controllers\FeedbackAdminController;
 	use App\Http\Controllers\FeedbackController;
-	use App\Http\Controllers\HelpSystemController;
+	use App\Http\Controllers\KnowledgeBaseController;
 	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
@@ -152,8 +152,8 @@
 			Route::get('/', [RoadmapController::class, 'index'])->name('roadmap.index');
 		});
 
-		Route::prefix('helpsystem')->group(function () {
-			Route::get('/', [HelpSystemController::class, 'index'])->name('helpsystem.index');
+		Route::prefix('knowledgebase')->group(function () {
+			Route::get('/', [KnowledgeBaseController::class, 'index'])->name('knowledgebase.index');
 		});
 
 		Route::prefix('changelogs')->group(function () {
@@ -172,7 +172,7 @@
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
 	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
-	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
+	Route::get('/@{username}/knowledgebase', [UserPagesController::class, 'userHelp'])->name('user.kb');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 
 	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');

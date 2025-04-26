@@ -189,7 +189,7 @@
 							<a class="nav-link {{ Request::is('@' . $user->username . '/blog*') ? 'active' : '' }}" href="{{ route('user.blog', $user->username) }}">Blog</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {{ Request::is('@' . $user->username . '/help') ? 'active' : '' }}" href="{{ route('user.help', $user->username) }}">Help</a>
+							<a class="nav-link {{ Request::is('@' . $user->username . '/knowledgebase') ? 'active' : '' }}" href="{{ route('user.kb', $user->username) }}">Knowledge Base</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link {{ Request::is('@' . $user->username . '/roadmap') ? 'active' : '' }}" href="{{ route('user.roadmap', $user->username) }}">Roadmap</a>

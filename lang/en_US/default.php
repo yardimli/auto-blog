@@ -437,7 +437,7 @@
 		'Page Settings' => 'Page Settings',
 
 		'Feedback' => 'Feedback',
-		'Help System' => 'Help System',
+		'Knowledge Base' => 'Knowledge Base',
 		'Roadmap' => 'Roadmap',
 		'Home' => 'Home',
 

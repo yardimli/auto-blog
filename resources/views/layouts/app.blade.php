@@ -187,8 +187,8 @@ Header START -->
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link {{ request()->routeIs('helpsystem.*') ? 'active' : '' }}"
-						   href="{{route('helpsystem.index')}}">{{__('default.Help System')}}</a>
+						<a class="nav-link {{ request()->routeIs('knowledgebase.*') ? 'active' : '' }}"
+						   href="{{route('knowledgebase.index')}}">{{__('default.Knowledge Base')}}</a>
 					</li>
 					
 					<li class="nav-item">
@@ -217,7 +217,7 @@ Header START -->
 				<li class="nav-item ms-2">
 					<button type="button" class="nav-link icon-md btn btn-light p-0" id="modeSwitcher">
 						<!-- Sun icon for dark mode -->
-						<i class="bi bi-sun fs-6 d-none" id="lightModeIcon"></i>
+						<i class="bi bi-sun fs-6 d-none" style="color:#CCC;" id="lightModeIcon"></i>
 						<!-- Moon icon for light mode -->
 						<i class="bi bi-moon-stars fs-6" id="darkModeIcon"></i>
 					</button>

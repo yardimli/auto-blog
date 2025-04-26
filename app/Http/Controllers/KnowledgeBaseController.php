@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class HelpSystemController extends Controller
+class KnowledgeBaseController extends Controller
 {
 
 
   public function index(Request $request)
   {
 
-    return view('helpsystem.index');
+    return view('knowledgebase.index');
   }
 
 
