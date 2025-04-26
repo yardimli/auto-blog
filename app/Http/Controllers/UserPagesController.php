@@ -106,6 +106,7 @@
     public function articlesByCategory()
     {
       $helps = Help::with(['user', 'category'])
+        ->where('is_published', 1)
         ->orderBy('created_at', 'desc')
         ->get();
 
