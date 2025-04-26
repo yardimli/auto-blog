@@ -3,9 +3,11 @@
 	namespace App\Http\Controllers;
 
 	use App\Models\Article;
-  use App\Models\ChangeLog;
+	use App\Models\Category;
+	use App\Models\ChangeLog;
   use App\Models\Help;
-  use Carbon\Carbon;
+	use App\Models\UserPageSetting;
+	use Carbon\Carbon;
 	use Illuminate\Http\Request;
 	use App\Models\User;
 	use App\Models\NewOrder;
@@ -15,6 +17,7 @@
 	use Illuminate\Support\Facades\File;
 	use Illuminate\Support\Facades\Log;
 	use Illuminate\Support\Facades\Storage;
+	use Illuminate\Support\Facades\View;
 	use Illuminate\Support\Str;
 	use Illuminate\Support\Facades\Validator;
 	use App\Helpers\MyHelper;
@@ -34,6 +37,36 @@
 				abort(404);
 			}
 			return $user;
+		}
+
+		private function getUserPageData($username)
+		{
+			$user = User::where('username', $username)->firstOrFail();
+			$pageSettings = UserPageSetting::where('user_id', $user->id)->first(); // Assuming you have this model
+
+			// Fetch categories and published articles for the sidebar/help pages
+			$categories = Category::where('user_id', $user->id)
+				->orderBy('category_name') // Or by a specific order column
+				->get();
+
+			$groupedArticles = Help::with('category')
+				->where('user_id', $user->id)
+				->where('is_published', true)
+				->orderBy('order', 'asc') // Assuming an order column exists
+				->orderBy('created_at', 'desc')
+				->get()
+				->groupBy('category.category_name'); // Group by name for easier access
+
+			// Share data needed for the layout/sidebar partial across help views
+			View::share([
+				'user' => $user,
+				'pageSettings' => $pageSettings, // Pass page settings if needed globally
+				'helpCategoriesForSidebar' => $categories, // For sidebar navigation
+				'groupedHelpArticlesForSidebar' => $groupedArticles, // For sidebar article lists
+			]);
+
+
+			return compact('user', 'pageSettings', 'categories', 'groupedArticles');
 		}
 
 		// UserPagesController.php
@@ -85,6 +118,82 @@
 			$pageSettings = $this->getPageSettings($user, 'home');
 			return view('user.pages.home', compact('user',  'pageSettings'));
 		}
+
+		//---------------- HELP
+
+		public function userHelpIndex(Request $request, $username)
+		{
+			$data = $this->getUserPageData($username);
+			$user = $this->getUserOrFail($username);
+			$pageSettings = $this->getPageSettings($user, 'help');
+
+			// Get first 6 categories with articles for the featured section
+			$featuredCategories = $data['groupedArticles']->take(6);
+
+			return view('user.pages.help', [
+				'user' => $data['user'],
+				'pageSettings' => $pageSettings,
+				'featuredCategories' => $featuredCategories,
+				// Sidebar data is shared via View::share()
+			]);
+		}
+
+		/**
+		 * Display the articles within a specific help category.
+		 */
+		public function userHelpCategory(Request $request, $username, $category_slug)
+		{
+			$data = $this->getUserPageData($username);
+			$user = $this->getUserOrFail($username);
+			$pageSettings = $this->getPageSettings($user, 'help');
+
+			$currentCategory = Category::where('user_id', $data['user']->id)
+				->where('category_slug', $category_slug)
+				->firstOrFail();
+
+			$articlesInCategory = Help::where('user_id', $data['user']->id)
+				->where('category_id', $currentCategory->id)
+				->where('is_published', true)
+				->orderBy('order', 'asc')
+				->orderBy('created_at', 'desc')
+				->get();
+
+			return view('user.pages.help-category', [
+				'user' => $data['user'],
+				'pageSettings' => $pageSettings,
+				'currentCategory' => $currentCategory,
+				'articlesInCategory' => $articlesInCategory,
+				// Sidebar data is shared via View::share()
+			]);
+		}
+
+		/**
+		 * Display a single help article.
+		 * Uses Route Model Binding for $help
+		 */
+		public function userHelpArticle(Request $request, $username, Help $help)
+		{
+			// Validate the article belongs to the user and is published
+			$user = User::where('username', $username)->firstOrFail();
+			if ($help->user_id !== $user->id || !$help->is_published) {
+				abort(404);
+			}
+
+			$data = $this->getUserPageData($username); // To get sidebar data
+			$pageSettings = $this->getPageSettings($user, 'help');
+
+			// Eager load category if not already loaded by route model binding or needed
+			$help->loadMissing('category');
+
+			return view('user.pages.help-details', [
+				'user' => $data['user'],
+				'pageSettings' => $pageSettings,
+				'helpArticle' => $help,
+				// Sidebar data is shared via View::share()
+			]);
+		}
+
+		//------------- HELP END
 
 
 		public function userHelp($username)

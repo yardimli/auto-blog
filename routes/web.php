@@ -172,28 +172,30 @@
 
 	});
 
-	// User-specific routes
-	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
-	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
-	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
+	Route::middleware(['web'])->group(function () { // Ensure session, etc. is available if needed
+		// User-specific public pages
+		Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
+		Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
+		Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
 
-	Route::get('/@{username}/knowledgebase', [UserPagesController::class, 'userHelp'])->name('user.kb');
-	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+		Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+		Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
+		Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
+		Route::get('/@{username}/privacy', [UserPagesController::class, 'userPrivacy'])->name('user.privacy');
+		Route::get('/@{username}/cookie-consent', [UserPagesController::class, 'userCookieConsent'])->name('user.cookie-consent');
 
-	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
-  Route::get('/@{username}/help/{topic}', [UserPagesController::class, 'userHelpDetails'])->name('user.help-details');
-  Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+		// Feedback Routes
+		Route::get('/@{username}/feedback', [FeedbackController::class, 'index'])->name('user.feedback.index');
+		Route::post('/@{username}/feedback', [FeedbackController::class, 'store'])->name('user.feedback.store');
+		Route::post('/@{username}/feedback/{feedback}/vote', [FeedbackController::class, 'vote'])->name('user.feedback.vote');
 
-	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
-	Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');
-	Route::get('/@{username}/privacy', [UserPagesController::class, 'userPrivacy'])->name('user.privacy');
-	Route::get('/@{username}/cookie-consent', [UserPagesController::class, 'userCookieConsent'])->name('user.cookie-consent');
+		// --- NEW HELP ROUTES ---
+		Route::get('/@{username}/help', [UserPagesController::class, 'userHelpIndex'])->name('user.help.index'); // Main help page
+		Route::get('/@{username}/help/{category_slug}', [UserPagesController::class, 'userHelpCategory'])->name('user.help.category'); // Category article list
+		Route::get('/@{username}/help/article/{help}', [UserPagesController::class, 'userHelpArticle'])->name('user.help.article'); // Single article (using route model binding)
+		// --- END NEW HELP ROUTES ---
 
-	Route::get('/@{username}/feedback', [FeedbackController::class, 'index'])->name('user.feedback.index');
-	Route::post('/@{username}/feedback', [FeedbackController::class, 'store'])->name('user.feedback.store');
-	Route::post('/@{username}/feedback/{feedback}/vote', [FeedbackController::class, 'vote'])->name('user.feedback.vote');
-
-
+	});
 
 	//-------------------------------------------------------------------------
 
