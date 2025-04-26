@@ -27,41 +27,8 @@
 					@include('layouts.svg4-image')
 				</div>
 			</div>
-			<!-- Help search START -->
-
-			<?php
-				function parseFAQ($text)
-				{
-					$lines = preg_split('/\r\n|\r|\n/', $text);
-
-					$categories = [];
-					$currentCategory = '';
-
-					foreach ($lines as $line) {
-						if (strpos($line, '===') === 0) {
-							$currentCategory = trim(substr($line, 3));
-							$categories[$currentCategory] = [];
-						} elseif (preg_match('/^Q[0-9]+:/', $line)) {
-							$question = trim(preg_replace('/^Q[0-9]+:/', '', $line));
-						} elseif (preg_match('/^A[0-9]+:/', $line)) {
-							$answer = trim(preg_replace('/^A[0-9]+:/', '', $line));
-							$categories[$currentCategory][] = ['question' => $question, 'answer' => $answer];
-						}
-					}
-
-					return $categories;
-				}
-
-				//read the faq.txt file from public/texts folder
-				$help_array = parseFAQ(file_get_contents(resource_path('texts/faq.txt')));
-
-				//find $topic in $help_array
-
-
-			?>
 				
-				
-				<!-- Article Single  -->
+			<!-- Article Single  -->
 			<div class="row">
 				<div class="col-12 vstack gap-4">
 					
@@ -79,11 +46,17 @@
 							<!-- Update and author -->
 						</div>
 						<!-- Article Info -->
+
+						{{-- Rest of the page content --}}
 						<div class="card-body">
-							@if (isset($help_array[$topic]))
-								@foreach($help_array[$topic] as $faq)
-									<h5 class="mt-4">{{$faq['question']}}</h5>
-									<p>{{$faq['answer']}}</p>
+							@if (isset($helpArticles[$topic]))
+								@foreach($helpArticles[$topic] as $article)
+									<h3 class="mt-1" style="font-size: 24px;">{{$article['title']}}</h3>
+									<div id="article-{{$article['id']}}" class="editormd">
+										<textarea name="body" style="display:none;">
+{{$article['body']}}
+										</textarea>
+									</div>
 								@endforeach
 							@endif
 						</div>
@@ -103,12 +76,35 @@
 
 @endsection
 
+<script src="/js/jquery-3.7.0.min.js"></script>
+<script src="/editormd/editormd.min.js"></script>
+<script src="/editormd/languages/en.js"></script>
+<script src="/editormd/lib/marked.min.js"></script>
+<script src="/editormd/lib/prettify.min.js"></script>
+
+<link rel="stylesheet" href="/editormd/css/editormd.css" />
+
+<style>
+	.editormd-preview-container, .editormd-html-preview {
+		padding: 10px;
+		border: 0px;
+	}
+</style>
+
 @push('scripts')
-	<!-- Inline JavaScript code -->
+
 	<script>
 		var current_page = 'help.details';
 		$(document).ready(function () {
+			$('.editormd').each((index, editor) => {
+				editormd.markdownToHTML(editor.id, {
+					// markdown : "[TOC]\n### Hello world!\n## Heading 2", // Also, you can dynamic set Markdown text
+					// htmlDecode : true,  // Enable / disable HTML tag encode.
+					// htmlDecode : "style,script,iframe",  // Note: If enabled, you should filter some dangerous HTML tags for website security.
+				});
+			})
 		});
+
 	</script>
-	
+
 @endpush

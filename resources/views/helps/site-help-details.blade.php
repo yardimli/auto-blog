@@ -105,7 +105,7 @@
 @push('scripts')
 	<!-- Inline JavaScript code -->
 	<script>
-		var current_page = 'help.details';
+		var current_page = 'site-help.details';
 		$(document).ready(function () {
 		});
 	</script>

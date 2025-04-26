@@ -7,6 +7,7 @@
 	use App\Http\Controllers\FeedbackAdminController;
 	use App\Http\Controllers\FeedbackController;
 	use App\Http\Controllers\KnowledgeBaseController;
+	use App\Http\Controllers\HelpController;
 	use App\Http\Controllers\ImageController;
 	use App\Http\Controllers\LanguageController;
 	use App\Http\Controllers\LoginWithGoogleController;
@@ -50,15 +51,13 @@
 
 	Route::get('/privacy', [StaticPagesController::class, 'privacy'])->name('privacy-page');
 	Route::get('/terms', [StaticPagesController::class, 'terms'])->name('terms-page');
-	Route::get('/help', [StaticPagesController::class, 'help'])->name('help-page');
-	Route::get('/help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('help-details');
+	Route::get('/site-help', [StaticPagesController::class, 'help'])->name('site-help-page');
+	Route::get('/site-help/{topic}', [StaticPagesController::class, 'helpDetails'])->name('site-help-details');
 	Route::get('/about', [StaticPagesController::class, 'about'])->name('about-page');
 	Route::get('/contact', [StaticPagesController::class, 'contact'])->name('contact-page');
 	Route::get('/onboarding', [StaticPagesController::class, 'onboarding'])->name('onboarding-page');
 	Route::get('/change-log', [StaticPagesController::class, 'changeLog'])->name('change-log-page');
 	Route::get('/buy-packages', [UserSettingsController::class, 'buyPackages'])->name('buy-packages');
-
-	Route::get('/help', [StaticPagesController::class, 'help'])->name('help-page');
 
 	//-------------------------------------------------------------------------
 
@@ -156,6 +155,16 @@
 			Route::get('/', [KnowledgeBaseController::class, 'index'])->name('knowledgebase.index');
 		});
 
+		Route::prefix('helps')->group(function () {
+			Route::get('/', [HelpController::class, 'index'])->name('helps.index');
+      Route::get('/create', [HelpController::class, 'create'])->name('helps.create');
+      Route::post('/store', [HelpController::class, 'store'])->name('helps.store');
+      Route::get('/{help}/edit', [HelpController::class, 'edit'])->name('helps.edit');
+      Route::put('{help}/update', [HelpController::class, 'update'])->name('helps.update');
+      Route::delete('/{help}', [HelpController::class, 'destroy'])->name('helps.destroy');
+      Route::post('/togglePublished/{help}', [HelpController::class, 'togglePublished'])->name('helps.togglePublished');
+		});
+
 		Route::prefix('changelogs')->group(function () {
 			Route::get('/', [ChangeLogController::class, 'index'])->name('changelogs.index');
 			Route::get('/create', [ChangeLogController::class, 'create'])->name('changelogs.create');
@@ -172,8 +181,13 @@
 	Route::get('/@{username}', [UserPagesController::class, 'userHome'])->name('user.home');
 	Route::get('/@{username}/blog', [UserPagesController::class, 'userBlog'])->name('user.blog');
 	Route::get('/@{username}/blog/{slug}', [UserPagesController::class, 'userBlogArticle'])->name('user.blog.article');
+
 	Route::get('/@{username}/knowledgebase', [UserPagesController::class, 'userHelp'])->name('user.kb');
 	Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
+
+	Route::get('/@{username}/help', [UserPagesController::class, 'userHelp'])->name('user.help');
+  Route::get('/@{username}/help/{topic}', [UserPagesController::class, 'userHelpDetails'])->name('user.help-details');
+  Route::get('/@{username}/roadmap', [UserPagesController::class, 'userRoadmap'])->name('user.roadmap');
 
 	Route::get('/@{username}/changelog', [UserPagesController::class, 'userChangelog'])->name('user.changelog');
 	Route::get('/@{username}/terms', [UserPagesController::class, 'userTerms'])->name('user.terms');

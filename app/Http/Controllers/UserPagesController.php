@@ -4,6 +4,7 @@
 
 	use App\Models\Article;
   use App\Models\ChangeLog;
+  use App\Models\Help;
   use Carbon\Carbon;
 	use Illuminate\Http\Request;
 	use App\Models\User;
@@ -90,8 +91,38 @@
 		{
 			$user = $this->getUserOrFail($username);
 			$pageSettings = $this->getPageSettings($user, 'help');
-			return view('user.pages.help', compact('user', 'pageSettings') );
+      $helpArticles = $this->articlesByCategory();
+			return view('user.pages.help', compact('user', 'pageSettings', 'helpArticles') );
 		}
+
+    public function userHelpDetails(Request $request, $username, $topic)
+    {
+      $user = $this->getUserOrFail($username);
+      $pageSettings = $this->getPageSettings($user, 'help');
+      $helpArticles = $this->articlesByCategory();
+      return view('user.pages.help-details', ['topic' => $topic, 'user' => $user, 'pageSettings' => $pageSettings, 'helpArticles' => $helpArticles]);
+    }
+
+    public function articlesByCategory()
+    {
+      $helps = Help::with(['user', 'category'])
+        ->where('is_published', 1)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+      $helpArticles = [];
+
+      foreach ($helps as $key => $help) {
+        if(!isset($helpArticles[$help->category->category_name])) $helpArticles[$help->category->category_name] = [];
+        $helpArticles[$help->category->category_name][] = [
+          'id' => $help->id,
+          'title' => $help->title,
+          'body' => $help->body
+        ];
+      }
+
+      return $helpArticles;
+    }
 
 		public function userRoadmap($username)
 		{

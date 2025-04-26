@@ -24,7 +24,7 @@
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('help-page')}}"><i class="bi bi-exclamation-circle  me-2"></i>{{__('default.Help')}}</a>
+						<a class="nav-link" href="{{route('site-help-page')}}"><i class="bi bi-exclamation-circle  me-2"></i>{{__('default.Help')}}</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{route('terms-page')}}"><i class="bi bi-check-all  me-2"></i>{{__('default.Terms')}}</a>

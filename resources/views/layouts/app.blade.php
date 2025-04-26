@@ -173,9 +173,9 @@ Header START -->
 						</li>
 					@endif
 					
-					{{--					<li class="nav-item">--}}
-					{{--						<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
-					{{--					</li>--}}
+					{{--<li class="nav-item">--}}
+					{{--	<a class="nav-link active" href="{{route('chat')}}">{{__('default.Chat')}}</a>--}}
+					{{--</li>--}}
 					<li class="nav-item">
 						<a class="nav-link {{ request()->routeIs('articles.*') ? 'active' : '' }}"
 						   href="{{route('articles.index')}}">{{__('default.Blog')}}</a>
@@ -187,8 +187,8 @@ Header START -->
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link {{ request()->routeIs('knowledgebase.*') ? 'active' : '' }}"
-						   href="{{route('knowledgebase.index')}}">{{__('default.Knowledge Base')}}</a>
+						<a class="nav-link {{ request()->routeIs('helps.*') ? 'active' : '' }}"
+						   href="{{route('helps.index')}}">{{__('Help System')}}</a>
 					</li>
 					
 					<li class="nav-item">
@@ -199,13 +199,11 @@ Header START -->
 					<li class="nav-item {{ request()->routeIs('roadmap.*') ? 'active' : '' }}">
 						<a class="nav-link" href="{{route('roadmap.index')}}">{{__('default.Roadmap')}}</a>
 					</li>
-					
-					
+
 					<li class="nav-item">
-						<a class="nav-link" href="{{route('help-page')}}">{{__('default.Help')}}</a>
+						<a class="nav-link" href="{{route('site-help-page')}}">{{__('default.Help')}}</a>
 					</li>
-				
-				
+
 				</ul>
 			</div>
 			<!-- Main navbar END -->

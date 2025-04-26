@@ -24,12 +24,12 @@ class ChangeLogController extends Controller
 
   public function create()
   {
-    return view('changelog.changelog');
+    return view('changelog.edit');
   }
 
   public function edit(ChangeLog $changelog)
   {
-    return view('changelog.changelog', compact('changelog'));
+    return view('changelog.edit', compact('changelog'));
   }
 
   public function store(Request $request)

@@ -78,7 +78,7 @@
                     @foreach($questions as $question)
                     @php $i++; @endphp
                     @if($i > 5) @break @endif
-                    <li class="nav-item"><a class="nav-link d-flex" href="/help/{{$category}}"><i class="fa-solid fa-angle-right text-primary pt-1  me-2"></i>{{$question['question']}}</a></li>
+                    <li class="nav-item"><a class="nav-link d-flex" href="/site-help/{{$category}}"><i class="fa-solid fa-angle-right text-primary pt-1  me-2"></i>{{$question['question']}}</a></li>
                     @endforeach
                   </ul>
                 </div>
@@ -105,7 +105,7 @@
 @push('scripts')
 	<!-- Inline JavaScript code -->
 	<script>
-		var current_page = 'help.home';
+		var current_page = 'site-help.home';
 		$(document).ready(function () {
 		});
 	</script>

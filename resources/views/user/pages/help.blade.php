@@ -9,8 +9,7 @@
 				{{ $pageSettings->description ?? '' }}
 			</div>
 		@endif
-		
-		
+
 		<div class="container">
 			<!-- Main content START -->
 			
@@ -30,33 +29,6 @@
 				</div>
 			</div>
 			<!-- Help search START -->
-
-			<?php
-				function parseFAQ($text) {
-					$lines = preg_split('/\r\n|\r|\n/', $text);
-
-					$categories = [];
-					$currentCategory = '';
-
-					foreach ($lines as $line) {
-						if (strpos($line, '===') === 0) {
-							$currentCategory = trim(substr($line, 3));
-							$categories[$currentCategory] = [];
-						} elseif (preg_match('/^Q[0-9]+:/', $line)) {
-							$question = trim(preg_replace('/^Q[0-9]+:/', '', $line));
-						} elseif (preg_match('/^A[0-9]+:/', $line)) {
-							$answer = trim(preg_replace('/^A[0-9]+:/', '', $line));
-							$categories[$currentCategory][] = ['question' => $question, 'answer' => $answer];
-						}
-					}
-
-					return $categories;
-				}
-
-				//read the faq.txt file from public/texts folder
-				$help_array = parseFAQ(file_get_contents(resource_path('texts/faq.txt')));
-
-			?>
 				
 				<!-- Recommended topics START -->
 			<div class="py-5">
@@ -64,24 +36,23 @@
 				<h4 class="text-center mb-4">Topics</h4>
 				<!-- Row START -->
 				<div class="row g-4">
-					
-					@foreach($help_array as $category => $questions)
+					@foreach($helpArticles as $category => $articles)
 						<div class="col-md-4">
 							<!-- Get started START -->
 							<div class="card h-100">
 								<!-- Title START -->
 								<div class="card-header pb-0 border-0">
-									<h5 class="card-title mb-0 mt-2"><a class="nav-link d-flex" href="@/help/{{$category}}">{{$category}}</a></h5>
+									<h5 class="card-title mb-0 mt-2"><a class="nav-link d-flex" href="/{{'@'.Auth::user()->username}}/help/{{$category}}">{{$category}}</a></h5>
 								</div>
 								<!-- Title END -->
 								<!-- List START -->
 								<div class="card-body">
 									<ul class="nav flex-column">
 										@php $i = 0; @endphp
-										@foreach($questions as $question)
+										@foreach($articles as $article)
 											@php $i++; @endphp
 											@if($i > 5) @break @endif
-											<li class="nav-item"><a class="nav-link d-flex" href="/help/{{$category}}"><i class="fa-solid fa-angle-right text-primary pt-1  me-2"></i>{{$question['question']}}</a></li>
+											<li class="nav-item"><a class="nav-link d-flex" href="/{{'@'.Auth::user()->username}}/help/{{$category}}" target="_blank"><i class="fa-solid fa-angle-right text-primary pt-1  me-2"></i>{{$article['title']}}</a></li>
 										@endforeach
 									</ul>
 								</div>
